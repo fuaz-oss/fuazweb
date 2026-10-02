@@ -1,0 +1,38 @@
+---
+import GenericPageLayout from '../layouts/GenericPageLayout.astro';
+import styles from '../styles/about.module.css';
+
+const navLinks = [
+  { href: '/about/history', title: 'History & Background', desc: 'Discover our foundation and growth journey.' },
+  { href: '/about/mission', title: 'Mission & Vision', desc: 'Our core values and objective goals.' },
+  { href: '/about/vc', title: 'Vice Chancellor\'s Office', desc: 'Welcome address from the VC.' },
+  { href: '/about/council', title: 'Governing Council', desc: 'The leadership body of the university.' },
+  { href: '/about/senate', title: 'University Senate', desc: 'Academic governance and structures.' }
+];
+---
+
+<GenericPageLayout 
+  title="About FUAZ" 
+  subtitle="Federal University of Agriculture Zuru is a premier educational institution committed to agricultural innovation."
+  heroImage="/media/matriculation.webp"
+  breadcrumbs={[{ label: 'About', href: '/about' }]}
+>
+  <div class={styles.contentWrapper}>
+    <p class={`${styles.paragraph} ${styles.dropCap}`}>
+      Welcome to the Federal University of Agriculture Zuru, Kebbi State. We are a specialized university established to pioneer advancements in agricultural science, engineering, and technology while maintaining strong morals and ethical excellence.
+    </p>
+
+    <p class={styles.paragraph}>
+      Located in the historic town of Zuru, our campus blends modern research facilities with deep-rooted agricultural farmlands. We equip our students with practical skills designed to solve global food security challenges and build sustainable farming ecosystems. FUAZ is not just about academic theory; it is about "Producing Job Providers, Not Job Seekers."
+    </p>
+
+    <div class={styles.navGrid}>
+      {navLinks.map(link => (
+        <a href={link.href} class={styles.navCard}>
+          <h3>{link.title}</h3>
+          <p>{link.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</GenericPageLayout>

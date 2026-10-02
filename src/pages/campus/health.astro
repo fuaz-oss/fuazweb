@@ -1,0 +1,33 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="University Health Centre" 
+  subtitle="Providing premium primary healthcare for students and staff."
+  heroImage="/media/DSC_3788.webp"
+  breadcrumbs={[
+    { label: 'Campus', href: '/campus' },
+    { label: 'Health Centre', href: '/campus/health' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Primary Healthcare</h2>
+    <p class={styles.paragraph}>
+      The FUAZ Health Centre is a fully equipped primary healthcare facility staffed by resident medical doctors, registered nurses, and laboratory technicians. It is NHIS-accredited and provides free immediate medical consultations for all officially registered students.
+    </p>
+
+    <h2 class={styles.heading2}>Available Services</h2>
+    <ul class={styles.list}>
+      <li><strong>Outpatient Clinic:</strong> Daily consultations for malaria, typhoid, and other common ailments.</li>
+      <li><strong>Laboratory Services:</strong> Rapid diagnostic tests, blood work, and urinalysis.</li>
+      <li><strong>Pharmacy:</strong> A fully stocked dispensary providing prescribed medications.</li>
+      <li><strong>Ambulance Unit:</strong> For immediate referral of severe cases to the Federal Medical Centre.</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Medical Registration:</strong> To access the university clinic, all new students must complete their mandatory medical screening (including chest X-rays) during the orientation week.
+    </div>
+  </div>
+</GenericPageLayout>

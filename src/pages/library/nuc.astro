@@ -1,0 +1,43 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="NUC Virtual Library" 
+  subtitle="National Universities Commission E-Learning & Resource Directory."
+  heroImage="/media/DSC_4898.webp"
+  breadcrumbs={[
+    { label: 'Library', href: '/library' },
+    { label: 'NUC e-Library', href: '/library/nuc' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>National Repository of Knowledge</h2>
+    <p class={styles.paragraph}>
+      The National Universities Commission (NUC) Virtual Library is a centralized digital repository designed to support learning, teaching, and research across all Nigerian universities. FUAZ is fully integrated into this network, providing our students with a gateway to a massive wealth of academic resources.
+    </p>
+
+    <div class={styles.navGrid}>
+      <div class={styles.navCard}>
+        <h3>Theses & Dissertations</h3>
+        <p>Access thousands of verified post-graduate theses from Nigerian universities across diverse agricultural and technical fields.</p>
+      </div>
+      <div class={styles.navCard}>
+        <h3>Open Courseware</h3>
+        <p>Download curriculum-standard course materials, lecture notes, and instructional videos curated by the NUC for federal institutions.</p>
+      </div>
+    </div>
+
+    <h2 class={styles.heading2}>Core Features</h2>
+    <ul class={styles.list}>
+      <li><strong>Institutional Repositories:</strong> Links to individual digital archives of all accredited Nigerian universities.</li>
+      <li><strong>Indigenous Journals:</strong> Access to peer-reviewed journals published locally within the Nigerian university system.</li>
+      <li><strong>Regulatory Standards:</strong> Direct access to NUC guidelines, accreditation reports, and university rankings.</li>
+    </ul>
+
+    <p class={styles.paragraph}>
+      Students are encouraged to register their library cards at the FUAZ ICT unit to receive their unique NUC login credentials for unrestricted remote access.
+    </p>
+  </div>
+</GenericPageLayout>

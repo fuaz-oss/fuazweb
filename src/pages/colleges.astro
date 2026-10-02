@@ -1,0 +1,57 @@
+---
+import GenericPageLayout from '../layouts/GenericPageLayout.astro';
+import styles from '../styles/academics.module.css';
+
+const colleges = [
+  { 
+    href: '/colleges/agriculture', 
+    title: 'College of Agriculture', 
+    desc: 'Core agricultural sciences, agronomy, crop production, mango & cashew orchards, forestry, and fisheries.',
+    image: '/media/cashew.webp',
+    badge: 'Mango & Cashew Research'
+  },
+  { 
+    href: '/colleges/sciences', 
+    title: 'College of Science', 
+    desc: 'Biological, chemical, computer, and physical sciences foundational framework.',
+    image: '/media/DSC_3788.webp',
+    badge: 'Pure & Applied Sciences'
+  },
+  { 
+    href: '/colleges/veterinary', 
+    title: 'College of Veterinary Medicine', 
+    desc: 'Animal health, ruminant breeding, cattle genetics, and veterinary medicine.',
+    image: '/media/cow.webp',
+    badge: 'Cattle & Livestock Ranches'
+  },
+];
+---
+
+<GenericPageLayout
+  title="Our Colleges"
+  subtitle="Three specialized academic colleges driving innovation at FUAZ."
+  heroImage="/media/DSC_4788.webp"
+  breadcrumbs={[{ label: 'Academics', href: '/academics' }, { label: 'Colleges', href: '/colleges' }]}
+>
+  <div class={styles.contentWrapper}>
+    <p class={styles.paragraph}>
+      The Federal University of Agriculture Zuru is structurally organized into three Colleges, each headed by a Dean and encompassing various specialized academic departments. This structure fosters multi-disciplinary approaches to solving complex agricultural challenges.
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+      {colleges.map(col => (
+        <a href={col.href} style="display: flex; flex-direction: column; background: white; border-radius: 16px; overflow: hidden; text-decoration: none; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.12)';" onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.05)';">
+          <div style="position: relative; height: 180px; width: 100%;">
+            <img src={col.image} alt={col.title} style="width: 100%; height: 100%; object-fit: cover;" />
+            <span style="position: absolute; bottom: 12px; left: 12px; background: rgba(0,77,37,0.85); color: white; padding: 0.3rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; backdrop-filter: blur(4px);">{col.badge}</span>
+          </div>
+          <div style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--f-green-dark, #003319); margin: 0 0 0.75rem 0;">{col.title}</h3>
+            <p style="font-size: 0.92rem; color: #555; line-height: 1.5; margin: 0 0 1.25rem 0; flex-grow: 1;">{col.desc}</p>
+            <span style="font-size: 0.88rem; font-weight: 700; color: var(--f-green, #004D25);">Explore College & Programs →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</GenericPageLayout>

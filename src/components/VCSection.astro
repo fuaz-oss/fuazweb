@@ -1,0 +1,100 @@
+---
+import styles from './VCSection.module.css';
+---
+
+<section class={styles.section} id="vc-message" aria-label="Vice Chancellor's Message">
+
+  <div class={styles.bgWord} aria-hidden="true">FUAZ</div>
+
+  <div class="container">
+    <div class={styles.grid}>
+
+      <!-- ── Image column ── -->
+      <div class={styles.imageCol} data-reveal="left">
+
+        <!-- Stacked offset frames -->
+        <div class={styles.frameStack}>
+          <div class={styles.frameShadow} aria-hidden="true"></div>
+          <div class={styles.frameAccent} aria-hidden="true">
+            <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
+              <rect x="0"   y="0"   width="120" height="2"   fill="#FFD700"/>
+              <rect x="0"   y="0"   width="2"   height="120" fill="#FFD700"/>
+              <rect x="100" y="0"   width="20"  height="2"   fill="#FFD700" opacity="0.35"/>
+              <rect x="0"   y="100" width="2"   height="20"  fill="#FFD700" opacity="0.35"/>
+            </svg>
+          </div>
+          <div class={styles.imageFrame}>
+            <img
+              src="/media/vc.webp"
+              alt="Prof. I.R. Muhammad, Vice Chancellor of FUAZ"
+              loading="lazy"
+              onerror="this.style.display='none'; this.parentElement.classList.add('img-error');"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Content column ── -->
+      <div class={styles.contentCol} data-reveal="right">
+
+        <!-- Eyebrow -->
+        <div class={styles.eyebrow}>
+          <span class={styles.eyebrowLine}></span>
+          <span>Vice Chancellor's Message</span>
+        </div>
+
+        <!-- Pull quote -->
+        <blockquote class={styles.pullQuote}>
+          <span class={styles.openMark} aria-hidden="true">"</span>
+          <p>Produce job providers,<br/>not job seekers.</p>
+        </blockquote>
+
+        <!-- Body text -->
+        <div class={styles.body}>
+          <p>
+            Welcome to the Federal University of Agriculture Zuru. Our mission is to
+            transform the agricultural landscape of Nigeria by equipping our students
+            with practical skills, an entrepreneurial mindset, and the technological
+            know-how to lead the future of food security.
+          </p>
+          <p>
+            At FUAZ, we do not merely train graduates — we cultivate pioneers who will
+            redefine what agriculture means for Africa and the world.
+          </p>
+        </div>
+
+        <!-- Signature block -->
+        <div class={styles.sigBlock}>
+          <div class={styles.sigRule}></div>
+          <div class={styles.sigName}>Prof. I.R. Muhammad</div>
+          <div class={styles.sigRole}>Vice Chancellor, Federal University of Agriculture Zuru</div>
+        </div>
+
+        <!-- Read full message CTA -->
+        <a href="/about/vc" class={styles.cta} aria-label="Read the full Vice Chancellor's message">
+          <span>Read Full Message</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+  const revealEls = document.querySelectorAll('[data-reveal]');
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+        entry.target.classList.add('vc-revealed');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealEls.forEach(el => obs.observe(el));
+</script>

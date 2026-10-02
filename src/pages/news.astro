@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import styles from './news.module.css';
+---
+
+<Layout>
+  <Navbar />
+
+  <main>
+    <section class={styles.pageHero}>
+      <div class={styles.heroBg} aria-hidden="true">
+        <img src="/media/DSC_3856.webp" alt="" />
+      </div>
+      <div class={styles.heroOverlay} aria-hidden="true"></div>
+
+      <div class="container">
+        <div class={styles.headerContent}>
+          <div class={styles.eyebrow}>
+            <span class={styles.eyebrowLine}></span>
+            <span>University Updates</span>
+          </div>
+          <h1 class={styles.pageTitle}>News &amp; Notices</h1>
+          <p class={styles.pageDesc}>
+            Academic announcements, campus events, and notices from the Federal University of Agriculture Zuru.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class={styles.mainContent}>
+      <div class="container">
+        <p class={styles.pageDesc}>
+          News and notices will be published here. For current enquiries, please <a href="mailto:info@fuaz.edu.ng">contact the University</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,33 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Clubs & Societies" 
+  subtitle="Extracurricular engagement and networking."
+  heroImage="/media/DSC_3856.webp"
+  breadcrumbs={[
+    { label: 'Campus', href: '/campus' },
+    { label: 'Clubs', href: '/campus/clubs' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Beyond the Classroom</h2>
+    <p class={styles.paragraph}>
+      FUAZ strongly encourages students to participate in registered clubs and societies. These groups foster leadership skills, professional networking, and deep, lasting friendships outside of the grueling academic timetables.
+    </p>
+
+    <h2 class={styles.heading2}>Prominent Associations</h2>
+    <ul class={styles.list}>
+      <li><strong>Departmental Associations:</strong> e.g., Nigerian Association of Agricultural Students (NAAS), Veterinary Medical Students Association (VUMSA).</li>
+      <li><strong>Enactus FUAZ:</strong> A global community of student leaders committed to using entrepreneurial action to transform lives.</li>
+      <li><strong>The Debate & Literary Club:</strong> Organizes inter-college public speaking tournaments and poetry slams.</li>
+      <li><strong>Amnesty International (Campus Chapter):</strong> Focuses on human rights advocacy.</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Registration:</strong> All clubs must be officially registered with the Dean of Students' Affairs (DSA). Unregistered associations holding meetings on campus will face disciplinary action.
+    </div>
+  </div>
+</GenericPageLayout>

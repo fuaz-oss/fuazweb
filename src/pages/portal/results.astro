@@ -1,0 +1,21 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Result Checking Portal" 
+  subtitle="Verify your academic standing."
+  heroImage="/media/DSC_4796.webp"
+  breadcrumbs={[
+    { label: 'Portal', href: '/portal' },
+    { label: 'Results', href: '/portal/results' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Board Approved Results</h2>
+    <p class={styles.paragraph}>
+      Results displayed on this portal are provisionally approved by the University Senate. However, any discrepancy perceived in the grading should be reported immediately to your respective departmental Level Coordinator within 7 days of publication.
+    </p>
+  </div>
+</GenericPageLayout>

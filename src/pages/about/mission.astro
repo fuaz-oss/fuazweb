@@ -1,0 +1,41 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Mission & Vision" 
+  subtitle="The guiding principles driving our academic mandate."
+  heroImage="/media/DSC_4819.webp"
+  breadcrumbs={[
+    { label: 'About', href: '/about' },
+    { label: 'Mission & Vision', href: '/about/mission' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    
+    <h2 class={styles.heading2}>Our Vision</h2>
+    <p class={styles.paragraph}>
+      To be a World-Class University of Agriculture, renowned for excellent academic and practical training, scientific research, and innovation that guarantees sustainable agricultural engineering, food security, and environmental resilience.
+    </p>
+
+    <h2 class={styles.heading2}>Our Mission</h2>
+    <p class={styles.paragraph}>
+      To produce high-quality, practical-oriented graduates, equipped with the technical proficiency and entrepreneurial mindset to become job providers rather than job seekers. We are dedicated to translating rigorous research into community-driven solutions that elevate the Nigerian agricultural sector.
+    </p>
+
+    <div class={styles.importantBox}>
+      <strong>Core Motto:</strong> "Knowledge, Agriculture & Innovation"
+    </div>
+
+    <h2 class={styles.heading2}>Core Values</h2>
+    <ul class={styles.list}>
+      <li><strong>Excellence:</strong> Maintaining the highest standard in teaching, research, and community service.</li>
+      <li><strong>Innovation:</strong> Continuously pursuing new, creative, and technological approaches to farming.</li>
+      <li><strong>Integrity:</strong> Upholding moral and ethical principles in all university operations.</li>
+      <li><strong>Sustainability:</strong> Practicing and teaching climate-smart methodologies to protect the environment.</li>
+      <li><strong>Collaboration:</strong> Partnering with local farmers, global NGOs, and industries.</li>
+    </ul>
+
+  </div>
+</GenericPageLayout>

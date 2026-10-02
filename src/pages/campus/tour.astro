@@ -1,0 +1,36 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Virtual Campus Tour" 
+  subtitle="Explore FUAZ from anywhere in the world."
+  heroImage="/media/DSC_4826.webp"
+  breadcrumbs={[
+    { label: 'Campus', href: '/campus' },
+    { label: 'Virtual Tour', href: '/campus/tour' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>360° Drone Experience</h2>
+    <p class={styles.paragraph}>
+      Thinking of applying to FUAZ? Experience the sheer scale of the University Farm, the architectural beauty of the Senate Building, and the modernized interior of the Main Library through our immersive 360-degree drone tours.
+    </p>
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 16px; margin: 2rem 0; box-shadow: 0 10px 35px rgba(0,0,0,0.25);">
+      <iframe
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+        src="https://www.youtube-nocookie.com/embed/TXfrZtMzoEg?rel=0&modestbranding=1"
+        title="FUAZ Official Welcome and Campus Video Tour"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    </div>
+
+    <div class={styles.importantBox}>
+      <strong>Guided Physical Tours:</strong> High schools and colleges looking to organize a physical excursion to explore the FUAZ campus and farms should send a formal request to the Public Relations Unit for scheduling.
+    </div>
+  </div>
+</GenericPageLayout>

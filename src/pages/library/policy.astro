@@ -1,0 +1,38 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Borrowing Policy" 
+  subtitle="Guidelines for circulation and material loans."
+  heroImage="/media/DSC_4902.webp"
+  breadcrumbs={[
+    { label: 'Library', href: '/library' },
+    { label: 'Borrowing Policy', href: '/library/policy' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <div class={styles.importantBox}>
+      To borrow any physical material from the Main Library or College Libraries, you must present a valid, stamped University Library ID Card. No exceptions are made.
+    </div>
+
+    <h2 class={styles.heading2}>Loan Quotas & Durations</h2>
+    <p class={styles.paragraph}>
+      Different categories of users have distinct borrowing privileges designed to ensure equitable access to high-demand agricultural texts.
+    </p>
+    <ul class={styles.list}>
+      <li><strong>Undergraduate Students:</strong> Maximum of 2 books for 14 days.</li>
+      <li><strong>Academic Staff:</strong> Maximum of 6 books for 30 days.</li>
+      <li><strong>Non-Academic Staff:</strong> Maximum of 2 books for 14 days.</li>
+    </ul>
+
+    <h2 class={styles.heading2}>Fines & Penalties</h2>
+    <p class={styles.paragraph}>
+      Failure to return borrowed materials on or before the due date will attract a fine of ₦50.00 per book, per day. Borrowing privileges will be automatically suspended until all outstanding fines are cleared.
+    </p>
+    <p class={styles.paragraph}>
+      Loss or mutilation of a library book will require the borrower to replace the exact edition of the book AND pay an additional processing fee of ₦5,000.
+    </p>
+  </div>
+</GenericPageLayout>

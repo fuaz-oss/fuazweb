@@ -1,0 +1,63 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/academics.module.css';
+---
+
+<GenericPageLayout 
+  title="Examination Timetable & Guidelines" 
+  subtitle="Rules, regulations, and preparations for university exams."
+  heroImage="/media/DSC_4804.webp"
+  breadcrumbs={[
+    { label: 'Academics', href: '/academics' },
+    { label: 'Examinations', href: '/academics/exams' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    
+    <div class={styles.importantBox}>
+      <strong>First Semester Examinations, 2024/2025:</strong> The final timetable draft has been uploaded to the student portal. Ensure you have printed your valid examination clearance card before entering the halls.
+    </div>
+
+    <h2 class={styles.heading2}>Examination Rules & Regulations</h2>
+    <p class={styles.paragraph}>
+      The University maintains a zero-tolerance policy towards examination malpractice. To ensure a smooth, fair, and secure examination process, all candidates must strictly observe the following rules:
+    </p>
+
+    <ul class={styles.list}>
+      <li>Candidates must arrive at the examination venue at least <strong>30 minutes</strong> before the scheduled paper time for biometric verification.</li>
+      <li>Students without their official University ID Card and Examination Clearance Form will <strong>NOT</strong> be allowed into the hall.</li>
+      <li>Mobile phones, smartwatches, programmable calculators, and any piece of unauthorized blank or written paper are strictly prohibited.</li>
+      <li>Silence must be maintained at all times. Communicating with other candidates during an ongoing examination is an offense punishable by expulsion.</li>
+      <li>No candidate may leave the hall within the first 45 minutes of the examination, nor in the final 15 minutes of the examination time.</li>
+    </ul>
+
+    <h2 class={styles.heading2}>Grading System</h2>
+    <p class={styles.paragraph}>
+      FUAZ operates a 5-point Cumulative Grade Point Average (CGPA) system as prescribed by the National Universities Commission (NUC).
+    </p>
+
+    <div class={styles.dataTableWrap}>
+      <table class={styles.dataTable}>
+        <thead>
+          <tr>
+            <th>Score Range</th>
+            <th>Letter Grade</th>
+            <th>Grade Point</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class={styles.dateCol}>70% - 100%</td><td>A</td><td>5.00</td></tr>
+          <tr><td class={styles.dateCol}>60% - 69%</td><td>B</td><td>4.00</td></tr>
+          <tr><td class={styles.dateCol}>50% - 59%</td><td>C</td><td>3.00</td></tr>
+          <tr><td class={styles.dateCol}>45% - 49%</td><td>D</td><td>2.00</td></tr>
+          <tr><td class={styles.dateCol}>0% - 44%</td><td>F</td><td>0.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class={styles.paragraph}>
+      If you experience any conflicts or missing courses in your timetable, immediately consult your departmental course adviser or the exams and records office.
+    </p>
+
+  </div>
+</GenericPageLayout>

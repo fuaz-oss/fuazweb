@@ -1,0 +1,21 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Seminars & Workshops" 
+  subtitle="Continuous academic dialogue and training."
+  heroImage="/media/DSC_3788.webp"
+  breadcrumbs={[
+    { label: 'Research', href: '/research' },
+    { label: 'Seminars', href: '/research/seminars' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Departmental Symposia</h2>
+    <p class={styles.paragraph}>
+      Every Wednesday is dedicated strictly to research dissemination. Faculty members and visiting scholars present their ongoing laboratory findings at the College Auditoriums, fostering a culture of rigorous scientific critique among peers and students.
+    </p>
+  </div>
+</GenericPageLayout>

@@ -1,0 +1,39 @@
+---
+import GenericPageLayout from '../layouts/GenericPageLayout.astro';
+import styles from '../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Applicant & Student Portal" 
+  subtitle="Track your applications and access university services."
+  heroImage="/media/DSC_4787.webp"
+  breadcrumbs={[{ label: 'Portal', href: '/portal' }]}
+>
+  <div class={styles.contentWrapper}>
+    <div class={styles.importantBox}>
+      Student applications, results, and course registration are managed through the University's external student portal.
+    </div>
+
+    <p class={styles.paragraph}>
+      <a href="https://portal.fuaz.edu.ng" target="_blank" rel="noopener noreferrer">Open the FUAZ Student Portal</a>
+    </p>
+
+    <div class={styles.navGrid} style="margin-top: 4rem;">
+      <a href="https://portal.fuaz.edu.ng/courses" class={styles.navCard} target="_blank" rel="noopener noreferrer">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">📚</div>
+        <h3>Course Registration</h3>
+        <p>Register for semester electives and core courses.</p>
+      </a>
+      <a href="https://portal.fuaz.edu.ng/results" class={styles.navCard} target="_blank" rel="noopener noreferrer">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">📊</div>
+        <h3>Academic Results</h3>
+        <p>Check your transcript and semester grade points.</p>
+      </a>
+      <a href="/admissions" class={styles.navCard}>
+        <div style="font-size: 2rem; margin-bottom: 1rem;">🎓</div>
+        <h3>New Application</h3>
+        <p>Apply for undergraduate programmes.</p>
+      </a>
+    </div>
+  </div>
+</GenericPageLayout>

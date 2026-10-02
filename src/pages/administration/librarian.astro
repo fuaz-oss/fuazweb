@@ -1,0 +1,45 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="University Librarian" 
+  subtitle="Curating the knowledge resources driving agricultural innovation."
+  heroImage="/media/librarian.webp"
+  breadcrumbs={[
+    { label: 'Administration', href: '/administration' },
+    { label: 'Librarian', href: '/administration/librarian' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <div class={styles.splitLayout}>
+      <div class={styles.sidebar}>
+        <div class={styles.profileCard}>
+          <img src="/media/librarian.webp" alt="Dr(Mrs) Lovet Ovigue Esievo, University Librarian" class={styles.profileImg} />
+          <div class={styles.profileInfo}>
+            <h3>Dr(Mrs) Lovet Ovigue Esievo</h3>
+            <p>NCE, BLS, MLS, Ph.D, CLN</p>
+            <p><strong>University Librarian</strong></p>
+          </div>
+        </div>
+      </div>
+      
+      <div class={styles.mainContent}>
+        <h2 class={styles.heading2}>Library Governance</h2>
+        <p class={styles.paragraph}>
+          The University Librarian, Dr(Mrs) Lovet Ovigue Esievo (NCE, BLS, MLS, Ph.D, CLN), directs all library services across the main campus and satellite college libraries. The Librarian ensures the acquisition, cataloging, and physical/digital maintenance of all research materials, academic journals, and textbooks required by the FUAZ community.
+        </p>
+
+        <h2 class={styles.heading2}>Access to Global Resources</h2>
+        <p class={styles.paragraph}>
+          Under the current administration, the main library has been fully automated utilizing OPAC architecture and has secured institutional access to vital agricultural scientific databases including JSTOR, AGORA, and Research4Life. 
+        </p>
+
+        <div class={styles.importantBox}>
+          <strong>Library Registration:</strong> Fresh students MUST finalize their library cards within the first 4 weeks of the semester to gain access to borrowing privileges and the e-Library terminal network.
+        </div>
+      </div>
+    </div>
+  </div>
+</GenericPageLayout>

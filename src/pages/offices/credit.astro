@@ -1,0 +1,36 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="CREDIT Initiative" 
+  subtitle="Centre for Research, Extension, and Digital Innovation & Transformation."
+  heroImage="/media/DSC_4923.webp"
+  breadcrumbs={[
+    { label: 'Offices', href: '/offices' },
+    { label: 'CREDIT', href: '/offices/credit' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <p class={styles.paragraph} style="font-size: 1.15rem; font-weight: 600; color: var(--gl-green-deep);">
+      The newly launched Directorate of Research and Development is the strategic spearhead for institutional growth at FUAZ.
+    </p>
+
+    <h2 class={styles.heading2}>Strategic Vision</h2>
+    <p class={styles.paragraph}>
+      CREDIT bridges the gap between academic research and commercial application. As an independent executive office, it works to attract international research grants, broker strategic partnerships with agricultural tech startups, and streamline the extension of university innovations directly to local farmers.
+    </p>
+
+    <h2 class={styles.heading2}>Major Objectives</h2>
+    <ul class={styles.list}>
+      <li><strong>Grant Acquisition:</strong> Assisting faculty members with building competitive global research proposals (TETFund, World Bank).</li>
+      <li><strong>Digital Transformation:</strong> Integrating smart-farming AI models and IoT sensors into traditional agricultural curricula.</li>
+      <li><strong>Extension Services:</strong> Deploying "mobile clinics" to educate rural farming communities on drought-resistant crops developed on campus.</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Call for Proposals:</strong> The 2025 Institutional Seed Grant is currently accepting applications from multi-disciplinary faculty teams. Deadline for submission is November 30th.
+    </div>
+  </div>
+</GenericPageLayout>

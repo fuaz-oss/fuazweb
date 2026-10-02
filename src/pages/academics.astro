@@ -1,0 +1,38 @@
+---
+import GenericPageLayout from '../layouts/GenericPageLayout.astro';
+import styles from '../styles/academics.module.css';
+
+const navLinks = [
+  { href: '/academics/undergraduate', title: 'Undergraduate Programmes', desc: 'Explore Bachelor\'s degrees across our various colleges.' },
+  { href: '/academics/diploma', title: 'Diploma & Certificate', desc: 'Vocational and professional short courses.' },
+  { href: '/academics/calendar', title: 'Academic Calendar', desc: 'Session dates, holidays, and deadlines.' },
+  { href: '/academics/exams', title: 'Examination Timetable', desc: 'Rules, regulations, and schedules.' }
+];
+---
+
+<GenericPageLayout 
+  title="Academics" 
+  subtitle="Pursue excellence across our specialized agricultural colleges and research programmes."
+  heroImage="/media/DSC_4788.webp"
+  breadcrumbs={[{ label: 'Academics', href: '/academics' }]}
+>
+  <div class={styles.contentWrapper}>
+    <p class={styles.paragraph}>
+      At the Federal University of Agriculture Zuru, we offer rigorous, high-quality academic programmes tailored to meet the demands of modern agriculture, veterinary science, natural sciences, and engineering. Our curricula are heavily weighted toward practical laboratory and field training.
+    </p>
+
+    <div class={styles.importantBox}>
+      <strong>Session Update:</strong> Admissions for the 2025/2026 Academic Session are currently open. Ensure you review the specific College requirements before applying via the JAMB portal.
+    </div>
+
+    <h2 class={styles.heading2}>Academic Pathways</h2>
+    <div class={styles.navGrid}>
+      {navLinks.map(link => (
+        <a href={link.href} class={styles.navCard}>
+          <h3>{link.title}</h3>
+          <p>{link.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</GenericPageLayout>

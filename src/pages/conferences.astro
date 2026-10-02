@@ -1,0 +1,41 @@
+---
+import GenericPageLayout from '../layouts/GenericPageLayout.astro';
+import styles from '../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Conferences & Events" 
+  subtitle="Global agricultural discussions hosted at FUAZ."
+  heroImage="/media/DSC_3788.webp"
+  breadcrumbs={[{ label: 'Conferences', href: '/conferences' }]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Upcoming Events</h2>
+    <div class={styles.importantBox}>
+      No upcoming events have been announced. Please check back for updates.
+    </div>
+
+    <h2 class={styles.heading2}>Past Conferences & Symposia</h2>
+    <p class={styles.paragraph}>
+      The University remains at the forefront of agricultural research and policy dialogue. Below are some of our most impactful recent gatherings.
+    </p>
+
+    <div class={styles.navGrid}>
+      <a href="/research/icfsas" class={styles.navCard}>
+        <h3>ICFSAS 2024</h3>
+        <p>1st International Conference on Food Security and Agricultural Sustainability. Concluded June 2024.</p>
+      </a>
+      
+      <div class={styles.navCard} style="opacity: 0.7; cursor: default;">
+        <h3>CASD 2023</h3>
+        <p>Conference on Animal Science and Development. Focus on sustainable livestock management.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 5rem; padding-top: 4rem; border-top: 1.5px solid #cbd5e0;">
+      <h2 class={styles.heading2}>Event Enquiries</h2>
+      <p class={styles.paragraph} style="margin-bottom: 2rem;">For conference and event enquiries, contact the University.</p>
+      <a href="mailto:info@fuaz.edu.ng?subject=Conference%20and%20event%20enquiry" style="color: var(--ab-green); font-weight: 600; text-decoration: underline;">Email the University</a>
+    </div>
+  </div>
+</GenericPageLayout>

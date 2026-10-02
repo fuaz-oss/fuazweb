@@ -1,0 +1,25 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Research Publications" 
+  subtitle="Impactful findings indexing the agricultural sciences."
+  heroImage="/media/DSC_4796.webp"
+  breadcrumbs={[
+    { label: 'Research', href: '/research' },
+    { label: 'Publications', href: '/research/publications' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Global Research Outputs</h2>
+    <p class={styles.paragraph}>
+      Faculty members at FUAZ are internationally recognized for their output in leading agricultural indexing databases. Over 500 peer-reviewed articles have been published in Scopus and Web of Science indexed journals by our academic staff over the last academic session.
+    </p>
+
+    <div class={styles.importantBox}>
+      <strong>Institutional Repository:</strong> All open-access publications authored by FUAZ researchers can be accessed free of charge via the University Library Digital Repository.
+    </div>
+  </div>
+</GenericPageLayout>

@@ -1,0 +1,33 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Sports Complex" 
+  subtitle="Fostering physical discipline and competitive excellence."
+  heroImage="/media/DSC_4805.webp"
+  breadcrumbs={[
+    { label: 'Campus', href: '/campus' },
+    { label: 'Sports Complex', href: '/campus/sports' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Recreational Facilities</h2>
+    <p class={styles.paragraph}>
+      At FUAZ, we recognize the importance of physical fitness to academic success. The University Sports Complex is a multi-million-naira facility featuring standard pitches, tracks, and indoor arenas used for both recreational exercise and inter-university competitions (NUGA).
+    </p>
+
+    <h2 class={styles.heading2}>Available Arenas</h2>
+    <ul class={styles.list}>
+      <li>Standard FIFA-sized football pitch with synthetic turf and a 5,000-capacity grandstand.</li>
+      <li>Twin outdoor basketball and volleyball courts.</li>
+      <li>An 8-lane tartan athletic track for sprints and distance running.</li>
+      <li>Indoor sports hall for badminton, table tennis, and martial arts practice.</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Vice-Chancellor's Cup:</strong> The annual inter-college football tournament kicks off in the second semester. All students are encouraged to register through their departmental sports directors.
+    </div>
+  </div>
+</GenericPageLayout>

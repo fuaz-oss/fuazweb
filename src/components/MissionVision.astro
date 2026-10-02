@@ -1,0 +1,161 @@
+---
+import styles from './MissionVision.module.css';
+
+const values = [
+  {
+    icon: `<path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>`,
+    name: 'Integrity',
+    desc: 'Upholding honesty and ethical conduct in all academic and institutional endeavours.',
+  },
+  {
+    icon: `<path d="M9.5 2a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M16.5 16.5l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>`,
+    name: 'Innovation',
+    desc: 'Pursuing cutting-edge research and creative solutions to agricultural challenges.',
+  },
+  {
+    icon: `<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>`,
+    name: 'Community',
+    desc: 'Fostering a culture of belonging, collaboration, and service to society.',
+  },
+  {
+    icon: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>`,
+    name: 'Excellence',
+    desc: 'Striving for the highest standards in teaching, research, and professional practice.',
+  },
+];
+---
+
+<section class={styles.section} id="mission-vision" aria-label="Mission and Vision">
+
+  <!-- ── Section label ── -->
+  <div class={styles.sectionLabel} aria-hidden="true">
+    <span class={styles.labelLine}></span>
+    <span class={styles.labelText}>Who We Are</span>
+    <span class={styles.labelLine}></span>
+  </div>
+
+  <!-- ── Main split panels ── -->
+  <div class={styles.panels}>
+
+    <!-- Mission panel -->
+    <article class={`${styles.panel} ${styles.missionPanel}`} data-reveal="left">
+      <div class={styles.panelInner}>
+
+        <!-- Giant decorative letter -->
+        <span class={styles.bigLetter} aria-hidden="true">M</span>
+
+        <div class={styles.panelContent}>
+          <div class={styles.tag}>Our Mission</div>
+          <h2 class={styles.panelHeading}>Produce Job<br/>Providers,<br/>Not Seekers.</h2>
+          <div class={styles.dividerRule}></div>
+          <p class={styles.panelBody}>
+            We cultivate agricultural entrepreneurs equipped with technical mastery,
+            practical wisdom, and the ambition to drive Nigeria's food economy forward.
+          </p>
+          <ul class={styles.pillars} aria-label="Mission pillars">
+            <li>Entrepreneurship</li>
+            <li>Technical Excellence</li>
+            <li>Practical Learning</li>
+          </ul>
+        </div>
+
+        <!-- Decorative corner geometry -->
+        <svg class={styles.cornerMark} viewBox="0 0 80 80" fill="none" aria-hidden="true">
+          <rect x="0" y="0" width="80" height="2" fill="currentColor" opacity="0.25"/>
+          <rect x="0" y="0" width="2" height="80" fill="currentColor" opacity="0.25"/>
+          <rect x="60" y="0" width="20" height="2" fill="currentColor" opacity="0.6"/>
+          <rect x="0" y="60" width="2" height="20" fill="currentColor" opacity="0.6"/>
+        </svg>
+      </div>
+    </article>
+
+    <!-- Diagonal slash divider -->
+    <div class={styles.slash} aria-hidden="true">
+      <svg viewBox="0 0 60 600" preserveAspectRatio="none" fill="none">
+        <polygon points="60,0 0,0 0,600" fill="#1e5128"/>
+        <polygon points="60,0 60,600 0,600" fill="#f5f0e8"/>
+        <line x1="30" y1="0" x2="30" y2="600" stroke="#FFD700" stroke-width="1.5" opacity="0.4"/>
+      </svg>
+    </div>
+
+    <!-- Vision panel -->
+    <article class={`${styles.panel} ${styles.visionPanel}`} data-reveal="right">
+      <div class={styles.panelInner}>
+
+        <!-- Giant decorative letter -->
+        <span class={styles.bigLetter} aria-hidden="true">V</span>
+
+        <div class={styles.panelContent}>
+          <div class={styles.tag}>Our Vision</div>
+          <h2 class={styles.panelHeading}>World-Class<br/>Agricultural<br/>Innovation.</h2>
+          <div class={styles.dividerRule}></div>
+          <p class={styles.panelBody}>
+            To be recognised globally as a centre of excellence for agricultural research,
+            food security solutions, and sustainable development in Africa and beyond.
+          </p>
+          <ul class={styles.pillars} aria-label="Vision pillars">
+            <li>Global Recognition</li>
+            <li>Food Security</li>
+            <li>Sustainability</li>
+          </ul>
+        </div>
+
+        <!-- Decorative corner geometry -->
+        <svg class={styles.cornerMark} viewBox="0 0 80 80" fill="none" aria-hidden="true">
+          <rect x="0" y="0" width="80" height="2" fill="currentColor" opacity="0.25"/>
+          <rect x="0" y="0" width="2" height="80" fill="currentColor" opacity="0.25"/>
+          <rect x="60" y="0" width="20" height="2" fill="currentColor" opacity="0.6"/>
+          <rect x="0" y="60" width="2" height="20" fill="currentColor" opacity="0.6"/>
+        </svg>
+      </div>
+    </article>
+  </div>
+
+  <!-- ── Core values bar ── -->
+  <div class={styles.valuesBar} aria-label="Core values">
+    {values.map((v, i) => (
+      <div class={styles.value} data-reveal-val style={`--vi:${i}`}>
+        <div class={styles.valueIcon} aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" set:html={v.icon} />
+        </div>
+        <div class={styles.valueText}>
+          <span class={styles.valueName}>{v.name}</span>
+          <span class={styles.valueDesc}>{v.desc}</span>
+        </div>
+        {i < values.length - 1 && (
+          <div class={styles.valueDivider} aria-hidden="true"></div>
+        )}
+      </div>
+    ))}
+  </div>
+
+</section>
+
+<script>
+  /* ── Scroll-reveal: panels ── */
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+        entry.target.classList.add('mv-revealed');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.18 });
+  revealEls.forEach(el => revealObs.observe(el));
+
+  /* ── Scroll-reveal: value cards (staggered) ── */
+  const valEls = document.querySelectorAll('[data-reveal-val]');
+  const valObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+        const el = entry.target;
+        const iStr = el.style.getPropertyValue('--vi');
+        const i = iStr ? parseInt(iStr) : 0;
+        setTimeout(() => el.classList.add('mv-val-revealed'), i * 90);
+        valObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.2 });
+  valEls.forEach(el => valObs.observe(el));
+</script>

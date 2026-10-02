@@ -1,0 +1,58 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/academics.module.css';
+
+const depts = [
+  "Department of Biological Sciences",
+  "Department of Chemistry",
+  "Department of Physics",
+  "Department of Mathematics & Computer Science"
+];
+
+const programmes = [
+  "B.Sc. Biology",
+  "B.Sc. Chemistry",
+  "B.Sc. Computer Science",
+  "B.Sc. Mathematics",
+  "B.Sc. Physics"
+];
+---
+
+<GenericPageLayout 
+  title="College of Science" 
+  subtitle="The scientific bedrock for advanced agricultural technologies."
+  heroImage="/media/DSC_3788.webp"
+  breadcrumbs={[
+    { label: 'Colleges', href: '/colleges' },
+    { label: 'Science', href: '/colleges/sciences' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>About the College</h2>
+    <p class={styles.paragraph}>
+      Agriculture cannot evolve without a deep understanding of its constituent sciences. The College of Science provides the fundamental academic frameworks in biology, chemistry, and computing that power advanced research in genetics, disease modeling, and modern farm-software development.
+    </p>
+
+    <h2 class={styles.heading2}>Programmes Offered</h2>
+    <div class={styles.programGrid}>
+      <div class={styles.programCard} style="grid-column: 1 / -1;">
+        <ul class={styles.programReqs}>
+          {programmes.map(p => <li>{p}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <h2 class={styles.heading2}>Academic Departments</h2>
+    <div class={styles.programGrid}>
+      <div class={styles.programCard} style="grid-column: 1 / -1;">
+        <ul class={styles.programReqs}>
+          {depts.map(dept => <li>{dept}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <div class={styles.importantBox}>
+      <strong>Research Focus:</strong> The college currently drives numerous software and laboratory initiatives, including AI-driven crop disease detection modules developed by the Computer Science department.
+    </div>
+  </div>
+</GenericPageLayout>

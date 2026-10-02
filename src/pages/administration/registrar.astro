@@ -1,0 +1,42 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Office of the Registrar" 
+  subtitle="The engine room of FUAZ's academic and administrative machinery."
+  heroImage="/media/DSC_4908.webp"
+  breadcrumbs={[
+    { label: 'Administration', href: '/administration' },
+    { label: 'Registrar', href: '/administration/registrar' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <div class={styles.splitLayout}>
+      <div class={styles.sidebar}>
+        <div class={styles.profileCard}>
+          <img src="/media/registrar.webp" alt="Usman Haruna Kaoje, University Registrar" class={styles.profileImg} />
+        </div>
+      </div>
+      
+      <div class={styles.mainContent}>
+        <h2 class={styles.heading2}>Role of the Registrar</h2>
+        <p class={styles.paragraph}>
+          The Registrar is the Chief Administrative Officer of the University and is responsible to the Vice-Chancellor for the day-to-day administrative work of the University except in financial matters. The Registrar serves as the Secretary to the Governing Council, the Senate, Convocation, and Congregation.
+        </p>
+
+        <h2 class={styles.heading2}>Core Units</h2>
+        <ul class={styles.list}>
+          <li><strong>Academic / Senate Affairs:</strong> Manages student admissions, examinations, and graduation processes.</li>
+          <li><strong><a href="/administration/human-resource">Directorate of Human Resources:</a></strong> Oversees senior and junior staff establishment, recruitment, welfare, and staff development programmes.</li>
+          <li><strong>Council Affairs:</strong> Coordinates the activities of the Governing Council and its sub-committees.</li>
+        </ul>
+
+        <div class={styles.importantBox}>
+          <strong>Transcript Requests:</strong> All academic transcript requests are to be directed to the Senate Affairs unit under the Registry via the online portal. Walk-in requests are no longer processed physically.
+        </div>
+      </div>
+    </div>
+  </div>
+</GenericPageLayout>

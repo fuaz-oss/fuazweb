@@ -1,0 +1,74 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/academics.module.css';
+const calendarEvents = [
+  { date: 'Monday, 15th January 2025', event: 'Resumption of New and Returning Students' },
+  { date: 'Mon 15th - Wed 17th Jan 2025', event: 'Orientation for Fresh Students' },
+  { date: 'Monday, 22nd January 2025', event: 'Commencement of 1st Semester Lectures' },
+];
+---
+
+<GenericPageLayout 
+  title="Academic Calendar" 
+  subtitle="Approved sessional dates and deadlines for 2024/2025."
+  heroImage="/media/DSC_4796.webp"
+  breadcrumbs={[
+    { label: 'Academics', href: '/academics' },
+    { label: 'Calendar', href: '/academics/calendar' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <div class={styles.headerRow}>
+      <div>
+        <h2 class={styles.heading2}>2024/2025 Academic Session</h2>
+        <p class={styles.paragraph}>
+          This calendar serves as the official guide for academic activities, lecturing periods, examination schedules, and holidays for the current academic year.
+        </p>
+      </div>
+      <div class={styles.downloadCard}>
+        <div class={styles.downloadIcon}>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        </div>
+        <div class={styles.downloadInfo}>
+          <h4>Full Calendar PDF</h4>
+          <span>Approved Oct 2024 (2.4MB)</span>
+        </div>
+        <a href="/downloads/academic_calendar_2024_2025.pdf" class={styles.downloadBtn} download>Download</a>
+      </div>
+    </div>
+
+    <div class={styles.dataTableWrap}>
+      <table class={styles.dataTable}>
+        <thead>
+          <tr>
+            <th>Date / Timestamp</th>
+            <th>Academic Activity / Event</th>
+          </tr>
+        </thead>
+        <tbody>
+          {calendarEvents.map(row => (
+            <tr>
+              <td class={styles.dateCol}>{row.date}</td>
+              <td class={styles.eventText}>{row.event}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class={styles.importantBox}>
+      <strong>Senate Regulations:</strong> Public holidays outlined by the Federal Government of Nigeria will be observed accordingly. In the event of unforeseen changes, the University Senate reserves the right to amend the academic calendar. Any amendments will be communicated via the official portal.
+    </div>
+
+    <div class={styles.navGrid}>
+      <a href="/academics/undergraduate" class={styles.navCard}>
+        <h3>Undergraduate</h3>
+        <p>View admission requirements and available courses.</p>
+      </a>
+      <a href="/library" class={styles.navCard}>
+        <h3>Library Resources</h3>
+        <p>Access our physical and digital research collections.</p>
+      </a>
+    </div>
+  </div>
+</GenericPageLayout>

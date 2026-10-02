@@ -1,0 +1,22 @@
+---
+import GenericPageLayout from '../layouts/GenericPageLayout.astro';
+import styles from '../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Tuition & Finance" 
+  subtitle="Transparent breakdown of academic levies."
+  heroImage="/media/bursar_hero.webp"
+  breadcrumbs={[{ label: 'Finance', href: '/finance' }]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Fee Schedules</h2>
+    <p class={styles.paragraph}>
+      As a Federal Institution, FUAZ does not charge tuition fees for Nigerian students. However, students are required to pay consolidated service charges comprising library maintenance, ICT levies, and sports development fees.
+    </p>
+
+    <div class={styles.importantBox}>
+      <strong>No Cash Policy:</strong> All fees must be generated and paid exclusively through the Remita platform connected to the Federal Treasury Single Account (TSA). Do not pay cash to any staff.
+    </div>
+  </div>
+</GenericPageLayout>

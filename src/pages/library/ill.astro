@@ -1,0 +1,21 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Inter-Library Loans (ILL)" 
+  subtitle="Requesting materials from partner institutions."
+  heroImage="/media/DSC_4898.webp"
+  breadcrumbs={[
+    { label: 'Library', href: '/library' },
+    { label: 'ILL Loans', href: '/library/ill' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>ILL Services</h2>
+    <p class={styles.paragraph}>
+      If a specific research text is unavailable within the FUAZ repository, students and faculty can request an Inter-Library Loan. Our library coordinates with partner Federal Universities across Nigeria to courier the physical book or securely transmit a scanned excerpt.
+    </p>
+  </div>
+</GenericPageLayout>

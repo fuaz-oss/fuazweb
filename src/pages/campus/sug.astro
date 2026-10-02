@@ -1,0 +1,35 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Student Union Government (SUG)" 
+  subtitle="The apex representative body of FUAZ students."
+  heroImage="/media/DSC_4819.webp"
+  breadcrumbs={[
+    { label: 'Campus', href: '/campus' },
+    { label: 'SUG', href: '/campus/sug' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Student Leadership</h2>
+    <p class={styles.paragraph}>
+      The Student Union Government (SUG) acts as the bridge between the university management and the student populace. The SUG advocates for student welfare, mediates conflicts, and organizes massive socio-cultural events on campus.
+    </p>
+
+    <h2 class={styles.heading2}>Executive Branches</h2>
+    <p class={styles.paragraph}>
+      The SUG operates on a democratic structure comprising:
+    </p>
+    <ul class={styles.list}>
+      <li><strong>The Executive Council:</strong> Led by the SUG President and cabinet ministers (Welfare, Sports, Finance, etc.).</li>
+      <li><strong>The Students' Representative Council (SRC):</strong> The legislative arm populated by elected senators from every academic department.</li>
+      <li><strong>The Judicial Council:</strong> The student court responsible for interpreting the SUG constitution and settling inter-student disputes.</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Election Notice:</strong> The electoral ban for the 2024/2025 academic session has been officially lifted by the Dean of Students' Affairs. Campaigns must align with university guidelines.
+    </div>
+  </div>
+</GenericPageLayout>

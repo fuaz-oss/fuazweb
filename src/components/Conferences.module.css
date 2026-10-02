@@ -1,0 +1,598 @@
+/* ─── Tokens ────────────────────────────────────────────────── */
+:root {
+  --cf-green: #1e5128;
+  --cf-green-deep: #0d2b12;
+  --cf-green-mid: #2d6e3a;
+  --cf-gold: #ffd700;
+  --cf-gold-dim: rgba(255, 215, 0, 0.15);
+  --cf-cream: #f5f0e8;
+  --cf-white: #ffffff;
+  --cf-font-serif: "Georgia", "Times New Roman", serif;
+  --cf-font-sans: "Segoe UI", system-ui, sans-serif;
+}
+
+/* ─── Section ───────────────────────────────────────────────── */
+.section {
+  position: relative;
+  padding: 9rem 0 8rem;
+  background: var(--cf-white);
+  overflow: hidden;
+}
+
+/* ─── Background geometry ───────────────────────────────────── */
+.bgGeometry {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bgCircle {
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 640px;
+  height: 640px;
+  border-radius: 50%;
+  border: 1px solid rgba(30, 81, 40, 0.05);
+}
+
+.bgCircle::before {
+  content: "";
+  position: absolute;
+  inset: 60px;
+  border-radius: 50%;
+  border: 1px solid rgba(30, 81, 40, 0.04);
+}
+
+.bgCircle::after {
+  content: "";
+  position: absolute;
+  inset: 120px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 215, 0, 0.06);
+}
+
+.bgGrid {
+  position: absolute;
+  bottom: 0;
+  left: -40px;
+  width: 320px;
+  height: 320px;
+  background-image:
+    linear-gradient(rgba(30, 81, 40, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 81, 40, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(
+    ellipse at bottom left,
+    black 30%,
+    transparent 70%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse at bottom left,
+    black 30%,
+    transparent 70%
+  );
+}
+
+/* ─── Header ────────────────────────────────────────────────── */
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  margin-bottom: 1.4rem;
+  font-family: var(--cf-font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cf-green);
+  opacity: 0.5;
+}
+
+.eyebrowLine {
+  display: block;
+  width: 36px;
+  height: 1px;
+  background: var(--cf-green);
+  opacity: 0.4;
+}
+
+.heading {
+  font-family: var(--cf-font-serif);
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  color: var(--cf-green);
+  margin: 0 0 1.4rem;
+}
+
+.subtext {
+  font-family: var(--cf-font-sans);
+  font-size: 1.05rem;
+  line-height: 1.72;
+  color: rgba(30, 81, 40, 0.55);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ─── Cards container ───────────────────────────────────────── */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Connecting vertical line between cards */
+.cards::before {
+  content: "";
+  position: absolute;
+  left: 72px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(30, 81, 40, 0.12) 10%,
+    rgba(30, 81, 40, 0.12) 90%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* ─── Card base ─────────────────────────────────────────────── */
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  align-items: center;
+  gap: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
+}
+
+.cardImage {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.15;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover .cardImage {
+  opacity: 0.25;
+}
+
+.cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(13, 43, 18, 0.1);
+}
+
+/* ─── Upcoming card ─────────────────────────────────────────── */
+.cardUpcoming {
+  background: var(--cf-green);
+}
+
+.cardUpcoming .dateCol {
+  background: var(--cf-green-deep);
+}
+
+.cardUpcoming .dateMonth,
+.cardUpcoming .dateYear {
+  color: var(--cf-gold);
+}
+
+.cardUpcoming .dateLine {
+  background: rgba(255, 215, 0, 0.2);
+}
+
+.cardUpcoming .shortCode {
+  color: rgba(255, 215, 0, 0.6);
+}
+
+.cardUpcoming .cardTitle {
+  color: #fff;
+}
+
+.cardUpcoming .themeLabel {
+  color: rgba(255, 215, 0, 0.55);
+}
+
+.cardUpcoming .themeText {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.cardUpcoming .ctaBtn {
+  color: var(--cf-green);
+  background: var(--cf-gold);
+}
+
+.cardUpcoming .ctaBtn:hover {
+  background: #ffe94d;
+}
+
+.cardUpcoming .ctaLabel {
+  color: var(--cf-green-deep);
+}
+
+.cardUpcoming .accentBar {
+  background: var(--cf-gold);
+}
+
+/* ─── Past card ─────────────────────────────────────────────── */
+.cardPast {
+  background: var(--cf-white);
+  border: 1px solid rgba(30, 81, 40, 0.1);
+}
+
+.cardPast .dateCol {
+  background: var(--cf-cream);
+}
+
+.cardPast .dateMonth {
+  color: var(--cf-green);
+}
+
+.cardPast .dateYear {
+  color: rgba(30, 81, 40, 0.45);
+}
+
+.cardPast .dateLine {
+  background: rgba(30, 81, 40, 0.15);
+}
+
+.cardPast .shortCode {
+  color: rgba(30, 81, 40, 0.35);
+}
+
+.cardPast .cardTitle {
+  color: var(--cf-green);
+}
+
+.cardPast .themeLabel {
+  color: rgba(30, 81, 40, 0.4);
+}
+
+.cardPast .themeText {
+  color: rgba(30, 81, 40, 0.58);
+}
+
+.cardPast .ctaBtn {
+  color: var(--cf-green);
+  background: transparent;
+  border: 1.5px solid rgba(30, 81, 40, 0.2);
+}
+
+.cardPast .ctaBtn:hover {
+  background: var(--cf-cream);
+  border-color: var(--cf-green);
+}
+
+.cardPast .ctaLabel {
+  color: var(--cf-green);
+}
+
+.cardPast .accentBar {
+  background: rgba(30, 81, 40, 0.15);
+}
+
+/* ─── Date column ───────────────────────────────────────────── */
+.dateCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.4rem 1rem;
+  height: 100%;
+  gap: 0.15rem;
+  position: relative;
+}
+
+.dateMonth {
+  font-family: var(--cf-font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.dateYear {
+  font-family: var(--cf-font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.dateLine {
+  position: absolute;
+  right: 0;
+  top: 20%;
+  bottom: 20%;
+  width: 1px;
+}
+
+/* ─── Card body ─────────────────────────────────────────────── */
+.cardBody {
+  padding: 2.2rem 2.5rem 2.2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.typeBadge {
+  font-family: var(--cf-font-sans);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.7rem;
+  border-radius: 2px;
+}
+
+.typeUpcoming {
+  background: rgba(255, 215, 0, 0.18);
+  color: var(--cf-gold);
+}
+
+.typePast {
+  background: rgba(30, 81, 40, 0.08);
+  color: var(--cf-green);
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dotUpcoming {
+  background: #4caf6e;
+  box-shadow: 0 0 0 3px rgba(76, 175, 110, 0.25);
+}
+
+.dotPast {
+  background: rgba(30, 81, 40, 0.3);
+}
+
+.statusLabel {
+  font-family: var(--cf-font-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cardUpcoming .statusLabel {
+  color: rgba(255, 255, 255, 0.45);
+}
+.cardPast .statusLabel {
+  color: rgba(30, 81, 40, 0.4);
+}
+
+.shortCode {
+  font-family: var(--cf-font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.cardTitle {
+  font-family: var(--cf-font-serif);
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.themeBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.themeLabel {
+  font-family: var(--cf-font-sans);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.themeText {
+  font-family: var(--cf-font-sans);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ─── CTA column ────────────────────────────────────────────── */
+.ctaCol {
+  padding: 2rem 2rem 2rem 0;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ctaBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 1rem 1.2rem;
+  transition:
+    background 0.22s ease,
+    transform 0.18s ease;
+  min-width: 80px;
+}
+
+.ctaBtn:hover {
+  transform: translateX(3px);
+}
+
+.ctaBtnInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.cardUpcoming .ctaBtnInner {
+  background: rgba(13, 43, 18, 0.15);
+  color: var(--cf-green-deep);
+}
+
+.cardPast .ctaBtnInner {
+  background: rgba(30, 81, 40, 0.07);
+  color: var(--cf-green);
+}
+
+.ctaLabel {
+  font-family: var(--cf-font-sans);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ─── Accent bar (left edge) ────────────────────────────────── */
+.accentBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .accentBar {
+  transform: scaleY(1);
+}
+
+/* ─── Footer CTA ────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 3.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.footerLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--cf-font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cf-green);
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid var(--cf-gold);
+  transition:
+    gap 0.22s ease,
+    opacity 0.2s ease;
+}
+
+.footerLink:hover {
+  gap: 1rem;
+  opacity: 0.75;
+}
+
+/* ─── Scroll reveal ─────────────────────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:global(.conf-revealed) {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .section {
+    padding: 6rem 0 5rem;
+  }
+
+  .card {
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .ctaCol {
+    grid-column: 2;
+    padding: 0 1.5rem 1.5rem;
+    justify-content: flex-start;
+  }
+
+  .cardBody {
+    padding: 1.8rem 1.5rem 1rem;
+  }
+
+  .cards::before {
+    left: 56px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    grid-template-columns: 70px 1fr;
+  }
+
+  .dateCol {
+    padding: 2rem 0.75rem;
+  }
+
+  .dateMonth {
+    font-size: 1.1rem;
+  }
+
+  .heading {
+    font-size: 2.2rem;
+  }
+}

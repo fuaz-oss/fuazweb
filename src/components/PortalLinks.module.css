@@ -1,0 +1,413 @@
+/* ─── Tokens ────────────────────────────────────────────────── */
+:root {
+  --pl-sans: "Segoe UI", system-ui, sans-serif;
+  --pl-serif: "Georgia", "Times New Roman", serif;
+  --pl-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Accent palettes: [icon-color, icon-bg, icon-bg-hover, bar-color, glow] */
+  --pl-green-icon: #1e5128;
+  --pl-green-bg: rgba(30, 81, 40, 0.08);
+  --pl-green-hover: #1e5128;
+  --pl-green-bar: #1e5128;
+  --pl-green-glow: rgba(30, 81, 40, 0.18);
+
+  --pl-blue-icon: #185fa5;
+  --pl-blue-bg: rgba(24, 95, 165, 0.08);
+  --pl-blue-hover: #185fa5;
+  --pl-blue-bar: #185fa5;
+  --pl-blue-glow: rgba(24, 95, 165, 0.18);
+
+  --pl-amber-icon: #854f0b;
+  --pl-amber-bg: rgba(133, 79, 11, 0.08);
+  --pl-amber-hover: #ba7517;
+  --pl-amber-bar: #d4af37;
+  --pl-amber-glow: rgba(212, 175, 55, 0.2);
+
+  --pl-teal-icon: #0f6e56;
+  --pl-teal-bg: rgba(15, 110, 86, 0.08);
+  --pl-teal-hover: #0f6e56;
+  --pl-teal-bar: #1d9e75;
+  --pl-teal-glow: rgba(29, 158, 117, 0.18);
+
+  --pl-pink-icon: #993556;
+  --pl-pink-bg: rgba(153, 53, 86, 0.08);
+  --pl-pink-hover: #993556;
+  --pl-pink-bar: #d4537e;
+  --pl-pink-glow: rgba(212, 83, 126, 0.18);
+
+  --pl-purple-icon: #534ab7;
+  --pl-purple-bg: rgba(83, 74, 183, 0.08);
+  --pl-purple-hover: #534ab7;
+  --pl-purple-bar: #7f77dd;
+  --pl-purple-glow: rgba(127, 119, 221, 0.18);
+}
+
+/* ─── Section ───────────────────────────────────────────────── */
+.section {
+  padding: 4.5rem 0 5.5rem;
+  background: #f5f0e8;
+  position: relative;
+  z-index: 10;
+}
+
+/* ─── Grid ──────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.2rem;
+  position: relative;
+  z-index: 20;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  min-width: 0;
+}
+
+/* ─── Card base ─────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 1.8rem 1.4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.06),
+    0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  transition:
+    transform 0.4s var(--pl-ease),
+    box-shadow 0.4s var(--pl-ease),
+    border-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.8) inset;
+}
+
+/* ─── Top accent bar (scaleX in on hover) ───────────────────── */
+.accentBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--pl-ease);
+  border-radius: 0;
+}
+
+.card:hover .accentBar {
+  transform: scaleX(1);
+}
+
+/* ─── Icon wrapper ──────────────────────────────────────────── */
+.iconWrap {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.3s ease,
+    transform 0.4s var(--pl-ease);
+  flex-shrink: 0;
+}
+
+.card:hover .iconWrap {
+  transform: scale(1.1);
+}
+
+/* Glow ring that expands on hover */
+.iconGlow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.card:hover .iconGlow {
+  opacity: 1;
+}
+
+/* ─── Text block ────────────────────────────────────────────── */
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  text-align: center;
+}
+
+.name {
+  font-family: var(--pl-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.sub {
+  font-family: var(--pl-sans);
+  font-size: 0.68rem;
+  color: rgba(0, 0, 0, 0.4);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ─── Arrow indicator ───────────────────────────────────────── */
+.arrow {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s var(--pl-ease);
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.card:hover .arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ─── Accent color variants ─────────────────────────────────── */
+
+/* Green */
+.accent_green .iconWrap {
+  background: var(--pl-green-bg);
+  color: var(--pl-green-icon);
+}
+.accent_green .iconGlow {
+  background: var(--pl-green-glow);
+}
+.accent_green .accentBar {
+  background: var(--pl-green-bar);
+}
+.accent_green:hover {
+  border-color: rgba(30, 81, 40, 0.2);
+}
+.accent_green:hover .iconWrap {
+  background: var(--pl-green-hover);
+  color: #fff;
+}
+.accent_green:hover .arrow {
+  color: var(--pl-green-icon);
+}
+
+/* Blue */
+.accent_blue .iconWrap {
+  background: var(--pl-blue-bg);
+  color: var(--pl-blue-icon);
+}
+.accent_blue .iconGlow {
+  background: var(--pl-blue-glow);
+}
+.accent_blue .accentBar {
+  background: var(--pl-blue-bar);
+}
+.accent_blue:hover {
+  border-color: rgba(24, 95, 165, 0.2);
+}
+.accent_blue:hover .iconWrap {
+  background: var(--pl-blue-hover);
+  color: #fff;
+}
+.accent_blue:hover .arrow {
+  color: var(--pl-blue-icon);
+}
+
+/* Amber */
+.accent_amber .iconWrap {
+  background: var(--pl-amber-bg);
+  color: var(--pl-amber-icon);
+}
+.accent_amber .iconGlow {
+  background: var(--pl-amber-glow);
+}
+.accent_amber .accentBar {
+  background: var(--pl-amber-bar);
+}
+.accent_amber:hover {
+  border-color: rgba(212, 175, 55, 0.25);
+}
+.accent_amber:hover .iconWrap {
+  background: var(--pl-amber-hover);
+  color: #fff;
+}
+.accent_amber:hover .arrow {
+  color: var(--pl-amber-icon);
+}
+
+/* Teal */
+.accent_teal .iconWrap {
+  background: var(--pl-teal-bg);
+  color: var(--pl-teal-icon);
+}
+.accent_teal .iconGlow {
+  background: var(--pl-teal-glow);
+}
+.accent_teal .accentBar {
+  background: var(--pl-teal-bar);
+}
+.accent_teal:hover {
+  border-color: rgba(29, 158, 117, 0.2);
+}
+.accent_teal:hover .iconWrap {
+  background: var(--pl-teal-hover);
+  color: #fff;
+}
+.accent_teal:hover .arrow {
+  color: var(--pl-teal-icon);
+}
+
+/* Pink */
+.accent_pink .iconWrap {
+  background: var(--pl-pink-bg);
+  color: var(--pl-pink-icon);
+}
+.accent_pink .iconGlow {
+  background: var(--pl-pink-glow);
+}
+.accent_pink .accentBar {
+  background: var(--pl-pink-bar);
+}
+.accent_pink:hover {
+  border-color: rgba(212, 83, 126, 0.2);
+}
+.accent_pink:hover .iconWrap {
+  background: var(--pl-pink-hover);
+  color: #fff;
+}
+.accent_pink:hover .arrow {
+  color: var(--pl-pink-icon);
+}
+
+/* Purple */
+.accent_purple .iconWrap {
+  background: var(--pl-purple-bg);
+  color: var(--pl-purple-icon);
+}
+.accent_purple .iconGlow {
+  background: var(--pl-purple-glow);
+}
+.accent_purple .accentBar {
+  background: var(--pl-purple-bar);
+}
+.accent_purple:hover {
+  border-color: rgba(127, 119, 221, 0.2);
+}
+.accent_purple:hover .iconWrap {
+  background: var(--pl-purple-hover);
+  color: #fff;
+}
+.accent_purple:hover .arrow {
+  color: var(--pl-purple-icon);
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+
+/* Tablet landscape */
+@media (max-width: 1100px) {
+  .grid {
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablet portrait */
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 0 4rem;
+  }
+
+  .grid {
+    gap: 0.9rem;
+  }
+
+  .card {
+    padding: 1.5rem 1rem 1.3rem;
+    gap: 0.8rem;
+  }
+
+  .iconWrap {
+    width: 48px;
+    height: 48px;
+  }
+
+  .name {
+    font-size: 0.78rem;
+  }
+
+  .sub {
+    display: none;
+  }
+
+  .arrow {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 540px) {
+  .grid {
+    gap: 0.75rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    padding: 1.3rem 0.75rem 1.1rem;
+    gap: 0.65rem;
+    border-radius: 6px;
+  }
+
+  .iconWrap {
+    width: 44px;
+    height: 44px;
+  }
+
+  .iconWrap svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .name {
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 360px) {
+  .grid {
+    gap: 0.65rem;
+  }
+
+  .card {
+    padding: 1.2rem 0.75rem 1rem;
+  }
+
+  .iconWrap {
+    width: 40px;
+    height: 40px;
+  }
+
+  .name {
+    font-size: 0.7rem;
+  }
+}

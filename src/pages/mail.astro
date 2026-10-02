@@ -1,0 +1,21 @@
+---
+import GenericPageLayout from '../layouts/GenericPageLayout.astro';
+import styles from '../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Webmail Portal" 
+  subtitle="Official communication channels for staff and faculty."
+  heroImage="/media/DSC_4923.webp"
+  breadcrumbs={[{ label: 'Webmail', href: '/mail' }]}
+>
+  <div class={styles.contentWrapper}>
+    <div style="background: var(--gl-cream); padding: 3rem; text-align: center; border-radius: 8px; margin: 3rem 0;">
+      <h3 style="color: var(--gl-green-deep); margin-bottom: 1.5rem;">FUAZ Enterprise Mail</h3>
+      <a href="#" style="background: var(--gl-green-deep); color: #fff; padding: 1rem 3rem; text-decoration: none; border-radius: 4px; font-weight: bold; display: inline-block;">Login to Webmail</a>
+    </div>
+    <div class={styles.importantBox}>
+      Faculty members experiencing login issues should refer to the Directorate of ICT for multi-factor authentication (MFA) resets.
+    </div>
+  </div>
+</GenericPageLayout>

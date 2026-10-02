@@ -1,0 +1,56 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Vice Chancellor's Office" 
+  subtitle="Welcome to the office of the Principal Academic and Executive Officer."
+  heroImage="/media/vc_hero.webp"
+  breadcrumbs={[
+    { label: 'About', href: '/about' },
+    { label: 'VC\'s Office', href: '/about/vc' }
+  ]}
+>
+  <div class={`${styles.contentWrapper} ${styles.splitLayout}`}>
+    
+    <!-- Sidebar / Profile -->
+    <aside class={styles.stickySidebar}>
+      <div class={styles.vcImgWrap}>
+        <img src="/media/vc.webp" alt="Prof. I.R. Muhammad, Vice-Chancellor of FUAZ" />
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div>
+      <h2 class={styles.heading2}>Welcome Address</h2>
+      <p class={styles.paragraph}>
+        It is with great pleasure that I welcome you to the Federal University of Agriculture, Zuru (FUAZ). As the pioneer Vice-Chancellor, I am deeply committed to steering this institution towards becoming a global hub for agricultural research and technological excellence.
+      </p>
+
+      <blockquote class={styles.blockquote}>
+        "Our mandate is distinctly technical: to transform the agricultural landscape of Nigeria by equipping young minds with the practical skills needed to commercialize farming, foster food security, and build resilient ecosystems."
+      </blockquote>
+
+      <p class={styles.paragraph}>
+        FUAZ was established to fill a crucial gap in our educational system. We do not merely focus on theoretical sciences; we emphasize mechanized farming, agribusiness, and climate-smart agriculture. We want every student who graduates from FUAZ to not just seek employment, but to possess the capability to create employment. 
+      </p>
+      <p class={styles.paragraph}>
+        Our doors are open to partnerships, research collaborations, and prospective students ready to make a tangible impact. Thank you for visiting our digital portal.
+      </p>
+
+      <div style="border-radius: 12px; overflow: hidden; margin: 1.5rem 0; box-shadow: 0 4px 14px rgba(0,0,0,0.08);">
+        <img src="/media/vc_hero.webp" alt="Prof. I.R. Muhammad, Vice-Chancellor of FUAZ" style="width: 100%; height: 280px; object-fit: cover;" />
+        <p style="padding: 0.75rem 1rem; font-size: 0.88rem; color: #555; background: #f9f9f9; margin: 0;">Vice Chancellor's Administrative & Executive Management</p>
+      </div>
+      
+      <h3 class={styles.heading3}>Contact the Office</h3>
+      <ul class={styles.list}>
+        <li><strong>Email:</strong> vc@fuaz.edu.ng</li>
+        <li><strong>Office Hours:</strong> Monday - Thursday (10:00 AM - 2:00 PM)</li>
+        <li><strong>Location:</strong> Senate Building, Main Campus, Zuru.</li>
+      </ul>
+    </div>
+
+  </div>
+</GenericPageLayout>

@@ -1,0 +1,24 @@
+---
+import GenericPageLayout from '../layouts/GenericPageLayout.astro';
+import styles from '../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Accessibility Statement" 
+  subtitle="Ensuring equal access to agricultural education."
+  heroImage="/media/DSC_4855.webp"
+  breadcrumbs={[{ label: 'Accessibility', href: '/accessibility' }]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Our Commitment</h2>
+    <p class={styles.paragraph}>
+      The Federal University of Agriculture Zuru is committed to providing a fully accessible academic environment for all students and staff, regardless of physical disabilities. 
+    </p>
+
+    <ul class={styles.list}>
+      <li>All new lecture theaters are equipped with wheelchair ramps.</li>
+      <li>The university portal complies with WCAG 2.1 AA web accessibility guidelines.</li>
+      <li>The library provides audio-assisted reading terminals for visually impaired students.</li>
+    </ul>
+  </div>
+</GenericPageLayout>

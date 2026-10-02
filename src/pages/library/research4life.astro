@@ -1,0 +1,51 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Research4Life Access" 
+  subtitle="Reducing the knowledge gap between industrialized and developing nations."
+  heroImage="/media/DSC_4918.webp"
+  breadcrumbs={[
+    { label: 'Library', href: '/library' },
+    { label: 'Research4Life', href: '/library/research4life' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Global Equitability in Science</h2>
+    <p class={styles.paragraph}>
+      Research4Life is a collective name for five programs—Hinari, AGORA, OARE, ARDI, and GOALI—that provide developing countries with free or low-cost access to academic and professional peer-reviewed content online. As a federal institution in a Group B eligibility country, FUAZ is a primary beneficiary of this initiative.
+    </p>
+
+    <div class={styles.navGrid}>
+      <div class={styles.navCard}>
+        <h3>AGORA</h3>
+        <p>Access to Global Online Research in Agriculture. Led by the FAO, providing over 15,000 journals and 48,000 books.</p>
+      </div>
+      <div class={styles.navCard}>
+        <h3>OARE</h3>
+        <p>Online Access to Research in the Environment. Led by UNEP, focusing on biology, climate change, and ecology.</p>
+      </div>
+      <div class={styles.navCard}>
+        <h3>HINARI</h3>
+        <p>Research in Health. Led by the WHO, providing access to biomedical and health-related literature.</p>
+      </div>
+    </div>
+
+    <h2 class={styles.heading2}>How to Access</h2>
+    <p class={styles.paragraph}>
+      FUAZ students and staff can access these databases through our institutional login. Unlike IP-recognition databases, Research4Life programs require a specific username and password which are refreshed annually.
+    </p>
+
+    <div class={styles.importantBox}>
+      <strong>Password Request:</strong> Please visit the University Library's serials department or email <em>library@fuaz.edu.ng</em> with your staff/student ID card to receive the current credentials for the 2024/2025 session.
+    </div>
+
+    <h2 class={styles.heading2}>Impact on FUAZ</h2>
+    <ul class={styles.list}>
+      <li><strong>Cost-Free Publications:</strong> Full-text access to journals that would otherwise require thousands of dollars in individual subscriptions.</li>
+      <li><strong>Training Resources:</strong> Access to the Research4Life training portal for mastering information literacy and citation management.</li>
+    </ul>
+  </div>
+</GenericPageLayout>

@@ -1,0 +1,32 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Centre for Agribusiness and Extension" 
+  subtitle="Monetizing agricultural innovation through community integration."
+  heroImage="/media/DSC_4918.webp"
+  breadcrumbs={[
+    { label: 'Offices', href: '/offices' },
+    { label: 'Agribusiness (CAE)', href: '/offices/cae' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>From Lab to Farm</h2>
+    <p class={styles.paragraph}>
+      The Centre for Agribusiness and Extension (CAE) translates the university's cutting-edge agricultural research into commercially viable products and practical training for local farmers. We believe that an invention in the laboratory is useless until it increases crop efficiency in the hands of a farmer.
+    </p>
+
+    <h2 class={styles.heading2}>Core Activities</h2>
+    <ul class={styles.list}>
+      <li><strong>Commercial Farms:</strong> Managing the university's revenue-generating poultry, fishery, and crop demonstration farms.</li>
+      <li><strong>Extension Outreach:</strong> Organizing quarterly 'Farmers Field Schools' across Kebbi State to teach modern mechanization techniques.</li>
+      <li><strong>Seed Multiplication:</strong> Distributing subsidized, high-yield, drought-resistant seeds developed by FUAZ researchers.</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Consultancy Services:</strong> The CAE offers professional agricultural consultancy to private investors looking to set up large-scale mechanized farms. Contact our administrative desk for pricing and availability.
+    </div>
+  </div>
+</GenericPageLayout>

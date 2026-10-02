@@ -1,0 +1,128 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "Federal University of Agriculture Zuru | FUAZ", 
+	description = "Official website of the Federal University of Agriculture Zuru. Stay updated with academic programs, research, and campus news."
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/jpeg" href="/logo.webp" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--primary-green: #1E5128;
+		--primary-green-dark: #14361b;
+		--accent-gold: #FFD700;
+		--bg-cream: #FAF9F6;
+		--text-dark: #1a1a1a;
+		--text-muted: #666666;
+		--portal-blue: #00BFFF;
+		--white: #ffffff;
+		--shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+		--shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+		--shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+		--radius-sm: 8px;
+		--radius-md: 12px;
+		--radius-lg: 24px;
+		--font-header: 'Montserrat', sans-serif;
+		--font-body: 'Poppins', sans-serif;
+	}
+
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	html,
+	body {
+		font-family: var(--font-body);
+		background-color: var(--bg-cream);
+		color: var(--text-dark);
+		scroll-behavior: smooth;
+		width: 100%;
+		min-height: 100%;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: var(--font-header);
+		font-weight: 700;
+	}
+
+	a {
+		text-decoration: none;
+		color: inherit;
+		transition: all 0.3s ease;
+	}
+
+	ul {
+		list-style: none;
+	}
+
+	.container {
+		max-width: 1280px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.reveal {
+		opacity: 0;
+		transform: translateY(30px);
+		transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.reveal.active {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	@media (max-width: 768px) {
+		.container {
+			padding: 0 1rem;
+		}
+	}
+</style>
+
+<script>
+	const observerOptions = {
+		root: null,
+		rootMargin: '0px',
+		threshold: 0.1
+	};
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+				entry.target.classList.add('active');
+			}
+		});
+	}, observerOptions);
+
+	document.addEventListener('DOMContentLoaded', () => {
+		const revealElements = document.querySelectorAll('.reveal');
+		revealElements.forEach(el => {
+			if (el instanceof HTMLElement) {
+				observer.observe(el);
+			}
+		});
+	});
+</script>

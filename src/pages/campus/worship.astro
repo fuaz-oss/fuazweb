@@ -1,0 +1,31 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Worship Centres" 
+  subtitle="Mosques and Chapels providing spiritual support on campus."
+  heroImage="/media/DSC_4856.webp"
+  breadcrumbs={[
+    { label: 'Campus', href: '/campus' },
+    { label: 'Worship Centres', href: '/campus/worship' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Spiritual Well-being</h2>
+    <p class={styles.paragraph}>
+      FUAZ is a secular federal institution that deeply respects the diverse religious beliefs of its vibrant student and staff populace. The university layout includes designated zones for religious worship, ensuring students can practice their faith freely without disrupting academic activities.
+    </p>
+
+    <h2 class={styles.heading2}>Designated Centres</h2>
+    <ul class={styles.list}>
+      <li><strong>The University Central Mosque:</strong> Located near the academic core, hosting daily prayers and the major Friday Jumu'ah congregation. Managed by the Muslim Students' Society of Nigeria (MSSN).</li>
+      <li><strong>The Chapel of Grace:</strong> A joint Christian worship centre providing non-denominational Sunday services and mid-week fellowships. Coordinated by the Joint Christian Campus Fellowship (JCCF).</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Noise Regulations:</strong> All religious activities, especially night vigils or early morning calls to prayer, must strictly adhere to the university's environmental noise guidelines. Use of heavy public address systems is restricted near the hostels.
+    </div>
+  </div>
+</GenericPageLayout>

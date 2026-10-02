@@ -1,0 +1,37 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Campus Map" 
+  subtitle="Navigate the colleges, hostels, and administration blocks."
+  heroImage="/media/matriculation.webp"
+  breadcrumbs={[
+    { label: 'Campus', href: '/campus' },
+    { label: 'Map', href: '/campus/map' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Digital Navigation</h2>
+    <p class={styles.paragraph}>
+      Our campus is massive. To help new students and visitors navigate easily between the main gate, the farm blocks, and specific lecture theatres, the Directorate of ICT has developed an interactive digital map.
+    </p>
+
+    <div style="background: var(--gl-cream); height: 400px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 2px dashed rgba(13, 43, 18, 0.2); margin: 3rem 0;">
+      <div style="text-align: center;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--gl-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
+          <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>
+          <line x1="9" y1="3" x2="9" y2="18"></line>
+          <line x1="15" y1="6" x2="15" y2="21"></line>
+        </svg>
+        <h3 style="font-family: 'Segoe UI', sans-serif; color: var(--gl-green-deep); margin: 0 0 0.5rem 0;">Interactive Map Loading</h3>
+        <p style="font-size: 0.9rem; color: #666; margin: 0;">GIS Integration in progress...</p>
+      </div>
+    </div>
+
+    <p class={styles.paragraph}>
+      Physical map directories and signboards are heavily distributed across all junction points on campus. If you are ever lost, ask any university security personnel for directions.
+    </p>
+  </div>
+</GenericPageLayout>

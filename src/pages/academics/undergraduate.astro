@@ -1,0 +1,81 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/academics.module.css';
+
+const programs = [
+  {
+    title: 'College of Agriculture',
+    programmes: [
+      'B.Agric. — Agricultural Economics & Extension',
+      'B.Agric. — Animal Science',
+      'B.Agric. — Crop Science',
+      'B.Agric. — Crop Protection',
+      'B.Agric. — Soil Science',
+      'Forestry & Wildlife Management',
+      'Fisheries'
+    ],
+    reqs: ['5 O\'Level Credits including Math & English', 'UTME Subject: Agric/Biology, Chem, Physics', 'Minimum UTME Score: 150']
+  },
+  {
+    title: 'College of Veterinary Medicine',
+    programmes: ['DVM — Doctor of Veterinary Medicine (6-year professional programme)'],
+    reqs: ['5 O\'Level Credits including Math, English, Bio', 'UTME Subject: Biology, Chemistry, Physics', 'Minimum UTME Score: 190']
+  },
+  {
+    title: 'College of Science',
+    programmes: [
+      'B.Sc. Biology',
+      'B.Sc. Chemistry',
+      'B.Sc. Computer Science',
+      'B.Sc. Mathematics',
+      'B.Sc. Physics'
+    ],
+    reqs: ['5 O\'Level Credits including Math & English', 'UTME Subject: Based on specific B.Sc course', 'Minimum UTME Score: 150']
+  }
+];
+---
+
+<GenericPageLayout 
+  title="Undergraduate Programmes" 
+  subtitle="Bachelor's degrees designed to build the foundation of your agricultural career."
+  heroImage="/media/matriculation.webp"
+  breadcrumbs={[
+    { label: 'Academics', href: '/academics' },
+    { label: 'Undergraduate', href: '/academics/undergraduate' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Overview</h2>
+    <p class={styles.paragraph}>
+      Our undergraduate programmes are carefully structures to provide students with a balance of rigorous theoretical knowledge and extensive practical fieldwork. Students spend significant portions of their academic journey on the university farm, in laboratories, and engaging with local agricultural communities.
+    </p>
+
+    <h2 class={styles.heading2}>General Admission Requirements</h2>
+    <ul class={styles.list}>
+      <li>Candidates must possess a minimum of five (5) O'Level credit passes at not more than two sittings in WAEC, NECO, or NABTEB.</li>
+      <li>Candidates must sit for the Unified Tertiary Matriculation Examination (UTME) and obtain the minimum required cut-off mark for their chosen course.</li>
+      <li>Direct Entry (DE) candidates must possess a minimum of Lower Credit in a relevant National Diploma (ND) or NCE.</li>
+    </ul>
+
+    <h2 class={styles.heading2}>College Requirements</h2>
+    <div class={styles.programGrid}>
+      {programs.map(prog => (
+        <div class={styles.programCard}>
+          <h3 class={styles.programTitle}>{prog.title}</h3>
+          {prog.programmes && (
+            <>
+              <p class={styles.programLabel}>Programmes Offered</p>
+              <ul class={styles.programReqs}>
+                {prog.programmes.map(p => <li>{p}</li>)}
+              </ul>
+            </>
+          )}
+          <p class={styles.programLabel}>Admission Requirements</p>
+          <ul class={styles.programReqs}>
+            {prog.reqs.map(req => <li>{req}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</GenericPageLayout>

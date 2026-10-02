@@ -1,0 +1,50 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Environmental Research Unit" 
+  subtitle="Combating desertification, soil degradation, and climate change in the Sahel."
+  heroImage="/media/DSC_3802.webp"
+  breadcrumbs={[
+    { label: 'Research', href: '/research' },
+    { label: 'Environmental', href: '/research/environment' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Ecological Resilience & Restoration</h2>
+    <p class={styles.paragraph}>
+      The Environmental Research Unit (ERU) at FUAZ is at the forefront of tackling the environmental challenges unique to Northwest Nigeria. Situated at the edge of the expanding Sahel, our mission is to develop restorative techniques that protect the ecosystem while supporting agricultural productivity.
+    </p>
+
+    <div class={styles.navGrid}>
+      <div class={styles.navCard}>
+        <h3>Desertification Control</h3>
+        <p>Researching sustainable afforestation protocols and the selection of drought-resistant tree species for shelterbelts.</p>
+      </div>
+      <div class={styles.navCard}>
+        <h3>Water Management</h3>
+        <p>Developing efficient irrigation systems and rainwater harvesting techniques for small-holder farmers in dryland regions.</p>
+      </div>
+      <div class={styles.navCard}>
+        <h3>Soil Restoration</h3>
+        <p>Investigating carbon sequestration and organic matter recovery in soils degraded by over-farming and erosion.</p>
+      </div>
+    </div>
+
+    <div class={styles.importantBox}>
+      <strong>Strategic Initiative:</strong> The ERU is a key partner in the "Great Green Wall" initiative, providing technical expertise and nursery monitoring to ensure the survival of newly planted forest strips in Kebbi State.
+    </div>
+
+    <h2 class={styles.heading2}>Climate Data Analytics</h2>
+    <p class={styles.paragraph}>
+      The unit maintains a network of automated weather stations across the university farm. This data is used to model climate patterns, providing farmers with reliable "planting windows" and early warnings for extreme weather events.
+    </p>
+
+    <h3 class={styles.heading2}>Renewable Energy in Agriculture</h3>
+    <p class={styles.paragraph}>
+      A growing area of our research focuses on <strong>Agri-photovoltaics</strong>—the co-location of solar panels and crops—as a way to provide sustainable power for irrigation while potentially reducing soil evaporation through partial shading.
+    </p>
+  </div>
+</GenericPageLayout>

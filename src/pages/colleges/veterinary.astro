@@ -1,0 +1,55 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/academics.module.css';
+
+const depts = [
+  "Department of Veterinary Anatomy",
+  "Department of Veterinary Pathology",
+  "Department of Animal Breeding & Genetics",
+  "Department of Animal Physiology & Nutrition",
+  "Department of Animal Production"
+];
+
+const programmes = [
+  "DVM — Doctor of Veterinary Medicine (6-year professional programme, Pre-Clinical through Clinical years)"
+];
+---
+
+<GenericPageLayout 
+  title="College of Veterinary Medicine"
+  subtitle="Excellence in animal health, husbandry, and livestock economics."
+  heroImage="/media/DSC_3856.webp"
+  breadcrumbs={[
+    { label: 'Colleges', href: '/colleges' },
+    { label: 'Veterinary Medicine', href: '/colleges/veterinary' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>About the College</h2>
+    <p class={styles.paragraph}>
+      Dedicated to the advancement of animal health and livestock productivity, the College of Veterinary Medicine trains professionals to tackle zoonotic diseases and improve national meat and dairy yields. Our curriculum involves extensive clinical rotations at the FUAZ Veterinary Teaching Clinic.
+    </p>
+
+    <h2 class={styles.heading2}>Programmes Offered</h2>
+    <div class={styles.programGrid}>
+      <div class={styles.programCard} style="grid-column: 1 / -1;">
+        <ul class={styles.programReqs}>
+          {programmes.map(p => <li>{p}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <h2 class={styles.heading2}>Academic Departments</h2>
+    <div class={styles.programGrid}>
+      <div class={styles.programCard} style="grid-column: 1 / -1;">
+        <ul class={styles.programReqs}>
+          {depts.map(dept => <li>{dept}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <div class={styles.importantBox}>
+      <strong>Clinical Training:</strong> All veterinary students are required to undergo a mandatory 6-month clinical internship at approved abattoirs and specialized ranches across the country before graduation.
+    </div>
+  </div>
+</GenericPageLayout>

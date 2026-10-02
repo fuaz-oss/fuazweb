@@ -1,0 +1,39 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+const councilMembers: { name: string; role: string; image: string | null }[] = [];
+---
+
+<GenericPageLayout 
+  title="Governing Council" 
+  subtitle="The highest policy-making and administrative body of the University."
+  heroImage="/media/DSC_4804.webp"
+  breadcrumbs={[
+    { label: 'About', href: '/about' },
+    { label: 'Governing Council', href: '/about/council' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <p class={styles.paragraph}>
+      The Governing Council is the supreme administrative body of the Federal University of Agriculture Zuru. It is charged with the general control and superintendence of the policy, finances, and property of the University, ensuring that FUAZ fulfills its statutory mandate.
+    </p>
+
+    <h2 class={styles.heading2}>Members of the Council</h2>
+    <p class={styles.paragraph}>
+      Comprising distinguished academics, federal representatives, and seasoned administrators, the current Council members include:
+    </p>
+
+    {councilMembers.length ? <div class={styles.profileGrid}>
+      {councilMembers.map((member) => (
+        <div class={styles.profileCard}>
+          <img src={member.image} alt={member.name} class={styles.profileImg} loading="lazy" />
+          <div class={styles.profileInfo}>
+            <h3 class={styles.profileName}>{member.name}</h3>
+            <p class={styles.profileRole}>{member.role}</p>
+          </div>
+        </div>
+      ))}
+    </div> : <p class={styles.paragraph}>Council membership details will be published here.</p>}
+
+  </div>
+</GenericPageLayout>

@@ -1,0 +1,383 @@
+/* ─── Tokens ────────────────────────────────────────────────── */
+:root {
+  --vc-green: #1e5128;
+  --vc-green-deep: #0d2b12;
+  --vc-gold: #ffd700;
+  --vc-cream: #f5f0e8;
+  --vc-cream-dark: #ede6d6;
+  --vc-font-serif: "Georgia", "Times New Roman", serif;
+  --vc-font-sans: "Segoe UI", system-ui, sans-serif;
+}
+
+/* ─── Section ───────────────────────────────────────────────── */
+.section {
+  position: relative;
+  padding: 9rem 0 8rem;
+  background: var(--vc-cream);
+  overflow: hidden;
+}
+
+/* ─── Giant background watermark ────────────────────────────── */
+.bgWord {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--vc-font-serif);
+  font-size: clamp(14rem, 28vw, 26rem);
+  font-weight: 900;
+  color: rgba(30, 81, 40, 0.03);
+  letter-spacing: -0.05em;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* ─── Grid layout ───────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 7rem;
+  align-items: center;
+}
+
+/* ─── Image column ──────────────────────────────────────────── */
+.imageCol {
+  position: relative;
+}
+
+/* ─── Frame stack ───────────────────────────────────────────── */
+.frameStack {
+  position: relative;
+}
+
+/* Shadow offset layer behind the photo */
+.frameShadow {
+  position: absolute;
+  inset: 0;
+  translate: 16px 16px;
+  background: var(--vc-green-deep);
+  border-radius: 4px;
+  z-index: 0;
+  opacity: 0.18;
+}
+
+/* Gold bracket corner SVG */
+.frameAccent {
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  width: 80px;
+  height: 80px;
+  z-index: 3;
+}
+
+/* Photo frame */
+.imageFrame {
+  position: relative;
+  z-index: 2;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--vc-green-deep);
+  aspect-ratio: 4 / 5;
+}
+
+.imageFrame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  transition: filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: contrast(1.04) saturate(0.92);
+}
+
+.imageCol:hover .imageFrame img {
+  filter: contrast(1.04) saturate(1);
+}
+
+/* Error fallback */
+.imageFrame.img-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 480px;
+}
+
+/* ─── Name plate ─────────────────────────────────────────────── */
+.namePlate {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  display: flex;
+  align-items: stretch;
+  border-radius: 0 0 4px 4px;
+  overflow: hidden;
+  background: var(--vc-green);
+}
+
+.namePlateInner {
+  flex: 1;
+  padding: 1rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.namePlateTitle {
+  font-family: var(--vc-font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.namePlateRole {
+  font-family: var(--vc-font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--vc-gold);
+  opacity: 0.85;
+}
+
+.namePlateAccent {
+  width: 5px;
+  background: var(--vc-gold);
+  flex-shrink: 0;
+}
+
+/* ─── Floating badge ─────────────────────────────────────────── */
+.badge {
+  position: absolute;
+  top: 1.2rem;
+  right: -1.2rem;
+  background: var(--vc-green);
+  color: var(--vc-gold);
+  border-radius: 3px;
+  padding: 0.55rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--vc-font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  z-index: 5;
+  box-shadow: 0 4px 20px rgba(13, 43, 18, 0.25);
+}
+
+/* ─── Content column ─────────────────────────────────────────── */
+.contentCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ─── Eyebrow ────────────────────────────────────────────────── */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-family: var(--vc-font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--vc-green);
+  opacity: 0.6;
+}
+
+.eyebrowLine {
+  display: block;
+  width: 36px;
+  height: 1.5px;
+  background: var(--vc-green);
+  opacity: 0.4;
+  flex-shrink: 0;
+}
+
+/* ─── Pull quote ─────────────────────────────────────────────── */
+.pullQuote {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.openMark {
+  position: absolute;
+  top: -1.6rem;
+  left: -1.2rem;
+  font-family: var(--vc-font-serif);
+  font-size: 8rem;
+  line-height: 1;
+  color: var(--vc-gold);
+  opacity: 0.22;
+  pointer-events: none;
+  user-select: none;
+}
+
+.pullQuote p {
+  font-family: var(--vc-font-serif);
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--vc-green);
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Body text ──────────────────────────────────────────────── */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-left: 3px solid var(--vc-gold);
+  padding-left: 1.5rem;
+}
+
+.body p {
+  font-family: var(--vc-font-sans);
+  font-size: 1.05rem;
+  line-height: 1.82;
+  color: rgba(30, 81, 40, 0.7);
+  margin: 0;
+}
+
+/* ─── Signature block ────────────────────────────────────────── */
+.sigBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.sigRule {
+  width: 100%;
+  height: 1px;
+  background: rgba(30, 81, 40, 0.12);
+  margin-bottom: 0.4rem;
+}
+
+.sigSvg {
+  width: 160px;
+  height: 36px;
+  display: block;
+}
+
+.sigName {
+  font-family: var(--vc-font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--vc-green);
+  letter-spacing: -0.01em;
+}
+
+.sigRole {
+  font-family: var(--vc-font-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--vc-gold);
+}
+
+/* ─── CTA link ───────────────────────────────────────────────── */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: fit-content;
+  font-family: var(--vc-font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--vc-green);
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid var(--vc-gold);
+  transition:
+    gap 0.25s ease,
+    opacity 0.2s ease;
+}
+
+.cta:hover {
+  gap: 1rem;
+  opacity: 0.8;
+}
+
+/* ─── Scroll reveal animations ───────────────────────────────── */
+[data-reveal="left"] {
+  opacity: 0;
+  transform: translateX(-44px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-reveal="right"] {
+  opacity: 0;
+  transform: translateX(44px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1) 0.18s,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1) 0.18s;
+}
+
+:global(.vc-revealed) {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .imageCol {
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .badge {
+    right: 0.5rem;
+  }
+
+  [data-reveal="left"],
+  [data-reveal="right"] {
+    transform: translateY(32px);
+    transition-delay: 0s !important;
+  }
+
+  :global(.vc-revealed) {
+    transform: translateY(0) !important;
+  }
+}
+
+@media (max-width: 540px) {
+  .section {
+    padding: 6rem 0 5rem;
+  }
+
+  .pullQuote p {
+    font-size: 1.7rem;
+  }
+
+  .openMark {
+    font-size: 5rem;
+    top: -1rem;
+    left: -0.6rem;
+  }
+
+  .body {
+    padding-left: 1rem;
+  }
+}

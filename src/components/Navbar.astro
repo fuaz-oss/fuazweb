@@ -1,0 +1,497 @@
+---
+import styles from './Navbar.module.css';
+
+const nav = [
+  {
+    label: 'About',
+    href: '/about',
+    mega: {
+      sections: [
+        {
+          heading: 'The University',
+          links: [
+            { label: 'History & Background',     href: '/about/history' },
+            { label: "Vice Chancellor's Office",  href: '/about/vc' },
+            { label: 'Governing Council',         href: '/about/council' },
+            { label: 'Senate',                    href: '/about/senate' },
+            { label: 'Mission & Vision',          href: '/about/mission' },
+          ],
+        },
+        {
+          heading: 'Administration',
+          links: [
+            { label: 'Deputy Vice-Chancellor (Administration)', href: '/administration/dvc-admin' },
+            { label: 'Office of the Registrar',   href: '/administration/registrar' },
+            { label: "Bursar's Office",            href: '/administration/bursar' },
+            { label: 'University Librarian',       href: '/administration/librarian' },
+            { label: 'Directorate of ICT',         href: '/administration/ict' },
+            { label: 'Directorate of Academic Planning', href: '/administration/academic-planning' },
+            { label: 'Directorate of Human Resources', href: '/administration/human-resource' },
+            { label: 'Internal Audit Unit',        href: '/administration/audit' },
+          ],
+        },
+        {
+          heading: 'Offices & Units',
+          links: [
+            { label: 'Directorate of Research and Development',              href: '/offices/credit' },
+            { label: 'Centre for Agribusiness',    href: '/offices/cae' },
+            { label: 'Legal Unit',                 href: '/offices/legal' },
+            { label: 'Public Relations Unit',      href: '/offices/pr' },
+          ],
+        },
+      ],
+      featured: {
+        label: 'CREDIT Initiative',
+        desc: 'Strategic office for research excellence, institutional transformation & grant acquisition.',
+        href: '/offices/credit',
+        tag: 'New 2025',
+      },
+    },
+  },
+  {
+    label: 'Academics',
+    href: '/academics',
+    mega: {
+      sections: [
+        {
+          heading: 'Colleges',
+          links: [
+            { label: 'College of Agriculture',              href: '/colleges/agriculture' },
+            { label: 'College of Science',                  href: '/colleges/sciences' },
+            { label: 'College of Veterinary Medicine',      href: '/colleges/veterinary' },
+          ],
+        },
+        {
+          heading: 'Programmes',
+          links: [
+            { label: 'Undergraduate Programmes',  href: '/academics/undergraduate' },
+            { label: 'Diploma & Certificate',     href: '/academics/diploma' },
+            { label: 'Academic Calendar',         href: '/academics/calendar' },
+          ],
+        },
+        {
+          heading: 'Student Services',
+          links: [
+            { label: 'Admissions',                href: '/admissions' },
+            { label: 'Application Status',        href: '/portal' },
+            { label: 'Examination Timetable',     href: '/academics/exams' },
+            { label: 'Course Registration',       href: 'https://portal.fuaz.edu.ng/courses' },
+            { label: 'Results & Transcripts',     href: 'https://portal.fuaz.edu.ng/results' },
+            { label: 'Fees & Payments',           href: 'https://portal.fuaz.edu.ng/payments' },
+          ],
+        },
+      ],
+      featured: {
+        label: 'Admissions Information',
+        desc: 'Choose FUAZ as your first choice on JAMB. UTME cut-off mark: 160. View requirements & cut-off marks.',
+        href: '/admissions',
+        tag: 'JAMB CAPS',
+      },
+    },
+  },
+  {
+    label: 'Research',
+    href: '/research',
+    mega: {
+      sections: [
+        {
+          heading: 'Research Centres',
+          links: [
+            { label: 'Centre for Agribusiness (CAE)',   href: '/research/cae' },
+            { label: 'Crop Research Station',           href: '/research/crops' },
+            { label: 'Animal Science Research Unit',    href: '/research/animals' },
+            { label: 'Environmental Research Unit',     href: '/research/environment' },
+          ],
+        },
+        {
+          heading: 'Publications',
+          links: [
+            { label: 'FUAZ Journal of Agriculture',   href: '/research/journal' },
+            { label: 'Research Publications',         href: '/research/publications' },
+            { label: 'JSTOR Access',                  href: '/library/jstor' },
+            { label: 'Open Access Repository',        href: '/library/repository' },
+            { label: 'Grant Opportunities',           href: '/research/grants' },
+          ],
+        },
+        {
+          heading: 'Events',
+          links: [
+            { label: 'ICFSAS 2024 Proceedings',    href: '/research/icfsas' },
+            { label: 'Upcoming Conferences',        href: '/conferences' },
+            { label: 'Seminars & Workshops',        href: '/research/seminars' },
+            { label: 'Inaugural Lectures',          href: '/research/lectures' },
+            { label: 'Call for Papers',             href: '/research/cfp' },
+          ],
+        },
+      ],
+      featured: {
+        label: 'ICFSAS 2024',
+        desc: 'Proceedings of our 1st International Conference on Food Security & Agricultural Sustainability.',
+        href: '/research/icfsas',
+        tag: 'Published',
+      },
+    },
+  },
+  {
+    label: 'Library',
+    href: '/library',
+    mega: {
+      sections: [
+        {
+          heading: 'Library Services',
+          links: [
+            { label: 'Library Homepage',         href: '/library' },
+            { label: 'OPAC — Search Catalogue',  href: '/library/opac' },
+            { label: 'e-Library Portal',         href: '/library/eportal' },
+            { label: 'Digital Repository',       href: '/library/repository' },
+            { label: 'Ask a Librarian',          href: '/library/contact' },
+          ],
+        },
+        {
+          heading: 'Online Databases',
+          links: [
+            { label: 'JSTOR',                    href: '/library/jstor' },
+            { label: 'African Journals Online',  href: '/library/ajol' },
+            { label: 'NUC e-Library',            href: '/library/nuc' },
+            { label: 'Research4Life',            href: '/library/research4life' },
+            { label: 'Google Scholar',           href: 'https://scholar.google.com' },
+          ],
+        },
+        {
+          heading: 'Resources & Policy',
+          links: [
+            { label: 'Borrowing Policy',           href: '/library/policy' },
+            { label: 'Thesis & Dissertation Bank', href: '/library/theses' },
+            { label: 'Library Opening Hours',      href: '/library/hours' },
+            { label: 'Inter-Library Loans',        href: '/library/ill' },
+            { label: 'Student Library Guide',      href: '/library/guide' },
+          ],
+        },
+      ],
+      featured: {
+        label: 'OPAC Catalogue',
+        desc: 'Search our physical and digital holdings — books, journals, theses — available 24/7.',
+        href: '/library/opac',
+        tag: 'Available 24/7',
+      },
+    },
+  },
+  {
+    label: 'Campus',
+    href: '/campus',
+    mega: {
+      sections: [
+        {
+          heading: 'Facilities',
+          links: [
+            { label: 'University Library',    href: '/library' },
+            { label: 'Veterinary Clinic',     href: '/campus/vet-clinic' },
+            { label: 'University Farm',       href: '/campus/farm' },
+            { label: 'Sports Complex',        href: '/campus/sports' },
+            { label: 'ICT Resource Centre',   href: '/campus/ict-centre' },
+          ],
+        },
+        {
+          heading: 'Student Life',
+          links: [
+            { label: 'Student Union (SUG)',    href: '/campus/sug' },
+            { label: 'Hostels & Accommodation', href: '/campus/hostels' },
+            { label: 'Health Centre',          href: '/campus/health' },
+            { label: 'Cafeteria & Dining',     href: '/campus/cafeteria' },
+            { label: 'Clubs & Societies',      href: '/campus/clubs' },
+          ],
+        },
+        {
+          heading: 'Campus Info',
+          links: [
+            { label: 'Campus Map',          href: '/campus/map' },
+            { label: 'Security & Safety',   href: '/campus/security' },
+            { label: 'Transport & Shuttle', href: '/campus/transport' },
+            { label: 'Chapel & Mosque',     href: '/campus/worship' },
+            { label: 'Contact Directory',   href: '/contact' },
+          ],
+        },
+      ],
+      featured: {
+        label: 'Virtual Campus Tour',
+        desc: 'Explore FUAZ farms, laboratories, hostels, and facilities from anywhere in the world.',
+        href: '/campus/tour',
+        tag: 'Interactive',
+      },
+    },
+  },
+  {
+    label: 'Appraisal',
+    href: '/appraisal',
+    mega: {
+      sections: [
+        {
+          heading: 'Staff Evaluation Packages',
+          links: [
+            { label: 'Academic Staff APER & Summary (ASA-02)', href: '/appraisal/academic-staff' },
+            { label: 'Junior Staff APER & Summary (CONTISS 1-5)', href: '/appraisal/junior-staff' },
+            { label: 'Senior Admin & Tech APER & Summary (ATP-02)', href: '/appraisal/senior-admin' },
+            { label: 'In-Service Training Bond Agreement Form', href: '/bond' },
+          ],
+        },
+        {
+          heading: 'Official Guidelines & Downloads',
+          links: [
+            { label: 'Academic Scheme of Service PDF', href: '/appraisal#downloads' },
+            { label: 'Junior Staff Scheme of Service PDF', href: '/appraisal#downloads' },
+            { label: 'All Document Downloads', href: '/downloads' },
+          ],
+        },
+      ],
+      featured: {
+        label: 'Staff Appraisal Portal',
+        desc: 'Interactive fillable evaluation forms and summary sheets with direct PDF generation & print capabilities.',
+        href: '/appraisal',
+        tag: 'Official Portal',
+      },
+    },
+  },
+  { label: 'Bond Form', href: '/bond', mega: null },
+  { label: 'News', href: '/news', mega: null },
+];
+
+const quickLinks = [
+  { label: 'Status Check',   href: '/portal' },
+  { label: 'Student Portal', href: 'https://portal.fuaz.edu.ng' },
+  { label: 'OPAC',           href: 'https://opac.fuaz.edu.ng' },
+  { label: 'e-Library',      href: 'https://library.fuaz.edu.ng' },
+  { label: 'Staff Email',    href: 'https://webmail.fuaz.edu.ng' },
+  { label: 'Downloads',      href: '/downloads' },
+];
+---
+
+<header class={styles.navbar} id="main-header" aria-label="Site header">
+
+  <!-- ── Top utility bar ── -->
+  <div class={styles.topBar}>
+    <div class={styles.topBarInner}>
+      <span class={styles.topBarText}>
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+          <circle cx="5.5" cy="5.5" r="4" stroke="currentColor" stroke-width="1"/>
+          <path d="M5.5 3v2.5l1.2.9" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+        Federal University of Agriculture Zuru — Zuru, Kebbi State, Nigeria
+      </span>
+      <div class={styles.topBarLinks} role="list">
+        {quickLinks.map(ql => (
+          <a href={ql.href} class={styles.topBarLink} role="listitem">{ql.label}</a>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Island pill ── -->
+  <div class={styles.islandWrap}>
+    <nav class={styles.island} role="navigation" aria-label="Primary navigation">
+
+      <!-- Logo -->
+      <a href="/" class={styles.logo} aria-label="FUAZ — Return to homepage">
+        <div class={styles.logoRing}>
+          <img src="/logo.webp" alt="FUAZ logo" width="44" height="44" />
+        </div>
+        <div class={styles.brandText}>
+          <span class={styles.brandName}>FUAZ</span>
+          <span class={styles.brandSub}>Federal Univ. of Agriculture Zuru</span>
+        </div>
+      </a>
+
+      <!-- Desktop nav links + mega menus -->
+      <ul class={styles.links} role="list">
+        {nav.map(item => (
+          <li class={`${styles.navItem} ${item.mega ? styles.hasMega : ''}`} data-mega-item={item.mega ? 'true' : undefined}>
+            <a href={item.href} class={styles.link}
+               aria-haspopup={item.mega ? 'true' : undefined}
+               aria-expanded={item.mega ? 'false' : undefined}>
+              {item.label}
+              {item.mega && (
+                <svg class={styles.chevron} width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                  <path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              )}
+            </a>
+
+            {item.mega && (
+              <div class={styles.mega} data-mega-panel role="region" aria-label={`${item.label} menu`}>
+                <div class={styles.megaInner}>
+                  <div class={styles.megaCols}>
+                    {item.mega.sections.map(sec => (
+                      <div class={styles.megaCol}>
+                        <h3 class={styles.megaHeading}>{sec.heading}</h3>
+                        <ul class={styles.megaList} role="list">
+                          {sec.links.map(l => (
+                            <li>
+                              <a href={l.href} class={styles.megaLink}>
+                                <span class={styles.megaDot} aria-hidden="true"></span>
+                                {l.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                  <div class={styles.megaFeatured}>
+                    <span class={styles.megaFeatTag}>{item.mega.featured.tag}</span>
+                    <h4 class={styles.megaFeatTitle}>{item.mega.featured.label}</h4>
+                    <p class={styles.megaFeatDesc}>{item.mega.featured.desc}</p>
+                    <a href={item.mega.featured.href} class={styles.megaFeatLink}>
+                      Learn more
+                      <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+                        <path d="M1.5 5.5h8M7 2.5l3 3-3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+
+      <!-- Right utilities -->
+      <div class={styles.utils}>
+        <a href="https://portal.fuaz.edu.ng" class={styles.portalBtn}>
+          <span>Portal</span>
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+            <path d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <button class={styles.burger} id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span class={styles.burgerBar}></span>
+          <span class={styles.burgerBar}></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- ── Mobile overlay ── -->
+  <div class={styles.overlay} id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <button class={styles.overlayClose} id="overlay-close" aria-label="Close menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <path d="M3 3l12 12M15 3L3 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class={styles.overlayBg} aria-hidden="true">FUAZ</div>
+    <div class={styles.overlayInner}>
+      <nav aria-label="Mobile navigation">
+        <ul class={styles.mobileLinks} role="list">
+          {nav.map((item, i) => (
+            <li class={styles.mobileLinkItem} style={`--i:${i}`}>
+              {item.mega ? (
+                <>
+                  <button type="button" class={styles.mobileLink}
+                    aria-expanded="false" aria-controls={`mobile-sub-${i}`} data-mobile-toggle>
+                    <span class={styles.mobileLinkNum}>0{i + 1}</span>
+                    <span class={styles.mobileLinkText}>{item.label}</span>
+                    <svg class={styles.mobileLinkChevron} width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                  <div class={styles.mobileSubPanel} id={`mobile-sub-${i}`}>
+                    <div class={styles.mobileSubPanelInner}>
+                      <a href={item.href} class={styles.mobileSubOverview}>
+                        View all {item.label} →
+                      </a>
+                      {item.mega.sections.map(sec => (
+                        <div class={styles.mobileSubGroup}>
+                          <h4 class={styles.mobileSubHeading}>{sec.heading}</h4>
+                          <ul class={styles.mobileSubList} role="list">
+                            {sec.links.map(l => (
+                              <li><a href={l.href} class={styles.mobileSubLink}>{l.label}</a></li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <a href={item.href} class={styles.mobileLink}>
+                  <span class={styles.mobileLinkNum}>0{i + 1}</span>
+                  <span class={styles.mobileLinkText}>{item.label}</span>
+                  <svg class={styles.mobileLinkArrow} width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div class={styles.overlayFooter}>
+        <div class={styles.overlayQuickLinks}>
+          {quickLinks.map(ql => (
+            <a href={ql.href} class={styles.overlayQuickLink}>{ql.label}</a>
+          ))}
+        </div>
+        <a href="https://portal.fuaz.edu.ng" class={styles.overlayPortalBtn}>
+          Access Student Portal
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+            <path d="M2 6.5h9M7.5 3l3.5 3.5L7.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <p class={styles.overlayMeta}>fuaz.edu.ng · Zuru, Kebbi State, Nigeria</p>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<script>
+  const header   = document.getElementById('main-header');
+  const toggle   = document.getElementById('menu-toggle');
+  const closeBtn = document.getElementById('overlay-close');
+  const overlay  = document.getElementById('mobile-menu');
+
+  if (header instanceof HTMLElement && toggle instanceof HTMLButtonElement && closeBtn instanceof HTMLButtonElement && overlay instanceof HTMLElement) {
+    const onScroll = () => { header.dataset.scrolled = String(window.scrollY > 60); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    const openMenu  = () => { header.dataset.menuOpen = 'true';  toggle.setAttribute('aria-expanded', 'true');  document.body.style.overflow = 'hidden'; };
+    const closeMenu = () => { header.dataset.menuOpen = 'false'; toggle.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; };
+
+    toggle.addEventListener('click', () => header.dataset.menuOpen === 'true' ? closeMenu() : openMenu());
+    closeBtn.addEventListener('click', closeMenu);
+    overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+    // ── Mobile mega submenu accordion ──
+    overlay.querySelectorAll('[data-mobile-toggle]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    });
+  }
+
+  // ── Desktop mega-menu hover intent ──
+  // Opens on hover and keeps the panel open while the cursor crosses the gap
+  // between the trigger and the panel (a short close delay bridges that gap).
+  const megaItems = Array.from(document.querySelectorAll('[data-mega-item]'));
+  let megaTimer: number | undefined;
+  const closeAllMega = () => megaItems.forEach(li => li.removeAttribute('data-open'));
+  megaItems.forEach(li => {
+    const panel = li.querySelector('[data-mega-panel]');
+    if (!panel) return;
+    const open = () => {
+      clearTimeout(megaTimer);
+      megaItems.forEach(o => { if (o !== li) o.removeAttribute('data-open'); });
+      li.setAttribute('data-open', 'true');
+    };
+    const scheduleClose = () => {
+      clearTimeout(megaTimer);
+      megaTimer = window.setTimeout(() => li.removeAttribute('data-open'), 150);
+    };
+    li.addEventListener('mouseenter', open);
+    li.addEventListener('mouseleave', scheduleClose);
+    panel.addEventListener('mouseenter', () => clearTimeout(megaTimer));
+    panel.addEventListener('mouseleave', scheduleClose);
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAllMega(); });
+</script>

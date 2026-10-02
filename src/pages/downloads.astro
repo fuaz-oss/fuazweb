@@ -1,0 +1,40 @@
+---
+import GenericPageLayout from '../layouts/GenericPageLayout.astro';
+import styles from '../styles/about.module.css';
+
+// Import PDF files from assets
+import academicStaffSchemeOfService from '../assets/downloads/FUAZ Scheme of Service Academic Staff FINAL .pdf';
+import juniorStaffSchemeOfService from '../assets/downloads/Final FUAZ Junior Staff Scheme of Service.pdf';
+---
+
+<GenericPageLayout
+  title="Document Downloads"
+  subtitle="Official Scheme of Service guidelines and staff resources."
+  heroImage="/media/DSC_4804.webp"
+  breadcrumbs={[{ label: 'Downloads', href: '/downloads' }]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Academic Staff Resources</h2>
+    <ul class={styles.list}>
+      <li>
+        <a href={academicStaffSchemeOfService} download style="color: var(--gl-green-deep); text-decoration: underline;">
+          FUAZ Scheme of Service for Academic Staff (PDF)
+        </a>
+      </li>
+    </ul>
+
+    <h2 class={styles.heading2}>Junior Staff Resources</h2>
+    <ul class={styles.list}>
+      <li>
+        <a href={juniorStaffSchemeOfService} download style="color: var(--gl-green-deep); text-decoration: underline;">
+          Final FUAZ Junior Staff Scheme of Service (PDF)
+        </a>
+      </li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Note:</strong> All documents are provided in PDF format. You will need a PDF reader to view them. Click on any link to download the document.
+    </div>
+  </div>
+</GenericPageLayout>
+

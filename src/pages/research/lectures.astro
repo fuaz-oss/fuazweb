@@ -1,0 +1,24 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Inaugural Lectures" 
+  subtitle="Celebrating academic elevation to the professorial chair."
+  heroImage="/media/DSC_3857.webp"
+  breadcrumbs={[
+    { label: 'Research', href: '/research' },
+    { label: 'Lectures', href: '/research/lectures' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Peak Academic Excellence</h2>
+    <p class={styles.paragraph}>
+      An Inaugural Lecture is an occasion of significance in an academic staff member's career at the University. It provides recently appointed professors with the opportunity to present an overview of their strategic research to colleagues, students, and the general public.
+    </p>
+    <div class={styles.importantBox}>
+      <strong>Upcoming:</strong> The 4th Inaugural Lecture by Prof. Haruna K. (College of Veterinary Medicine) is scheduled for October 15th at the Central Senate Chamber.
+    </div>
+  </div>
+</GenericPageLayout>

@@ -1,0 +1,22 @@
+---
+import GenericPageLayout from '../layouts/GenericPageLayout.astro';
+import styles from '../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Privacy Policy" 
+  subtitle="How we handle your institutional data."
+  heroImage="/media/DSC_4805.webp"
+  breadcrumbs={[{ label: 'Privacy', href: '/privacy' }]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Data Protection</h2>
+    <p class={styles.paragraph}>
+      At the Federal University of Agriculture Zuru, we securely process your personal and academic data strictly for educational and administrative purposes, fully compliant with the Nigerian Data Protection Regulation (NDPR).
+    </p>
+    <ul class={styles.list}>
+      <li>We do not sell student data to third-party marketing firms.</li>
+      <li>Academic transcripts are only released upon explicit verified request by the student or alumni.</li>
+    </ul>
+  </div>
+</GenericPageLayout>

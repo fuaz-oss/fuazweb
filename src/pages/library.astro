@@ -1,0 +1,64 @@
+---
+import GenericPageLayout from '../layouts/GenericPageLayout.astro';
+import styles from '../styles/about.module.css';
+
+const libraryLinks = [
+  { href: '/library/opac', title: 'OPAC (Search Catalogue)', desc: 'Search our physical and digital book holdings.' },
+  { href: '/library/eportal', title: 'e-Library Portal', desc: 'Access international databases and journals.' },
+  { href: '/library/repository', title: 'Digital Repository', desc: 'FUAZ theses, dissertations, and past questions.' },
+  { href: '/library/hours', title: 'Opening Hours', desc: 'Daily schedules for the main campus library.' },
+  { href: '/library/policy', title: 'Borrowing Policy', desc: 'Rules, regulations, and loan periods.' },
+  { href: '/library/contact', title: 'Ask a Librarian', desc: 'Need help finding a research paper? Contact us.' }
+];
+---
+
+<GenericPageLayout 
+  title="University Library" 
+  subtitle="The academic heart of FUAZ, providing world-class agricultural research resources."
+  heroImage="/media/DSC_4881.webp"
+  breadcrumbs={[{ label: 'Library', href: '/library' }]}
+>
+  <div class={styles.contentWrapper}>
+    <p class={`${styles.paragraph} ${styles.dropCap}`}>
+      The FUAZ Main Library is a highly modernized, automated facility housing over 250,000 physical volumes and providing high-speed digital access to millions of peer-reviewed journals globally. Our mission is to support the intensive research needs of our undergraduate agricultural scholars.
+    </p>
+
+    <div class={styles.importantBox}>
+      <strong>Notice:</strong> The 24-hour reading rooms are now officially open for the examination period. Students must present their valid library ID cards to the security personnel at the entrance.
+    </div>
+
+    <h2 class={styles.heading2}>The University Librarian</h2>
+    <div class={styles.splitLayout}>
+      <div class={styles.stickySidebar}>
+        <div class={styles.vcImgWrap}>
+          <img src="/media/librarian.webp" alt="Dr(Mrs) Lovet Ovigue Esievo" />
+        </div>
+        <h3 class={styles.vcTitle}>Dr(Mrs) Lovet Ovigue Esievo</h3>
+        <p class={styles.vcRole}>NCE, BLS, MLS, Ph.D, CLN</p>
+        <p class={styles.vcRole}><strong>University Librarian</strong></p>
+      </div>
+      
+      <div class={styles.mainContent}>
+        <p class={styles.paragraph}>
+          Guided by the vision of Dr(Mrs) Lovet Ovigue Esievo, the FUAZ Library serves as the powerhouse for all academic and research activities. Our leadership ensures that every student and faculty member has seamless access to the latest scientific data, agricultural journals, and global digital archives.
+        </p>
+        <p class={styles.paragraph}>
+          The Office of the Librarian is dedicated to institutional transformation through digital literacy and the continuous expansion of our scholarly collections.
+        </p>
+        <a href="/administration/librarian" class={styles.navCard} style="padding: 1.5rem; margin-top: 1rem; display: inline-flex;">
+          <h3 style="margin: 0;">Visit the Librarian's Office &rarr;</h3>
+        </a>
+      </div>
+    </div>
+
+    <h2 class={styles.heading2}>Library Services</h2>
+    <div class={styles.navGrid}>
+      {libraryLinks.map(link => (
+        <a href={link.href} class={styles.navCard}>
+          <h3>{link.title}</h3>
+          <p>{link.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</GenericPageLayout>

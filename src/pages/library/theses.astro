@@ -1,0 +1,21 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Theses & Dissertations"
+  subtitle="Physical and digital archives for final-year project submissions."
+  heroImage="/media/DSC_4922.webp"
+  breadcrumbs={[
+    { label: 'Library', href: '/library' },
+    { label: 'Theses', href: '/library/theses' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Submission Guidelines</h2>
+    <p class={styles.paragraph}>
+      Graduating students are required to submit two hard-bound copies of their approved final-year project to the University Librarian, alongside a watermarked PDF copy for uploading into the Institutional Digital Repository.
+    </p>
+  </div>
+</GenericPageLayout>

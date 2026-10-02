@@ -1,0 +1,946 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import AppraisalPdfButton from '../../components/appraisal/AppraisalPdfButton';
+---
+
+<Layout title="Academic Staff APER & Summary (Form ASA-02) — FUAZ Appraisal Portal">
+  <Navbar />
+
+  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <style is:inline>
+    :root {
+      --primary-green: #0F592F;
+      --secondary-green: #1a7a42;
+      --light-green: #e9f2eb;
+      --gold: #D4AF37;
+      --light-gold: #fcf6e3;
+      --text-dark: #333333;
+      --border-color: #cccccc;
+      --input-bg: #f8faf9;
+    }
+    body {
+      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+      background-color: #e2e8e4;
+      color: var(--text-dark);
+      font-size: 11pt;
+      line-height: 1.5;
+    }
+    .form-page-wrapper {
+      padding: 120px 15px 80px 15px;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+    .form-container {
+      background-color: white;
+      width: 100%;
+      max-width: 950px;
+      margin: 0 auto 40px auto;
+      padding: 40px 50px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      border: 1px solid var(--border-color);
+      border-top: 8px solid var(--primary-green);
+      page-break-after: always;
+      box-sizing: border-box;
+    }
+    .form-container.wide {
+      max-width: 1100px;
+      padding: 40px 30px;
+    }
+    .university-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 3px solid var(--gold);
+    }
+    .university-logo-img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      margin: 0 auto 10px auto;
+      display: block;
+    }
+    .university-title {
+      color: var(--primary-green);
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0 0 5px 0;
+      text-transform: uppercase;
+    }
+    .office-title {
+      color: var(--secondary-green);
+      font-size: 16px;
+      font-weight: bold;
+      margin: 0 0 10px 0;
+    }
+    .form-title {
+      background-color: var(--primary-green);
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      margin: 15px 0;
+    }
+    .confidential-tag {
+      color: #d32f2f;
+      font-weight: bold;
+      text-decoration: underline;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .section-header {
+      background-color: var(--light-green);
+      color: var(--primary-green);
+      padding: 8px 12px;
+      border-left: 4px solid var(--gold);
+      font-weight: bold;
+      font-size: 14px;
+      margin: 25px 0 15px 0;
+      text-transform: uppercase;
+    }
+    .flex-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .label {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    .form-input {
+      flex-grow: 1;
+      border: none;
+      border-bottom: 1px solid var(--text-dark);
+      background-color: transparent;
+      font-family: inherit;
+      font-size: 11pt;
+      padding: 4px 5px;
+      outline: none;
+      min-width: 100px;
+    }
+    .form-input:focus {
+      border-bottom: 2px solid var(--primary-green);
+      background-color: var(--input-bg);
+    }
+    .form-textarea {
+      width: 100%;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: 11pt;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0 10px 0;
+      font-size: 10pt;
+    }
+    th, td {
+      border: 1px solid var(--border-color);
+      padding: 0;
+    }
+    th {
+      background-color: var(--primary-green);
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      padding: 8px;
+    }
+    .sub-th {
+      background-color: var(--secondary-green);
+      color: white;
+      font-size: 9pt;
+      text-align: center;
+    }
+    td input[type="text"],
+    td input[type="number"],
+    td input[type="date"],
+    td textarea {
+      width: 100%;
+      box-sizing: border-box;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 8px;
+      outline: none;
+    }
+    td:first-child {
+      text-align: center;
+      padding: 8px;
+      width: 40px;
+    }
+    .signature-area {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+    .sign-block {
+      width: 45%;
+      text-align: center;
+    }
+    .note {
+      background-color: var(--light-gold);
+      border-left: 4px solid var(--gold);
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 10pt;
+    }
+    .row-btn-group {
+      display: flex;
+      gap: 10px;
+      margin: 6px 0 20px;
+    }
+    .add-row-btn, .remove-row-btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 9pt;
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .add-row-btn {
+      background: var(--light-green);
+      color: var(--primary-green);
+      border: 1px solid var(--secondary-green);
+    }
+    .add-row-btn:hover {
+      background: var(--primary-green);
+      color: white;
+    }
+    .remove-row-btn {
+      background: #fdf2f2;
+      color: #d32f2f;
+      border: 1px solid #ef9a9a;
+    }
+    .remove-row-btn:hover {
+      background: #d32f2f;
+      color: white;
+    }
+    .action-bar {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: white;
+      padding: 12px 20px;
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      display: flex;
+      gap: 12px;
+      z-index: 1000;
+    }
+    .btn {
+      background-color: var(--primary-green);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-family: inherit;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background-color: var(--secondary-green);
+    }
+    #loading-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.92);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-weight: bold;
+      color: var(--primary-green);
+      font-size: 18px;
+    }
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      margin: 15px 0 10px;
+    }
+    .table-responsive table {
+      min-width: 650px;
+      margin: 0;
+    }
+
+    @media print {
+      .action-bar, .row-btn-group, header, footer, #loading-overlay {
+        display: none !important;
+      }
+      body { background: white !important; }
+      .form-page-wrapper { padding: 0 !important; }
+      .form-container {
+        box-shadow: none !important;
+        border: 1px solid #999 !important;
+        border-top: 6px solid #0F592F !important;
+        page-break-after: always !important;
+      }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .form-page-wrapper { padding: 75px 8px 100px; }
+      .form-container, .form-container.wide { padding: 16px 12px; }
+      .university-title { font-size: 15px; }
+      .form-title { font-size: 12px; }
+      .flex-row { flex-direction: column; align-items: stretch; }
+      .form-input {
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        padding: 8px 10px;
+        background: #fcfdfe;
+      }
+      .action-bar {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        width: 94%;
+        max-width: 420px;
+        bottom: 14px;
+      }
+    }
+  </style>
+
+  <div id="loading-overlay">
+    <div style="font-size:40px;margin-bottom:15px;">⏳</div>
+    <div id="loading-text">Generating PDF…</div>
+  </div>
+
+  <div class="action-bar">
+    <a href="/appraisal" class="btn" style="background:#555;">← Back</a>
+    <button class="btn" style="background:#D4AF37;color:#111;" onclick="fillSampleData()">✨ Fill Sample Data</button>
+    <AppraisalPdfButton client:only="react" formType="academic" />
+  </div>
+
+  <div class="form-page-wrapper">
+    <div id="form-to-print">
+
+      <!-- ===================== APER FORM ===================== -->
+      <div class="form-container" id="form-aper-portrait">
+        <div class="university-header">
+          <img src="/logo.webp" alt="FUAZ Logo" class="university-logo-img" />
+          <h1 class="university-title">Federal University of Agriculture Zuru</h1>
+          <h2 class="office-title">[Office of the Registrar]</h2>
+          <div class="form-title">Annual Performance Evaluation Report (Academic Staff Only)</div>
+          <div class="confidential-tag">CONFIDENTIAL</div>
+        </div>
+
+        <div class="flex-row">
+          <span class="label">Period of Report:</span>
+          <input type="text" class="form-input" id="period" style="flex:0.5">
+          <label style="display:flex;align-items:center;gap:5px;cursor:pointer;">
+            <span class="label">Promotion</span>
+            <input type="checkbox" id="isPromo">
+          </label>
+          <span class="label" style="margin-left:20px;">SP. No:</span>
+          <input type="text" class="form-input" id="spNo" style="flex:0.5">
+        </div>
+
+        <div class="note">
+          <strong>Note:</strong><br>
+          (a) Information should be type-written.<br>
+          (b) Seven copies of the Form to be completed.
+        </div>
+
+        <div class="section-header">PART A: TO BE COMPLETED BY STAFF MEMBER</div>
+
+        <div class="flex-row"><span class="label">Name:</span><input type="text" class="form-input" id="name" placeholder="Surname First"></div>
+        <div class="flex-row"><span class="label">College/Directorate:</span><input type="text" class="form-input" id="college"></div>
+        <div class="flex-row"><span class="label">Department/Unit:</span><input type="text" class="form-input" id="department"></div>
+        <div class="flex-row">
+          <span class="label">Phone Number:</span><input type="text" class="form-input" id="phone">
+          <span class="label">Date of Assumption of Duty:</span><input type="date" class="form-input" id="dateAssumption" style="flex:0.5">
+        </div>
+        <div class="flex-row">
+          <span class="label">Date of Last Promotion:</span><input type="date" class="form-input" id="dateLastPromo" style="flex:0.5">
+          <span class="label">Present Rank:</span><input type="text" class="form-input" id="presentRank">
+        </div>
+        <div class="flex-row"><span class="label">Rank applied for:</span><input type="text" class="form-input" id="rankApplied"></div>
+        <div class="flex-row"><span class="label">Membership of Professional Body:</span><input type="text" class="form-input" id="professionalBody"></div>
+
+        <!-- Leave -->
+        <div class="section-header">Period of Leave of Absence from University</div>
+        <div class="table-responsive">
+          <table id="tbl-leave">
+            <thead>
+              <tr><th width="5%">S/N</th><th>Destination</th><th width="30%">Date</th><th width="30%">Date of Resumption</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1.</td><td><input type="text"></td><td><input type="text"></td><td><input type="date"></td></tr>
+              <tr><td>2.</td><td><input type="text"></td><td><input type="text"></td><td><input type="date"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row-btn-group">
+          <button type="button" class="add-row-btn" onclick="addTableRow('tbl-leave',['sn','text','text','date'])">➕ Add Row</button>
+          <button type="button" class="remove-row-btn" onclick="removeTableRow('tbl-leave')">🗑️ Remove</button>
+        </div>
+
+        <!-- Qualifications -->
+        <div class="section-header">Criteria for Performance Evaluation – Qualification</div>
+        <div class="table-responsive">
+          <table id="tbl-qual">
+            <thead>
+              <tr><th width="5%">S/N</th><th>Degree</th><th>Specialization</th><th>Date</th><th>Institution</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1.</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td>2.</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td>3.</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row-btn-group">
+          <button type="button" class="add-row-btn" onclick="addTableRow('tbl-qual',['sn','text','text','text','text'])">➕ Add Row</button>
+          <button type="button" class="remove-row-btn" onclick="removeTableRow('tbl-qual')">🗑️ Remove</button>
+        </div>
+
+        <div class="flex-row"><span class="label">Time in Rank:</span><input type="text" class="form-input" id="timeInRank"></div>
+        <div class="flex-row"><span class="label">Teaching Experience:</span><input type="text" class="form-input" id="teachingExp"></div>
+        <div class="flex-row"><span class="label">Teaching Load:</span><input type="text" class="form-input" id="teachingLoad"></div>
+
+        <!-- Courses -->
+        <div class="table-responsive">
+          <table id="tbl-courses">
+            <thead>
+              <tr>
+                <th rowspan="2" width="5%">S/N</th>
+                <th rowspan="2">Course code</th>
+                <th rowspan="2" width="10%">Units</th>
+                <th colspan="2">Contact Hours</th>
+                <th rowspan="2">Semester</th>
+              </tr>
+              <tr>
+                <th class="sub-th">Not shared</th>
+                <th class="sub-th">Shared</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1.</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td>2.</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td>3.</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row-btn-group">
+          <button type="button" class="add-row-btn" onclick="addTableRow('tbl-courses',['sn','text','text','text','text','text'])">➕ Add Row</button>
+          <button type="button" class="remove-row-btn" onclick="removeTableRow('tbl-courses')">🗑️ Remove</button>
+        </div>
+
+        <!-- Supervision -->
+        <div class="section-header">11.6 Postgraduate Supervision</div>
+        <div class="table-responsive">
+          <table id="tbl-supervision">
+            <thead>
+              <tr><th width="5%">S/N</th><th>Name of Student / Registration Number</th><th width="20%">Session</th><th width="25%">Programme</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1.</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td>2.</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row-btn-group">
+          <button type="button" class="add-row-btn" onclick="addTableRow('tbl-supervision',['sn','text','text','text'])">➕ Add Row</button>
+          <button type="button" class="remove-row-btn" onclick="removeTableRow('tbl-supervision')">🗑️ Remove</button>
+        </div>
+
+        <!-- Graduation -->
+        <div class="section-header">Postgraduate Graduation</div>
+        <div class="table-responsive">
+          <table id="tbl-graduation">
+            <thead>
+              <tr><th width="5%">S/N</th><th>Name of Student / Registration Number</th><th width="20%">Session</th><th width="25%">Programme</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1.</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td>2.</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row-btn-group">
+          <button type="button" class="add-row-btn" onclick="addTableRow('tbl-graduation',['sn','text','text','text'])">➕ Add Row</button>
+          <button type="button" class="remove-row-btn" onclick="removeTableRow('tbl-graduation')">🗑️ Remove</button>
+        </div>
+
+        <!-- Ongoing Research -->
+        <div class="section-header">Research and Publication in the Last Three Years</div>
+        <h4>Reports on On-going Research</h4>
+        <div class="table-responsive">
+          <table id="tbl-ongoing">
+            <thead>
+              <tr><th width="5%">S/N</th><th>Title of Project</th><th width="30%">Stage of Project</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1.</td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td>2.</td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row-btn-group">
+          <button type="button" class="add-row-btn" onclick="addTableRow('tbl-ongoing',['sn','text','text'])">➕ Add Row</button>
+          <button type="button" class="remove-row-btn" onclick="removeTableRow('tbl-ongoing')">🗑️ Remove</button>
+        </div>
+
+        <h4>Publications in the Last Three Years</h4>
+        <div class="table-responsive">
+          <table id="tbl-pub3">
+            <thead>
+              <tr><th width="5%">S/N</th><th>Authors, Year, Title, Journal, Volume & Pages</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1.</td><td><input type="text"></td></tr>
+              <tr><td>2.</td><td><input type="text"></td></tr>
+              <tr><td>3.</td><td><input type="text"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row-btn-group">
+          <button type="button" class="add-row-btn" onclick="addTableRow('tbl-pub3',['sn','text'])">➕ Add Row</button>
+          <button type="button" class="remove-row-btn" onclick="removeTableRow('tbl-pub3')">🗑️ Remove</button>
+        </div>
+
+        <!-- All Publications -->
+        <div class="section-header">All Publications</div>
+        <div class="table-responsive">
+          <table id="tbl-allpub">
+            <thead>
+              <tr>
+                <th rowspan="2" width="5%">S/N</th>
+                <th rowspan="2">Authors, Year, Title, Journal, Volume & Pages</th>
+                <th colspan="3">Score</th>
+              </tr>
+              <tr>
+                <th class="sub-th" width="10%">Staff</th>
+                <th class="sub-th" width="10%">HOD</th>
+                <th class="sub-th" width="10%">Dean</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1.</td><td><input type="text"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+              <tr><td>2.</td><td><input type="text"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row-btn-group">
+          <button type="button" class="add-row-btn" onclick="addTableRow('tbl-allpub',['sn','text','number','number','number'])">➕ Add Row</button>
+          <button type="button" class="remove-row-btn" onclick="removeTableRow('tbl-allpub')">🗑️ Remove</button>
+        </div>
+
+        <!-- Professional Practice -->
+        <div class="section-header">Professional Practice</div>
+        <div class="table-responsive">
+          <table id="tbl-practice">
+            <thead>
+              <tr><th width="5%">S/N</th><th>Nature of Practice</th><th width="25%">Date</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1.</td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td>2.</td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row-btn-group">
+          <button type="button" class="add-row-btn" onclick="addTableRow('tbl-practice',['sn','text','text'])">➕ Add Row</button>
+          <button type="button" class="remove-row-btn" onclick="removeTableRow('tbl-practice')">🗑️ Remove</button>
+        </div>
+
+        <h4>Academic / Administrative Leadership</h4>
+        <div class="table-responsive">
+          <table id="tbl-leadership">
+            <thead>
+              <tr><th width="5%">S/N</th><th>Nature of Leadership</th><th width="25%">Date</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1.</td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td>2.</td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row-btn-group">
+          <button type="button" class="add-row-btn" onclick="addTableRow('tbl-leadership',['sn','text','text'])">➕ Add Row</button>
+          <button type="button" class="remove-row-btn" onclick="removeTableRow('tbl-leadership')">🗑️ Remove</button>
+        </div>
+
+        <!-- Community Service -->
+        <div class="section-header">Community Service</div>
+        <h4>University Community Service</h4>
+        <div class="table-responsive">
+          <table id="tbl-uniservice">
+            <thead>
+              <tr><th width="5%">S/N</th><th>Nature of Service</th><th width="25%">Date</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1.</td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td>2.</td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row-btn-group">
+          <button type="button" class="add-row-btn" onclick="addTableRow('tbl-uniservice',['sn','text','text'])">➕ Add Row</button>
+          <button type="button" class="remove-row-btn" onclick="removeTableRow('tbl-uniservice')">🗑️ Remove</button>
+        </div>
+
+        <h4>Public Service</h4>
+        <div class="table-responsive">
+          <table id="tbl-pubservice">
+            <thead>
+              <tr><th width="5%">S/N</th><th>Nature of Service</th><th width="25%">Date</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1.</td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td>2.</td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row-btn-group">
+          <button type="button" class="add-row-btn" onclick="addTableRow('tbl-pubservice',['sn','text','text'])">➕ Add Row</button>
+          <button type="button" class="remove-row-btn" onclick="removeTableRow('tbl-pubservice')">🗑️ Remove</button>
+        </div>
+
+        <div class="section-header">Any other information</div>
+        <textarea class="form-textarea" rows="3" id="otherInfo"></textarea>
+
+        <div class="section-header">Certification by Staff</div>
+        <p>I certify that the information contained in Part A is correct to the best of my knowledge.</p>
+        <div class="signature-area">
+          <div class="sign-block">
+            <input type="text" class="form-input" style="width:100%;">
+            <div>Signature of Staff</div>
+          </div>
+          <div class="sign-block">
+            <input type="date" class="form-input" style="width:100%;">
+            <div>Date</div>
+          </div>
+        </div>
+
+        <div class="section-header" style="background:#333;color:#fff;border:none;text-align:center;">FOR OFFICIAL USE ONLY</div>
+        <div class="section-header">PART B: ASSESSMENT BY HEAD OF DEPARTMENT</div>
+        <textarea class="form-textarea" rows="4" id="hodComments" placeholder="General comments and recommendations..."></textarea>
+
+        <div class="signature-area">
+          <div class="sign-block">
+            <input type="text" class="form-input" style="width:100%;">
+            <div>Signature of Head of Department</div>
+          </div>
+          <div class="sign-block">
+            <input type="date" class="form-input" style="width:100%;">
+            <div>Date</div>
+          </div>
+        </div>
+        <div style="text-align:right;font-weight:bold;">FORM ASA-02</div>
+      </div>
+
+      <!-- ===================== SUMMARY ===================== -->
+      <div class="form-container wide" id="form-summary-landscape">
+        <div class="university-header">
+          <img src="/logo.webp" alt="FUAZ Logo" class="university-logo-img" />
+          <h1 class="university-title">Federal University of Agriculture Zuru</h1>
+          <h2 class="office-title">(Office of the Registrar)</h2>
+          <div class="form-title">ANNUAL PERFORMANCE EVALUATION REPORT SUMMARY FOR ACADEMIC STAFF</div>
+        </div>
+
+        <div class="table-responsive">
+          <table id="tbl-summary-main">
+            <thead>
+              <tr>
+                <th rowspan="2" width="4%">S/No.</th>
+                <th rowspan="2" width="14%">Name / SP. No.</th>
+                <th rowspan="2" width="12%">Date of Assumption / Rank</th>
+                <th rowspan="2" width="14%">Present Rank / Date / Scale</th>
+                <th rowspan="2" width="12%">Highest Qual / Date</th>
+                <th rowspan="2" width="6%">Pub. Score</th>
+                <th rowspan="2" width="8%">Time in Rank</th>
+                <th rowspan="2" width="6%">Elig. Score</th>
+                <th colspan="5">Recommendation</th>
+              </tr>
+              <tr>
+                <th class="sub-th">HOD</th>
+                <th class="sub-th">Dean</th>
+                <th class="sub-th">Panel</th>
+                <th class="sub-th">A&PC</th>
+                <th class="sub-th">Council</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.</td>
+                <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row-btn-group">
+          <button type="button" class="add-row-btn" onclick="addTableRow('tbl-summary-main',['sn','text','text','text','text','text','text','text','text','text','text','text','text'])">➕ Add Row</button>
+          <button type="button" class="remove-row-btn" onclick="removeTableRow('tbl-summary-main')">🗑️ Remove</button>
+        </div>
+
+        <div class="section-header">ATTACHMENTS: Publications in the Last Three Years</div>
+        <div class="table-responsive">
+          <table id="tbl-sum-pub3">
+            <thead>
+              <tr><th width="5%">S/N</th><th>Authors, Year, Title, Journal, Volume & Pages</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1.</td><td><input type="text"></td></tr>
+              <tr><td>2.</td><td><input type="text"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row-btn-group">
+          <button type="button" class="add-row-btn" onclick="addTableRow('tbl-sum-pub3',['sn','text'])">➕ Add Row</button>
+          <button type="button" class="remove-row-btn" onclick="removeTableRow('tbl-sum-pub3')">🗑️ Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+
+  <script is:inline>
+    function addTableRow(tableId, cols) {
+      const tbody = document.getElementById(tableId)?.querySelector('tbody');
+      if (!tbody) return;
+      const rowCount = tbody.querySelectorAll('tr').length + 1;
+      const tr = document.createElement('tr');
+      let html = `<td>${rowCount}.</td>`;
+      for (let i = 1; i < cols.length; i++) {
+        const c = cols[i];
+        if (c === 'date') html += `<td><input type="date"></td>`;
+        else if (c === 'number') html += `<td><input type="number"></td>`;
+        else html += `<td><input type="text"></td>`;
+      }
+      tr.innerHTML = html;
+      tbody.appendChild(tr);
+    }
+
+    function removeTableRow(tableId) {
+      const tbody = document.getElementById(tableId)?.querySelector('tbody');
+      if (!tbody) return;
+      const rows = tbody.querySelectorAll('tr');
+      if (rows.length > 1) rows[rows.length - 1].remove();
+    }
+
+    function fillSampleData() {
+      // Header
+      document.getElementById('period').value = '2025/2026 Academic Session';
+      document.getElementById('spNo').value = 'FUAZ/SP/0412';
+      document.getElementById('isPromo').checked = true;
+
+      // Personal
+      document.getElementById('name').value = 'Suleiman, Ibrahim Abubakar (Dr.)';
+      document.getElementById('college').value = 'College of Agriculture & Life Sciences';
+      document.getElementById('department').value = 'Department of Crop Science & Agronomy';
+      document.getElementById('phone').value = '+234 803 123 4567';
+      document.getElementById('dateAssumption').value = '2021-03-15';
+      document.getElementById('dateLastPromo').value = '2023-10-01';
+      document.getElementById('presentRank').value = 'Senior Lecturer (CONUASS 05 Step 4)';
+      document.getElementById('rankApplied').value = 'Associate Professor (Reader)';
+      document.getElementById('professionalBody').value = 'Agricultural Society of Nigeria (ASN), Soil Science Society of Nigeria (SSSN), Nigerian Institute of Agricultural Engineers (NIAE)';
+
+      // Leave
+      const leaveRows = document.querySelectorAll('#tbl-leave tbody tr');
+      if (leaveRows[0]) {
+        const i = leaveRows[0].querySelectorAll('input');
+        i[0].value = 'University of Ibadan (Sabbatical Research Leave)';
+        i[1].value = '01/09/2022 – 31/08/2023';
+        i[2].value = '2023-09-01';
+      }
+      if (leaveRows[1]) {
+        const i = leaveRows[1].querySelectorAll('input');
+        i[0].value = 'IITA, Ibadan – Short Research Visit';
+        i[1].value = '10/07/2024 – 25/07/2024';
+        i[2].value = '2024-07-26';
+      }
+
+      // Qualifications
+      const qualRows = document.querySelectorAll('#tbl-qual tbody tr');
+      if (qualRows[0]) {
+        const i = qualRows[0].querySelectorAll('input');
+        i[0].value = 'Ph.D. Agronomy'; i[1].value = 'Plant Breeding & Seed Technology'; i[2].value = '2019'; i[3].value = 'Ahmadu Bello University, Zaria';
+      }
+      if (qualRows[1]) {
+        const i = qualRows[1].querySelectorAll('input');
+        i[0].value = 'M.Sc. Crop Science'; i[1].value = 'Agronomy'; i[2].value = '2014'; i[3].value = 'University of Ilorin';
+      }
+      if (qualRows[2]) {
+        const i = qualRows[2].querySelectorAll('input');
+        i[0].value = 'B.Agriculture'; i[1].value = 'Crop Production'; i[2].value = '2010'; i[3].value = 'Usmanu Danfodiyo University, Sokoto';
+      }
+
+      // Time / Teaching
+      document.getElementById('timeInRank').value = '3 years 10 months';
+      document.getElementById('teachingExp').value = '8 years (including previous appointments)';
+      document.getElementById('teachingLoad').value = '12 credit units (2024/2025 Session)';
+
+      // Courses
+      const courseRows = document.querySelectorAll('#tbl-courses tbody tr');
+      if (courseRows[0]) {
+        const i = courseRows[0].querySelectorAll('input');
+        i[0].value = 'CRP 401'; i[1].value = '3'; i[2].value = '45'; i[3].value = ''; i[4].value = 'Harmattan';
+      }
+      if (courseRows[1]) {
+        const i = courseRows[1].querySelectorAll('input');
+        i[0].value = 'CRP 503'; i[1].value = '2'; i[2].value = ''; i[3].value = '30'; i[4].value = 'Rain';
+      }
+      if (courseRows[2]) {
+        const i = courseRows[2].querySelectorAll('input');
+        i[0].value = 'CRP 311'; i[1].value = '2'; i[2].value = '30'; i[3].value = ''; i[4].value = 'Harmattan';
+      }
+
+      // Supervision
+      const supRows = document.querySelectorAll('#tbl-supervision tbody tr');
+      if (supRows[0]) {
+        const i = supRows[0].querySelectorAll('input');
+        i[0].value = 'Amina Yusuf / FUAZ/PG/2022/017'; i[1].value = '2022/2023'; i[2].value = 'M.Sc. Agronomy';
+      }
+      if (supRows[1]) {
+        const i = supRows[1].querySelectorAll('input');
+        i[0].value = 'Musa Ibrahim / FUAZ/PG/2021/009'; i[1].value = '2021/2022'; i[2].value = 'Ph.D. Plant Breeding';
+      }
+
+      // Graduation
+      const gradRows = document.querySelectorAll('#tbl-graduation tbody tr');
+      if (gradRows[0]) {
+        const i = gradRows[0].querySelectorAll('input');
+        i[0].value = 'Fatima Bello / FUAZ/PG/2019/045'; i[1].value = '2023/2024'; i[2].value = 'M.Sc. Agronomy';
+      }
+      if (gradRows[1]) {
+        const i = gradRows[1].querySelectorAll('input');
+        i[0].value = 'Usman Garba / FUAZ/PG/2018/022'; i[1].value = '2022/2023'; i[2].value = 'M.Sc. Crop Science';
+      }
+
+      // Ongoing
+      const ongRows = document.querySelectorAll('#tbl-ongoing tbody tr');
+      if (ongRows[0]) {
+        const i = ongRows[0].querySelectorAll('input');
+        i[0].value = 'Development of Drought-Tolerant Maize Hybrids for the Northern Guinea Savanna';
+        i[1].value = 'Field evaluation – Year 2 of 3';
+      }
+      if (ongRows[1]) {
+        const i = ongRows[1].querySelectorAll('input');
+        i[0].value = 'Integrated Soil Fertility Management in Sorghum-Based Cropping Systems';
+        i[1].value = 'Data analysis and manuscript preparation';
+      }
+
+      // Publications last 3 years
+      const pub3Rows = document.querySelectorAll('#tbl-pub3 tbody tr');
+      if (pub3Rows[0]) pub3Rows[0].querySelector('input').value = 'Suleiman, I. A., & Bello, M. K. (2024). Yield Enhancement of Hybrid Maize Under Drought Stress Conditions in Northern Guinea Savanna of Nigeria. Journal of Tropical Agricultural Research, 42(3), 115–129.';
+      if (pub3Rows[1]) pub3Rows[1].querySelector('input').value = 'Suleiman, I. A., Tanko, R. O., & Yakubu, A. (2023). Integrated Nutrient Management Practices on Sorghum Productivity and Soil Fertility Maintenance. African Journal of Agricultural Science, 18(2), 45–58.';
+      if (pub3Rows[2]) pub3Rows[2].querySelector('input').value = 'Suleiman, I. A. (2022). Genetic Diversity Assessment of Local Cowpea Landraces Using Morphological Markers. Nigerian Journal of Genetics, 27(1), 33–47.';
+
+      // All Publications
+      const allPubRows = document.querySelectorAll('#tbl-allpub tbody tr');
+      if (allPubRows[0]) {
+        const i = allPubRows[0].querySelectorAll('input');
+        i[0].value = 'Suleiman, I. A. (2024). Genetic Variability and Heritability Estimates in Drought Tolerant Cowpea Genotypes. Nigerian Journal of Genetics & Plant Breeding, 29(1), 88–102.';
+        i[1].value = '10'; i[2].value = '10'; i[3].value = '10';
+      }
+      if (allPubRows[1]) {
+        const i = allPubRows[1].querySelectorAll('input');
+        i[0].value = 'Suleiman, I. A., & Mohammed, S. (2022). Effect of Organic Amendments on Soil Health Indicators in Semi-Arid Soils. Journal of Soil Science and Environmental Management, 13(4), 67–79.';
+        i[1].value = '8'; i[2].value = '8'; i[3].value = '8';
+      }
+
+      // Professional Practice
+      const pracRows = document.querySelectorAll('#tbl-practice tbody tr');
+      if (pracRows[0]) {
+        const i = pracRows[0].querySelectorAll('input');
+        i[0].value = 'Member, Faculty Research & Publications Committee'; i[1].value = '2022 – Date';
+      }
+      if (pracRows[1]) {
+        const i = pracRows[1].querySelectorAll('input');
+        i[0].value = 'External Examiner, Department of Agronomy, Kebbi State University of Science & Technology'; i[1].value = '2023 & 2024';
+      }
+
+      // Leadership
+      const leadRows = document.querySelectorAll('#tbl-leadership tbody tr');
+      if (leadRows[0]) {
+        const i = leadRows[0].querySelectorAll('input');
+        i[0].value = 'Departmental Examination Officer'; i[1].value = '2021 – 2024';
+      }
+      if (leadRows[1]) {
+        const i = leadRows[1].querySelectorAll('input');
+        i[0].value = 'Coordinator, Postgraduate Programme (Crop Science)'; i[1].value = 'October 2024 – Date';
+      }
+
+      // Uni Service
+      const uniRows = document.querySelectorAll('#tbl-uniservice tbody tr');
+      if (uniRows[0]) {
+        const i = uniRows[0].querySelectorAll('input');
+        i[0].value = 'Member, University Ceremonials Committee'; i[1].value = '2023 – Date';
+      }
+      if (uniRows[1]) {
+        const i = uniRows[1].querySelectorAll('input');
+        i[0].value = 'Staff Adviser, Faculty of Agriculture Students’ Association'; i[1].value = '2022 – 2024';
+      }
+
+      // Public Service
+      const pubSRows = document.querySelectorAll('#tbl-pubservice tbody tr');
+      if (pubSRows[0]) {
+        const i = pubSRows[0].querySelectorAll('input');
+        i[0].value = 'Resource Person, Agricultural Extension Training for Kebbi State Farmers'; i[1].value = '2023 & 2024';
+      }
+      if (pubSRows[1]) {
+        const i = pubSRows[1].querySelectorAll('input');
+        i[0].value = 'Guest Lecturer, Youth in Agriculture Empowerment Programme, Zuru LGA'; i[1].value = 'August 2024';
+      }
+
+      // Other info & HOD comments
+      document.getElementById('otherInfo').value = 'Successfully attracted a ₦12.5 million TETFund IBR grant in 2024. Mentored four undergraduate projects that won Faculty Best Project awards. Currently serving as Departmental SIWES Coordinator.';
+      document.getElementById('hodComments').value = 'Dr. Suleiman is a highly productive academic staff member who has demonstrated excellence in teaching, research, postgraduate supervision and community service. Strongly recommended for promotion to Associate Professor.';
+
+      // Summary sheet
+      const sumRows = document.querySelectorAll('#tbl-summary-main tbody tr');
+      if (sumRows[0]) {
+        const i = sumRows[0].querySelectorAll('input');
+        i[0].value = 'Dr. Suleiman, I. A. / FUAZ/SP/0412';
+        i[1].value = '15/03/2021 (Lecturer I)';
+        i[2].value = 'Senior Lecturer (01/10/2023) CONUASS 05/4';
+        i[3].value = 'Ph.D. Agronomy (2019)';
+        i[4].value = '28.5';
+        i[5].value = '3 yrs 10 mos';
+        i[6].value = '88.5%';
+        i[7].value = 'Promote';
+        i[8].value = 'Promote';
+        i[9].value = 'Recommended';
+        i[10].value = 'Approved';
+        i[11].value = 'Confirmed';
+      }
+
+      // Summary publications
+      const sumPub = document.querySelectorAll('#tbl-sum-pub3 tbody tr');
+      if (sumPub[0]) sumPub[0].querySelector('input').value = 'Suleiman, I. A., & Bello, M. K. (2024). Yield Enhancement of Hybrid Maize Under Drought Stress… Journal of Tropical Agricultural Research, 42(3), 115–129.';
+      if (sumPub[1]) sumPub[1].querySelector('input').value = 'Suleiman, I. A., Tanko, R. O., & Yakubu, A. (2023). Integrated Nutrient Management Practices on Sorghum… African Journal of Agricultural Science, 18(2), 45–58.';
+
+      alert('✨ All Academic Staff fields have been pre-filled with rich sample data!');
+    }
+  </script>
+</Layout>

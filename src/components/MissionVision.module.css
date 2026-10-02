@@ -1,0 +1,524 @@
+/* ─── Tokens ───────────────────────────────────────────────── */
+:root {
+  --mv-green: #1e5128;
+  --mv-green-deep: #0d2b12;
+  --mv-gold: #ffd700;
+  --mv-gold-dim: rgba(255, 215, 0, 0.18);
+  --mv-cream: #f5f0e8;
+  --mv-cream-dark: #e8e1d4;
+  --mv-white: #ffffff;
+  --mv-font-display: "Georgia", "Times New Roman", serif;
+  --mv-font-body: "Segoe UI", system-ui, sans-serif;
+}
+
+/* ─── Section wrapper ───────────────────────────────────────── */
+.section {
+  position: relative;
+  overflow: hidden;
+  background: var(--mv-cream);
+}
+
+/* ─── Section label ─────────────────────────────────────────── */
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 3.5rem 2rem 0;
+}
+
+.labelLine {
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--mv-green);
+  opacity: 0.3;
+}
+
+.labelText {
+  font-family: var(--mv-font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--mv-green);
+  opacity: 0.55;
+}
+
+/* ─── Panels grid ───────────────────────────────────────────── */
+.panels {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  min-height: 600px;
+  position: relative;
+}
+
+/* ─── Individual panel ──────────────────────────────────────── */
+.panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.panelInner {
+  position: relative;
+  height: 100%;
+  padding: 5rem 4.5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 560px;
+}
+
+/* ─── Mission (green) panel ─────────────────────────────────── */
+.missionPanel {
+  background: var(--mv-green);
+  color: var(--mv-white);
+}
+
+.missionPanel .tag {
+  color: var(--mv-gold);
+  border-color: var(--mv-gold-dim);
+}
+
+.missionPanel .dividerRule {
+  background: var(--mv-gold);
+  opacity: 0.35;
+}
+
+.missionPanel .panelBody {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.missionPanel .pillars li {
+  background: rgba(255, 215, 0, 0.1);
+  color: var(--mv-gold);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+}
+
+.missionPanel .bigLetter {
+  color: rgba(255, 255, 255, 0.04);
+}
+
+.missionPanel .cornerMark {
+  color: var(--mv-gold);
+}
+
+/* ─── Vision (cream) panel ──────────────────────────────────── */
+.visionPanel {
+  background: var(--mv-cream);
+  color: var(--mv-green);
+}
+
+.visionPanel .tag {
+  color: var(--mv-green);
+  border-color: rgba(30, 81, 40, 0.2);
+}
+
+.visionPanel .dividerRule {
+  background: var(--mv-green);
+  opacity: 0.2;
+}
+
+.visionPanel .panelBody {
+  color: rgba(30, 81, 40, 0.72);
+}
+
+.visionPanel .pillars li {
+  background: rgba(30, 81, 40, 0.06);
+  color: var(--mv-green);
+  border: 1px solid rgba(30, 81, 40, 0.18);
+}
+
+.visionPanel .bigLetter {
+  color: rgba(30, 81, 40, 0.05);
+}
+
+.visionPanel .cornerMark {
+  color: var(--mv-green);
+}
+
+/* ─── Big decorative letter ─────────────────────────────────── */
+.bigLetter {
+  position: absolute;
+  top: -0.05em;
+  right: -0.02em;
+  font-family: var(--mv-font-display);
+  font-size: clamp(14rem, 22vw, 22rem);
+  font-weight: 900;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.05em;
+}
+
+/* ─── Tag pill ──────────────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-family: var(--mv-font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border: 1px solid;
+  border-radius: 2px;
+  padding: 0.35rem 0.9rem;
+  margin-bottom: 1.8rem;
+  width: fit-content;
+}
+
+/* ─── Heading ───────────────────────────────────────────────── */
+.panelHeading {
+  font-family: var(--mv-font-display);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Divider rule ──────────────────────────────────────────── */
+.dividerRule {
+  width: 48px;
+  height: 2px;
+  margin-bottom: 1.8rem;
+}
+
+/* ─── Body text ─────────────────────────────────────────────── */
+.panelBody {
+  font-family: var(--mv-font-body);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  max-width: 420px;
+  margin: 0 0 2.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Pillars ───────────────────────────────────────────────── */
+.pillars {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  position: relative;
+  z-index: 1;
+}
+
+.pillars li {
+  font-family: var(--mv-font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  padding: 0.45rem 0.9rem;
+}
+
+/* ─── Corner mark SVG ───────────────────────────────────────── */
+.cornerMark {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  opacity: 0.8;
+}
+
+/* ─── Diagonal slash divider ────────────────────────────────── */
+.slash {
+  position: relative;
+  z-index: 10;
+}
+
+.slash svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ─── Core values bar ───────────────────────────────────────── */
+.valuesBar {
+  background: var(--mv-green-deep);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+}
+
+.value {
+  position: relative;
+  padding: 2.6rem 2rem 2.6rem 2.2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+
+  /* Reveal start state */
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:global(.mv-val-revealed) {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Icon circle */
+.valueIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mv-gold);
+  flex-shrink: 0;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.value:hover .valueIcon {
+  background: rgba(255, 215, 0, 0.18);
+  border-color: rgba(255, 215, 0, 0.4);
+}
+
+/* Text block */
+.valueText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.valueName {
+  font-family: var(--mv-font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.valueDesc {
+  font-family: var(--mv-font-body);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+/* Vertical divider between values */
+.valueDivider {
+  position: absolute;
+  right: 0;
+  top: 20%;
+  bottom: 20%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.07);
+  pointer-events: none;
+}
+
+/* ─── Scroll-reveal animations ──────────────────────────────── */
+[data-reveal="left"] {
+  opacity: 0;
+  transform: translateX(-48px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-reveal="right"] {
+  opacity: 0;
+  transform: translateX(48px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+:global(.mv-revealed) {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+
+/* ── Tablet: 900px ── */
+@media (max-width: 900px) {
+  .sectionLabel {
+    padding-top: 2.8rem;
+  }
+
+  .panels {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .slash {
+    display: none;
+  }
+
+  .panel {
+    overflow: hidden;
+  }
+
+  .panelInner {
+    padding: 4rem 2.5rem 4rem;
+    min-height: unset;
+  }
+
+  /* Shrink ghost letter so it doesn't blow the layout */
+  .bigLetter {
+    font-size: clamp(8rem, 35vw, 14rem);
+    right: -0.04em;
+    top: -0.06em;
+  }
+
+  .panelBody {
+    max-width: 100%;
+  }
+
+  /* Switch reveal to vertical */
+  [data-reveal="left"],
+  [data-reveal="right"] {
+    transform: translateY(32px);
+    transition-delay: 0s;
+  }
+
+  :global(.mv-revealed) {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  /* Values: 2 columns on tablet */
+  .valuesBar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .value:nth-child(2) .valueDivider,
+  .value:last-child .valueDivider {
+    display: none;
+  }
+
+  .value:nth-child(1),
+  .value:nth-child(2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+}
+
+/* ── Mobile: 600px ── */
+@media (max-width: 600px) {
+  .sectionLabel {
+    padding-top: 2.2rem;
+    gap: 0.8rem;
+  }
+
+  .labelLine {
+    width: 28px;
+  }
+
+  .panelInner {
+    padding: 3.2rem 1.6rem 3.2rem;
+  }
+
+  /* Contain the ghost letter strictly inside the panel */
+  .bigLetter {
+    font-size: clamp(6rem, 38vw, 10rem);
+    top: -0.04em;
+    right: -0.03em;
+    opacity: 0.6; /* inherits from parent color but reduce via opacity */
+  }
+
+  .panelHeading {
+    font-size: clamp(1.9rem, 7vw, 2.6rem);
+  }
+
+  .panelBody {
+    font-size: 0.97rem;
+  }
+
+  .pillars {
+    gap: 0.45rem;
+  }
+
+  .pillars li {
+    font-size: 0.72rem;
+    padding: 0.38rem 0.75rem;
+  }
+
+  .cornerMark {
+    width: 36px;
+    height: 36px;
+    top: 1.2rem;
+    right: 1.2rem;
+  }
+
+  /* Values: single column on mobile */
+  .valuesBar {
+    grid-template-columns: 1fr;
+  }
+
+  .valueDivider {
+    display: none;
+  }
+
+  .value {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 1.8rem 1.6rem;
+  }
+
+  .value:last-child {
+    border-bottom: none;
+  }
+
+  /* Remove the nth-child borders set at 900px — single col doesn't need them */
+  .value:nth-child(1),
+  .value:nth-child(2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+}
+
+/* ── Small mobile: 380px ── */
+@media (max-width: 380px) {
+  .panelInner {
+    padding: 2.6rem 1.2rem;
+  }
+
+  .panelHeading {
+    font-size: 1.75rem;
+  }
+
+  .tag {
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    padding: 0.28rem 0.7rem;
+  }
+
+  .bigLetter {
+    font-size: clamp(5rem, 36vw, 8rem);
+  }
+
+  .valueIcon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .valueName {
+    font-size: 0.92rem;
+  }
+
+  .valueDesc {
+    font-size: 0.74rem;
+  }
+
+  .value {
+    padding: 1.5rem 1.2rem;
+    gap: 0.85rem;
+  }
+}

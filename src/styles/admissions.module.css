@@ -1,0 +1,236 @@
+/* src/styles/admissions.module.css */
+:root {
+  --adm-green: #1e5128;
+  --adm-green-deep: #0d2b12;
+  --adm-gold: #ffd700;
+  --adm-gold-soft: #fbf4d9;
+  --adm-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contentWrapper {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.heading2 {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 2.2rem;
+  color: var(--adm-green-deep);
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+.paragraph {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #374151;
+  margin-bottom: 1.5rem;
+}
+
+/* Video Section Box */
+.videoSection {
+  background: linear-gradient(135deg, #0d2b12 0%, #1e5128 100%);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin: 3rem 0;
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(13, 43, 18, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.videoSection::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.videoHeader {
+  margin-bottom: 1.75rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 215, 0, 0.2);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: #ffd700;
+  padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.videoTitle {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 1.85rem;
+  color: #ffffff;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.3;
+}
+
+.videoDesc {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0;
+  max-width: 800px;
+}
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  background: #000;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.videoIframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.videoCta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ytButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #ff0000;
+  color: #ffffff;
+  padding: 0.75rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
+
+.ytButton:hover {
+  background: #cc0000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 0, 0, 0.4);
+}
+
+.videoMeta {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Info Cards / Requirements Grid */
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.infoCard {
+  background: #fdfcfb;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 4px solid var(--adm-green);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.infoCard h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 1.25rem;
+  color: var(--adm-green-deep);
+  margin: 0 0 0.5rem 0;
+}
+
+.infoCard p {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* Nav Grid */
+.navGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.navCard {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background: #fdfcfb;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: #1a1a1a;
+}
+
+.navCard:hover {
+  background: var(--adm-green-deep);
+  color: #ffffff;
+  border-color: var(--adm-green-deep);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(13, 43, 18, 0.15);
+}
+
+.navCard h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 1.35rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.navCard p {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .videoSection {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  .videoTitle {
+    font-size: 1.5rem;
+  }
+  .videoCta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

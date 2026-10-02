@@ -1,0 +1,39 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Library Opening Hours" 
+  subtitle="Standard scheduling for the main university library and reading rooms."
+  heroImage="/media/DSC_4897.webp"
+  breadcrumbs={[
+    { label: 'Library', href: '/library' },
+    { label: 'Opening Hours', href: '/library/hours' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Standard Session Hours</h2>
+    <p class={styles.paragraph}>
+      During the normal academic semester, both the Main Library and the 24/7 e-learning complex operate on the following schedule to ensure optimum access:
+    </p>
+    <ul class={styles.list}>
+      <li><strong>Monday - Friday:</strong> 8:00 AM — 6:00 PM</li>
+      <li><strong>Saturday:</strong> 9:00 AM — 2:00 PM</li>
+      <li><strong>Sunday & Public Holidays:</strong> Closed (Except digital services)</li>
+    </ul>
+
+    <h2 class={styles.heading2}>Examination Period Hours</h2>
+    <p class={styles.paragraph}>
+      To support intense pre-examination studies, library access hours are extended four weeks prior to the commencement of first and second-semester exams.
+    </p>
+    <ul class={styles.list}>
+      <li><strong>Main Library (Circulation):</strong> 8:00 AM — 10:00 PM Daily</li>
+      <li><strong>24/7 Reading Rooms:</strong> Open continuously (Access restricted after midnight for security)</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Holiday & Semester Break:</strong> During academic recess periods, the library operates on a strict Monday to Friday schedule between 8:00 AM and 4:00 PM only.
+    </div>
+  </div>
+</GenericPageLayout>

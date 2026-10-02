@@ -1,0 +1,313 @@
+/* ─── Tokens ────────────────────────────────────────────────── */
+:root {
+  --fs-green: #1e5128;
+  --fs-green-deep: #0d2b12;
+  --fs-gold: #d4af37;
+  --fs-gold-light: #ffd700;
+  --fs-cream: #f5f0e8;
+  --fs-font-serif: "Georgia", "Times New Roman", serif;
+  --fs-font-sans: "Segoe UI", system-ui, sans-serif;
+  --fs-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── Section ───────────────────────────────────────────────── */
+.section {
+  padding: 8rem 0 7rem;
+  background: var(--fs-cream);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Faint diagonal lines in background */
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -48deg,
+    transparent,
+    transparent 72px,
+    rgba(30, 81, 40, 0.025) 72px,
+    rgba(30, 81, 40, 0.025) 73px
+  );
+  pointer-events: none;
+}
+
+/* ─── Grid ──────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Card base ─────────────────────────────────────────────── */
+.card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 580px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.8rem 2.8rem 2.6rem;
+  isolation: isolate;
+  transition: transform 0.6s var(--fs-ease);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+/* ─── Background image ──────────────────────────────────────── */
+.imgWrap {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.9s var(--fs-ease);
+  filter: saturate(0.8);
+}
+
+.card:hover .img {
+  transform: scale(1.05);
+  filter: saturate(1);
+}
+
+.imgOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* ─── Green card overlay ────────────────────────────────────── */
+.card_green .imgOverlay {
+  background: linear-gradient(
+    160deg,
+    rgba(13, 43, 18, 0.55) 0%,
+    rgba(13, 43, 18, 0.75) 45%,
+    rgba(13, 43, 18, 0.96) 100%
+  );
+}
+
+/* ─── Gold card overlay ─────────────────────────────────────── */
+.card_gold .imgOverlay {
+  background: linear-gradient(
+    160deg,
+    rgba(30, 20, 0, 0.45) 0%,
+    rgba(30, 20, 0, 0.72) 45%,
+    rgba(10, 6, 0, 0.95) 100%
+  );
+}
+
+/* ─── Eyebrow ────────────────────────────────────────────────── */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--fs-font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 1rem;
+}
+
+.eyebrowDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.card_green .eyebrowDot {
+  background: #ffd700;
+}
+.card_gold .eyebrowDot {
+  background: var(--fs-gold);
+}
+
+/* ─── Heading ────────────────────────────────────────────────── */
+.heading {
+  font-family: var(--fs-font-serif);
+  font-size: clamp(2.2rem, 3.6vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  color: #fff;
+  margin: 0 0 1.6rem;
+}
+
+.headingLine {
+  display: inline;
+}
+
+/* ─── Chips ──────────────────────────────────────────────────── */
+.chips {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  font-family: var(--fs-font-sans);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.32rem 0.8rem;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.card_green .chip {
+  background: rgba(255, 215, 0, 0.12);
+  color: #ffd700;
+  border: 1px solid rgba(255, 215, 0, 0.22);
+}
+
+.card_gold .chip {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--fs-gold-light);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+}
+
+/* ─── Body text ──────────────────────────────────────────────── */
+.body {
+  font-family: var(--fs-font-sans);
+  font-size: 0.96rem;
+  line-height: 1.78;
+  color: rgba(255, 255, 255, 0.62);
+  margin: 0 0 2rem;
+  max-width: 380px;
+}
+
+/* ─── CTA ────────────────────────────────────────────────────── */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  font-family: var(--fs-font-sans);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  width: fit-content;
+  padding-bottom: 3px;
+  transition: gap 0.25s var(--fs-ease);
+}
+
+.card_green .cta {
+  color: #ffd700;
+  border-bottom: 1.5px solid rgba(255, 215, 0, 0.4);
+}
+
+.card_gold .cta {
+  color: var(--fs-gold-light);
+  border-bottom: 1.5px solid rgba(212, 175, 55, 0.4);
+}
+
+.cta:hover {
+  gap: 1.1rem;
+}
+
+.ctaArrow {
+  display: flex;
+  align-items: center;
+  transition: transform 0.25s var(--fs-ease);
+}
+
+.cta:hover .ctaArrow {
+  transform: translateX(3px);
+}
+
+/* ─── Corner index ───────────────────────────────────────────── */
+.index {
+  position: absolute;
+  top: 2rem;
+  right: 2.2rem;
+  font-family: var(--fs-font-serif);
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ─── Top accent stripe ──────────────────────────────────────── */
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--fs-ease);
+}
+
+.card_green::after {
+  background: #ffd700;
+}
+.card_gold::after {
+  background: linear-gradient(90deg, #b8860b, #ffd700);
+}
+
+.card:hover::after {
+  transform: scaleX(1);
+}
+
+/* ─── Scroll reveal ──────────────────────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.85s var(--fs-ease),
+    transform 0.85s var(--fs-ease);
+}
+
+:global(.fs-revealed) {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: 480px;
+  }
+}
+
+@media (max-width: 540px) {
+  .section {
+    padding: 6rem 0 5rem;
+  }
+
+  .card {
+    min-height: 420px;
+    padding: 2rem 1.8rem 2rem;
+  }
+
+  .index {
+    font-size: 3.5rem;
+  }
+}

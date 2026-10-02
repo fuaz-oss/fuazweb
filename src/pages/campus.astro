@@ -1,0 +1,42 @@
+---
+import GenericPageLayout from '../layouts/GenericPageLayout.astro';
+import styles from '../styles/about.module.css';
+
+const navLinks = [
+  { href: '/campus/farm', title: 'University Farm', desc: '500-hectares of mechanized farming and commercial livestock.' },
+  { href: '/campus/vet-clinic', title: 'Veterinary Clinic', desc: 'Teaching hospital and animal care facility.' },
+  { href: '/campus/hostels', title: 'Hostels & Accommodation', desc: 'Secure living spaces for FUAZ scholars.' },
+  { href: '/campus/health', title: 'University Health Centre', desc: 'NHIS accredited primary healthcare.' },
+  { href: '/campus/security', title: 'Campus Security', desc: 'Ensuring a peaceful academic environment.' },
+  { href: '/campus/sports', title: 'Sports Complex', desc: 'Arenas for physical fitness and NUGA competitions.' },
+  { href: '/campus/sug', title: 'Student Union (SUG)', desc: 'The apex representative body of students.' },
+  { href: '/campus/tour', title: 'Virtual Tour', desc: 'Experience the campus from anywhere.' }
+];
+---
+
+<GenericPageLayout 
+  title="Campus Life" 
+  subtitle="Experience the vibrant, diverse, and heavily practical campus of FUAZ."
+  heroImage="/media/DSC_4787.webp"
+  breadcrumbs={[{ label: 'Campus', href: '/campus' }]}
+>
+  <div class={styles.contentWrapper}>
+    <p class={`${styles.paragraph} ${styles.dropCap}`}>
+      Our campus is a sprawling ecosystem designed to balance rigorous academic research with rich extracurricular activities. From the 500-hectare commercial farmlands to the bustling student union headquarters, the FUAZ campus operates as a self-sustaining miniature city dedicated to youth development and agricultural innovation.
+    </p>
+
+    <div class={styles.importantBox}>
+      <strong>Security Alert:</strong> The campus strictly enforces a 10:00 PM curfew. Access to academic blocks after 6:00 PM requires a validated student ID card.
+    </div>
+
+    <h2 class={styles.heading2}>Explore FUAZ</h2>
+    <div class={styles.navGrid}>
+      {navLinks.map(link => (
+        <a href={link.href} class={styles.navCard}>
+          <h3>{link.title}</h3>
+          <p>{link.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</GenericPageLayout>

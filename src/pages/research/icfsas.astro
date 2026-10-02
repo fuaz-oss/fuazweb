@@ -1,0 +1,24 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="ICFSAS 2024 Proceedings" 
+  subtitle="International Conference on Food Security & Agricultural Sustainability."
+  heroImage="/media/mango.webp"
+  breadcrumbs={[
+    { label: 'Research', href: '/research' },
+    { label: 'ICFSAS 2024', href: '/research/icfsas' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Conference Archives</h2>
+    <p class={styles.paragraph}>
+      In November 2024, FUAZ hosted its maiden international conference (ICFSAS), drawing over 800 agricultural scholars, policymakers, and industry executives from across West Africa.
+    </p>
+    <p class={styles.paragraph}>
+      The complete book of proceedings—detailing sustainable climate-smart agricultural frameworks—has been officially indexed and is available for download in the digital library.
+    </p>
+  </div>
+</GenericPageLayout>

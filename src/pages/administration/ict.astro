@@ -1,0 +1,44 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Directorate of ICT" 
+  subtitle="Driving digital transformation across the university ecosystem."
+  heroImage="/media/DSC_4867.webp"
+  breadcrumbs={[
+    { label: 'Administration', href: '/administration' },
+    { label: 'ICT Directorate', href: '/administration/ict' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <div class={styles.splitLayout}>
+      <aside class={styles.stickySidebar}>
+        <div class={styles.vcImgWrap}>
+          <img src="/media/director-ict.webp" alt="Dr. Akeem Babatunde Sikiru, Director of ICT" loading="lazy" />
+        </div>
+      </aside>
+      <div>
+        <h2 class={styles.heading2}>Dr. Akeem Babatunde Sikiru</h2>
+        <p class={styles.paragraph}><strong>Director of Information and Communication Technology</strong></p>
+      </div>
+    </div>
+
+    <h2 class={styles.heading2}>Digital Infrastructure</h2>
+    <p class={styles.paragraph}>
+      The Directorate of Information and Communication Technology (DICT) is tasked with the deployment, management, and security of all technological infrastructure across the FUAZ campus. This includes maintaining the fiber-optic backbone, the centralized data center, and the university-wide Wi-Fi network.
+    </p>
+
+    <h2 class={styles.heading2}>Services Provided</h2>
+    <ul class={styles.list}>
+      <li><strong>Eduroam Wi-Fi:</strong> Ensuring students and staff have seamless access to high-speed internet.</li>
+      <li><strong>Portal Management:</strong> Running the central academic portal for course registrations and transcripts.</li>
+      <li><strong>Institutional Email:</strong> Provisioning secure @fuaz.edu.ng email channels for official correspondence.</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Help Desk:</strong> Having trouble with your portal login? Please do not share your password with anyone. Visit the ICT Help Desk at the main library complex during working hours for account resets.
+    </div>
+  </div>
+</GenericPageLayout>

@@ -1,0 +1,226 @@
+---
+import styles from './Hero.module.css';
+
+const slides = [
+  {
+    /** Slide 1 — FUAZ campus: convocation procession with campus buildings */
+    image: '/media/DSC_4787.webp',
+    fallback: '/media/DSC_4788.webp',
+    subtitle: 'Welcome to FUAZ',
+    title: 'Facilitating Excellence in Agricultural Innovation',
+    text: 'A premier institution dedicated to vocational and technical excellence in agriculture and research.',
+    cta: 'Explore Colleges',
+    ctaHref: '#colleges'
+  },
+  {
+    /** Slide 2 — FUAZ graduates at convocation, campus buildings behind */
+    image: '/media/DSC_4788.webp',
+    fallback: '/media/DSC_4787.webp',
+    subtitle: 'Agricultural Leadership',
+    title: 'Produce Job Providers, Not Job Seekers',
+    text: 'Empowering the next generation of agricultural entrepreneurs through practical, hands-on education.',
+    cta: 'Learn Our Mission',
+    ctaHref: '#about'
+  },
+  {
+    /** Slide 3 — FUAZ convocation ceremony in the university hall */
+    image: '/media/DSC_4796.webp',
+    fallback: '/media/DSC_4787.webp',
+    subtitle: 'Global Impact',
+    title: 'Sustainable Solutions for Food Security',
+    text: 'Researching and implementing cutting-edge practices to ensure national and global food stability.',
+    cta: 'Research at FUAZ',
+    ctaHref: '#research'
+  }
+];
+---
+
+<section class={styles.hero} id="hero-carousel" aria-label="Hero carousel">
+  <div class={styles.carousel} id="carousel-inner" aria-live="polite">
+    {slides.map((slide, index) => (
+      <div
+        class={`${styles.slide} ${index === 0 ? styles.active : ''}`}
+        data-index={index}
+        data-fallback={slide.fallback}
+        style={`background-image: url('${slide.image}');`}
+        role="group"
+        aria-roledescription="slide"
+        aria-label={`Slide ${index + 1} of ${slides.length}: ${slide.title}`}
+      >
+        <div class={styles.overlay} aria-hidden="true"></div>
+        <div class={styles.grain} aria-hidden="true"></div>
+
+        <div class="container">
+          <div class={styles.content}>
+            <span class={styles.eyebrow} aria-label="section label">
+              <span class={styles.eyebrowLine} aria-hidden="true"></span>
+              {slide.subtitle}
+            </span>
+            <h1 class={styles.title}>{slide.title}</h1>
+            <p class={styles.body}>{slide.text}</p>
+            <div class={styles.buttons}>
+              <a href={slide.ctaHref} class={styles.primaryBtn}>{slide.cta}</a>
+              <a href="#virtual-tour" class={styles.secondaryBtn}>
+                <span class={styles.playIcon} aria-hidden="true">▶</span>
+                Virtual Tour
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Bottom bar: dots + slide counter -->
+  <div class={styles.controls} aria-label="Carousel controls">
+    <div class={styles.counter} id="slide-counter" aria-live="polite" aria-atomic="true">
+      <span id="current-num">01</span>
+      <span class={styles.counterDivider} aria-hidden="true"></span>
+      <span class={styles.counterTotal}>0{slides.length}</span>
+    </div>
+
+    <div class={styles.dots} role="tablist" aria-label="Select slide">
+      {slides.map((slide, index) => (
+        <button
+          class={`${styles.dot} ${index === 0 ? styles.dotActive : ''}`}
+          data-target={index}
+          role="tab"
+          aria-selected={index === 0 ? 'true' : 'false'}
+          aria-label={`Go to slide ${index + 1}: ${slide.subtitle}`}
+        ></button>
+      ))}
+    </div>
+
+    <div class={styles.navArrows}>
+      <button class={styles.navBtn} id="prev-btn" aria-label="Previous slide">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class={styles.navBtn} id="next-btn" aria-label="Next slide">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Progress bar -->
+  <div class={styles.progressBar} aria-hidden="true">
+    <div class={styles.progressFill} id="progress-fill"></div>
+  </div>
+</section>
+
+<script>
+  const INTERVAL_MS = 6000;
+
+  const carousel   = document.getElementById('carousel-inner');
+  const slides     = Array.from(document.querySelectorAll('[data-index]'));
+  const dots       = Array.from(document.querySelectorAll('[data-target]'));
+  const prevBtn    = document.getElementById('prev-btn');
+  const nextBtn    = document.getElementById('next-btn');
+  const currentNum = document.getElementById('current-num');
+  const progressFill = document.getElementById('progress-fill');
+
+  if (
+    carousel instanceof HTMLElement && 
+    slides.length > 0 && 
+    dots.length > 0 && 
+    prevBtn instanceof HTMLButtonElement && 
+    nextBtn instanceof HTMLButtonElement && 
+    currentNum instanceof HTMLElement && 
+    progressFill instanceof HTMLElement
+  ) {
+    const carouselEl = carousel;
+    const progressEl = progressFill;
+    const currentNumEl = currentNum;
+
+    let current = 0;
+    let timer: number | undefined;
+
+    const firstSlide = slides[0];
+    const firstDot = dots[0];
+    const ACTIVE_SLIDE_CLASS = [...firstSlide.classList].find(c => c.includes('active') && !c.includes('dot')) ?? '';
+    const ACTIVE_DOT_CLASS   = [...firstDot.classList].find(c => c.includes('dotActive') || c.includes('Active')) ?? '';
+
+    function pad(n: number) { return String(n + 1).padStart(2, '0'); }
+
+    function goTo(index: number) {
+      const prev = current;
+      current = (index + slides.length) % slides.length;
+
+      const prevSlide = slides[prev];
+      const curSlide  = slides[current];
+      const prevDot   = dots[prev];
+      const curDot    = dots[current];
+
+      if (prevSlide && curSlide && prevDot && curDot) {
+        prevSlide.classList.remove(ACTIVE_SLIDE_CLASS);
+        curSlide.classList.add(ACTIVE_SLIDE_CLASS);
+
+        carouselEl.style.transform = `translateX(-${current * 100}%)`;
+
+        prevDot.classList.remove(ACTIVE_DOT_CLASS);
+        prevDot.setAttribute('aria-selected', 'false');
+        curDot.classList.add(ACTIVE_DOT_CLASS);
+        curDot.setAttribute('aria-selected', 'true');
+
+        currentNumEl.textContent = pad(current);
+
+        progressEl.style.transition = 'none';
+        progressEl.style.width = '0%';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            progressEl.style.transition = `width ${INTERVAL_MS}ms linear`;
+            progressEl.style.width = '100%';
+          });
+        });
+      }
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      timer = window.setInterval(() => goTo(current + 1), INTERVAL_MS);
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const target = dot.getAttribute('data-target');
+        if (target !== null) {
+          goTo(parseInt(target));
+          startTimer();
+        }
+      });
+    });
+
+    prevBtn.addEventListener('click', () => { goTo(current - 1); startTimer(); });
+    nextBtn.addEventListener('click', () => { goTo(current + 1); startTimer(); });
+
+    const section = document.getElementById('hero-carousel');
+    if (section) {
+      section.addEventListener('mouseenter', () => clearInterval(timer));
+      section.addEventListener('mouseleave', startTimer);
+      section.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft')  { goTo(current - 1); startTimer(); }
+        if (e.key === 'ArrowRight') { goTo(current + 1); startTimer(); }
+      });
+    }
+
+    goTo(0);
+    startTimer();
+
+    // Image fallback
+    slides.forEach(slide => {
+      if (slide instanceof HTMLElement) {
+        const primary = slide.style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
+        const fallback = slide.getAttribute('data-fallback');
+        if (!primary || !fallback) return;
+        const img = new Image();
+        img.onerror = () => {
+          slide.style.backgroundImage = `url('${fallback}')`;
+        };
+        img.src = primary;
+      }
+    });
+  }
+</script>

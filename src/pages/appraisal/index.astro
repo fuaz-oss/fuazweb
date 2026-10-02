@@ -1,0 +1,268 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+
+// Import official downloadable PDFs directly from assets
+import academicStaffSchemeOfService from '../../assets/downloads/FUAZ Scheme of Service Academic Staff FINAL .pdf';
+import juniorStaffSchemeOfService from '../../assets/downloads/Final FUAZ Junior Staff Scheme of Service.pdf';
+
+const forms = [
+  {
+    title: 'Academic Staff APER & Summary Package (Form ASA-02)',
+    code: 'ASA-02 & SUM',
+    category: 'Academic Staff',
+    desc: 'Complete Annual Performance Evaluation Report for Teaching & Research Staff combined with the official Academic Evaluation Summary Sheet on the same page.',
+    href: '/appraisal/academic-staff',
+    color: '#0F592F',
+    badge: 'Form + Summary Package'
+  },
+  {
+    title: 'Junior Staff APER & Summary Package (CONTISS 1–5)',
+    code: 'CONTISS 1-5 & SUM',
+    category: 'Junior Staff',
+    desc: 'Complete Annual Performance Evaluation Report for Junior Administrative, Technical, and Maintenance Staff combined with the Cadre & Admin Summary Sheet.',
+    href: '/appraisal/junior-staff',
+    color: '#D4AF37',
+    badge: 'Form + Summary Package'
+  },
+  {
+    title: 'Senior Admin & Tech APER & Summary Package (Form ATP-02)',
+    code: 'ATP-02 & SUM',
+    category: 'Senior Non-Teaching Staff',
+    desc: 'Complete Annual Performance Evaluation Report for Senior Administrative, Technical, Professional, and Library Staff combined with the A&PC Summary Sheet.',
+    href: '/appraisal/senior-admin',
+    color: '#0F592F',
+    badge: 'Form + Summary Package'
+  },
+  {
+    title: 'Staff Training Bond Form (In-Service Agreement)',
+    code: 'ST&D BOND',
+    category: 'All Staff Cadres',
+    desc: 'Official Staff Training & Development In-Service Training Agreement form with endorsement by 3 guarantors and PDF generation.',
+    href: '/bond',
+    color: '#1a7a42',
+    badge: 'Official Agreement Form'
+  }
+];
+
+const downloadableDocs = [
+  {
+    title: 'FUAZ Scheme of Service for Academic Staff (FINAL)',
+    file: academicStaffSchemeOfService,
+    desc: 'Official regulations, career structure, promotion criteria, and cadre guidelines for Academic Staff.',
+    type: 'PDF Document',
+    size: 'Official PDF'
+  },
+  {
+    title: 'FUAZ Scheme of Service for Junior Staff (FINAL)',
+    file: juniorStaffSchemeOfService,
+    desc: 'Official career progression, CONTISS salary structure guidelines, and promotion criteria for Junior Staff.',
+    type: 'PDF Document',
+    size: 'Official PDF'
+  }
+];
+---
+
+<GenericPageLayout
+  title="Staff Performance Appraisal Portal"
+  subtitle="Official interactive fillable evaluation forms, summary sheets, and downloadable Scheme of Service documents."
+  heroImage="/media/vc_hero.webp"
+  breadcrumbs={[{ label: 'Administration', href: '/administration' }, { label: 'Appraisal Portal', href: '/appraisal' }]}
+>
+  <style>
+    .appraisal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 3rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .appraisal-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .appraisal-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .card-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+
+    .card-code {
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .card-category {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #666;
+      background: #f0f4f1;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #0F592F;
+      margin: 0 0 0.75rem 0;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.6;
+      margin: 0 0 1.5rem 0;
+      word-break: break-word;
+    }
+
+    .card-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: white;
+      padding: 0.75rem 1.25rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+      transition: opacity 0.2s;
+    }
+
+    .card-btn:hover {
+      opacity: 0.9;
+    }
+
+    .doc-card {
+      background: #f8faf8;
+      border-radius: 14px;
+      padding: 1.5rem;
+      border: 1px solid rgba(15,89,47,0.15);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    @media (max-width: 640px) {
+      .appraisal-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      .appraisal-card, .doc-card {
+        padding: 1.2rem 1rem !important;
+        border-radius: 12px !important;
+      }
+      .card-title {
+        font-size: 1.05rem !important;
+      }
+      .card-desc {
+        font-size: 0.85rem !important;
+        margin-bottom: 1.2rem !important;
+      }
+    }
+  </style>
+
+  <div class={styles.contentWrapper} style="width: 100%; max-width: 100%; box-sizing: border-box; overflow-x: hidden;">
+    <h2 class={styles.heading2}>Annual Performance Evaluation Reports & Summaries (APER)</h2>
+    <p class={styles.paragraph}>
+      Welcome to the official Federal University of Agriculture, Zuru Staff Evaluation Portal managed by the Office of the Registrar. Select any of the evaluation packages below to fill out your form and summary sheet online, and generate an official combined PDF printout matching university specifications.
+    </p>
+
+    <div class={styles.importantBox} style="box-sizing: border-box; max-width: 100%;">
+      <strong>Instructions for Staff & Assessors:</strong>
+      <ul style="margin-top: 0.5rem; margin-bottom: 0; padding-left: 1.25rem;">
+        <li>Each evaluation package contains both the APER evaluation form and its corresponding Summary Sheet on the same page.</li>
+        <li>Click <strong>"📥 Download PDF"</strong> on any form page to export both the form and summary sheet into a single clean vector PDF file.</li>
+        <li>Download official Scheme of Service PDFs directly below without leaving this portal.</li>
+      </ul>
+    </div>
+
+    <!-- Forms Selection Grid -->
+    <div class="appraisal-grid">
+      {forms.map(form => (
+        <div class="appraisal-card">
+          <div>
+            <div class="card-badge-row">
+              <span class="card-code" style={`background: ${form.color};`}>{form.code}</span>
+              <span class="card-category">{form.category}</span>
+            </div>
+            <h3 class="card-title">{form.title}</h3>
+            <p class="card-desc">{form.desc}</p>
+          </div>
+          <a href={form.href} class="card-btn" style={`background: ${form.color};`}>
+            <span>Open & Fill Package</span>
+            <span>→</span>
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- Official Downloads Section -->
+    <h2 class={styles.heading2} id="downloads" style="border-top: 2px dashed rgba(0,0,0,0.1); padding-top: 2.5rem; margin-top: 1rem;">
+      📥 Official Scheme of Service & Governance Documents
+    </h2>
+    <p class={styles.paragraph}>
+      Download official university regulations, promotion criteria, and cadre guidelines directly to assist in completing your evaluation forms:
+    </p>
+
+    <div class="appraisal-grid" style="margin-top: 1.5rem; margin-bottom: 2rem;">
+      {downloadableDocs.map(doc => (
+        <div class="doc-card">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; font-weight: 700; color: #0F592F; margin-bottom: 0.5rem;">
+              <span>📄 {doc.type}</span>
+            </div>
+            <h3 style="font-size: 1.1rem; font-weight: 700; color: #111; margin: 0 0 0.5rem 0; word-break: break-word;">{doc.title}</h3>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5; margin: 0 0 1.25rem 0; word-break: break-word;">{doc.desc}</p>
+          </div>
+          <a href={doc.file} download class="card-btn" style="background: #0F592F;">
+            <span>Download Document (PDF)</span>
+            <span>⬇</span>
+          </a>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</GenericPageLayout>

@@ -1,0 +1,35 @@
+---
+import GenericPageLayout from '../layouts/GenericPageLayout.astro';
+import styles from '../styles/about.module.css';
+
+const researchLinks = [
+  { href: '/research/crops', title: 'Crop Research Station', desc: 'Advancing high-yield and drought-resistant seeds.' },
+  { href: '/research/animals', title: 'Animal Science Unit', desc: 'Genetics, breeding, and livestock management.' },
+  { href: '/research/environment', title: 'Environmental Research', desc: 'Climate impact modeling and soil conservancy.' },
+  { href: '/research/journal', title: 'Journal of Agriculture', desc: 'FUAZ\'s flagship scientific publication.' },
+  { href: '/research/grants', title: 'Grant Opportunities', desc: 'TETFund, World Bank, and institutional seed grants.' },
+  { href: '/research/icfsas', title: 'ICFSAS 2024', desc: 'Proceedings from our International Conference.' }
+];
+---
+
+<GenericPageLayout 
+  title="Research & Innovation" 
+  subtitle="Where academic theory solves practical agricultural challenges."
+  heroImage="/media/mango.webp"
+  breadcrumbs={[{ label: 'Research', href: '/research' }]}
+>
+  <div class={styles.contentWrapper}>
+    <p class={`${styles.paragraph} ${styles.dropCap}`}>
+      The Federal University of Agriculture Zuru is a research-intensive institution. We focus heavily on applied, scientific innovations designed to directly improve the productivity, sustainability, and technological capability of the Nigerian agricultural landscape.
+    </p>
+
+    <div class={styles.navGrid}>
+      {researchLinks.map(link => (
+        <a href={link.href} class={styles.navCard}>
+          <h3>{link.title}</h3>
+          <p>{link.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</GenericPageLayout>

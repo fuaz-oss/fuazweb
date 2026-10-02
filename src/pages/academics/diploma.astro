@@ -1,0 +1,27 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/academics.module.css';
+---
+
+<GenericPageLayout 
+  title="Diploma & Certificate Programmes" 
+  subtitle="Vocational and short-term professional certifications for immediate industry application."
+  heroImage="/media/matriculation.webp"
+  breadcrumbs={[
+    { label: 'Academics', href: '/academics' },
+    { label: 'Diploma', href: '/academics/diploma' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Professional Short Courses</h2>
+    <p class={styles.paragraph}>
+      At FUAZ, we believe that education should be accessible to all tiers of the agricultural workforce. Our Diploma and Certificate programmes are specifically designed for working professionals, farm managers, and extension workers who wish to formalize their agricultural knowledge and adopt modern mechanized practices rapidly.
+    </p>
+
+    <h2 class={styles.heading2}>Application Process</h2>
+    <p class={styles.paragraph}>
+      Admissions into the Diploma and Certificate programmes are processed internally by the FUAZ Consult office. Interested candidates do not need to sit for the UTME. Application forms can be purchased directly from the Bursary department or downloaded via the university portal.
+    </p>
+
+  </div>
+</GenericPageLayout>

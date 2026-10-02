@@ -1,0 +1,24 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="FUAZ Journal of Agriculture" 
+  subtitle="The flagship peer-reviewed scientific journal of the institution."
+  heroImage="/media/DSC_3856.webp"
+  breadcrumbs={[
+    { label: 'Research', href: '/research' },
+    { label: 'Journal', href: '/research/journal' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Publication Guidelines</h2>
+    <p class={styles.paragraph}>
+      The FUAZ Journal of Agriculture is a bi-annual open-access publication. We invite global researchers to submit high-impact manuscripts covering agricultural engineering, veterinary sciences, and extension sociology.
+    </p>
+    <div class={styles.importantBox}>
+      <strong>Volume 4, Issue 2:</strong> is currently undergoing peer review. Call for papers for Volume 5 will open in January 2026.
+    </div>
+  </div>
+</GenericPageLayout>

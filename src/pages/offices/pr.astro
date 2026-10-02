@@ -1,0 +1,32 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Public Relations Unit" 
+  subtitle="The official voice and external image of the university."
+  heroImage="/media/DSC_4938.webp"
+  breadcrumbs={[
+    { label: 'Offices', href: '/offices' },
+    { label: 'Public Relations', href: '/offices/pr' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Communications Protocol</h2>
+    <p class={styles.paragraph}>
+      The Public Relations (PR) Unit handles all internal and external communications for the institution. We manage the publication of the weekly University Bulletin, handle press releases to national media outlets, and organize official ceremonies like Matriculation and Convocation.
+    </p>
+
+    <h2 class={styles.heading2}>Media Engagement</h2>
+    <ul class={styles.list}>
+      <li>Publishing features on groundbreaking research occurring within the colleges.</li>
+      <li>Monitoring and managing the university's official social media accounts.</li>
+      <li>Handling public inquiries and establishing strong community relations within Zuru Emirate.</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Internal Memos:</strong> Any circular or memo intended for university-wide distribution must first be vetted and approved by the PR Unit to ensure it aligns with the institution's communication standards.
+    </div>
+  </div>
+</GenericPageLayout>

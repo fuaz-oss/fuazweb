@@ -1,0 +1,32 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Veterinary Teaching Clinic" 
+  subtitle="Comprehensive care for livestock and domestic animals."
+  heroImage="/media/DSC_4855.webp"
+  breadcrumbs={[
+    { label: 'Campus', href: '/campus' },
+    { label: 'Veterinary Clinic', href: '/campus/vet-clinic' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Clinical Services</h2>
+    <p class={styles.paragraph}>
+      The FUAZ Veterinary Teaching Clinic serves dual functions: it is the primary clinical training facility for our veterinary students, and it operates as a fully functional animal hospital open to the public and surrounding agricultural communities.
+    </p>
+
+    <h2 class={styles.heading2}>Facilities & Capabilities</h2>
+    <ul class={styles.list}>
+      <li><strong>Surgical Theatres:</strong> Equipped for both major soft-tissue and orthopedic procedures on large livestock.</li>
+      <li><strong>Diagnostic Pathology:</strong> Advanced laboratories for swift blood work, disease screening, and tissue analysis.</li>
+      <li><strong>Equine & Bovine Stalls:</strong> Intensive care and recovery enclosures for horses, cattle, and sheep.</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Emergency Services:</strong> The clinic operates a 24/7 emergency response unit. Pastoral farmers within Kebbi state requiring urgent field-surgical intervention can call the emergency hotline directly.
+    </div>
+  </div>
+</GenericPageLayout>

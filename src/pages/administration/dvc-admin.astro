@@ -1,0 +1,32 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout
+  title="Office of the Deputy Vice-Chancellor (Administration)"
+  subtitle="Supporting effective university governance and administration."
+  heroImage="/media/DSC_4902.webp"
+  breadcrumbs={[
+    { label: 'Administration', href: '/administration' },
+    { label: 'DVC Administration', href: '/administration/dvc-admin' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <div class={styles.splitLayout}>
+      <aside class={styles.sidebar}>
+        <div class={styles.profileCard}>
+          <img src="/media/dvc-admin.webp" alt="Prof. AD Isah, Deputy Vice-Chancellor (Administration)" class={styles.profileImg} />
+        </div>
+      </aside>
+
+      <div class={styles.mainContent}>
+        <h2 class={styles.heading2}>Prof. AD Isah</h2>
+        <p class={styles.paragraph}><strong>Deputy Vice-Chancellor (Administration)</strong></p>
+        <p class={styles.paragraph}>
+          The Office of the Deputy Vice-Chancellor (Administration) supports the Vice-Chancellor in coordinating the University's administrative affairs and institutional priorities.
+        </p>
+      </div>
+    </div>
+  </div>
+</GenericPageLayout>

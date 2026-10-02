@@ -1,0 +1,81 @@
+---
+import Layout from './Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import styles from './GenericPageLayout.module.css';
+
+export interface Props {
+  title: string;
+  subtitle?: string;
+  breadcrumbs?: { label: string; href: string }[];
+  heroImage?: string;
+}
+
+const { 
+  title, 
+  subtitle, 
+  breadcrumbs = [],
+  heroImage = "/media/DSC_4787.webp"
+} = Astro.props;
+---
+
+<Layout>
+  <Navbar />
+  <main>
+    <!-- Page Hero -->
+    <section class={styles.pageHero}>
+      <!-- Dynamic Background -->
+      <div class={styles.heroBg} aria-hidden="true">
+        <img src={heroImage} alt="" />
+      </div>
+      <!-- Deep Green Overlay -->
+      <div class={styles.heroOverlay} aria-hidden="true"></div>
+
+      <div class="container">
+        <div class={styles.headerContent}>
+          {breadcrumbs.length > 0 && (
+            <div class={styles.breadcrumbs}>
+              <a href="/" class={styles.breadcrumbLink}>Home</a>
+              {breadcrumbs.map((bc) => (
+                <>
+                  <span class={styles.separator}>/</span>
+                  <a href={bc.href} class={styles.breadcrumbLink}>{bc.label}</a>
+                </>
+              ))}
+            </div>
+          )}
+          <h1 class={styles.pageTitle}>{title}</h1>
+          {subtitle && <p class={styles.pageDesc}>{subtitle}</p>}
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <section class={styles.mainContent}>
+      <div class="container">
+        <div class={styles.contentCard}>
+          <slot>
+            <div class={styles.placeholderState}>
+              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+              </svg>
+              <h2>Page Under Construction</h2>
+              <p>The content for <strong>{title}</strong> is currently being developed and will be available soon.</p>
+            </div>
+          </slot>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  main {
+    /* Base navbar height padding if navbar relies on it */
+  }
+</style>

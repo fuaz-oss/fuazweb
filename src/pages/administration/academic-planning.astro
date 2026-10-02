@@ -1,0 +1,306 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Directorate of Academic Planning" 
+  subtitle="Driving academic excellence, NUC accreditation, curriculum development, and strategic institutional growth."
+  heroImage="/media/DSC_4819.webp"
+  breadcrumbs={[
+    { label: 'Administration', href: '/administration' },
+    { label: 'Academic Planning', href: '/administration/academic-planning' }
+  ]}
+>
+  <div class={`${styles.contentWrapper} ${styles.splitLayout}`}>
+
+    <!-- Sticky Sidebar / Profile -->
+    <aside class={styles.stickySidebar}>
+      <div class={styles.vcImgWrap}>
+        <img
+          src="/media/aliyu_muhammad.webp"
+          alt="Dr. Aliyu Muhammad, Director of Academic Planning (DAP), FUAZ"
+        />
+      </div>
+      <h2 class={styles.vcTitle}>Dr. Aliyu Muhammad</h2>
+      <p class={styles.vcRole}>Director of Academic Planning (DAP)</p>
+      <p class={styles.vcRole} style="margin-top:0.3rem; color:#555; font-size:0.85rem; text-transform:none; letter-spacing:0; font-weight:600;">Directorate of Academic Planning</p>
+
+      <!-- Profile Details -->
+      <ul class="sidebar-details">
+        <li>
+          <span class="detail-label">Highest Qualification</span>
+          <span class="detail-value">PhD — Analytical/Environmental Chemistry</span>
+        </li>
+        <li>
+          <span class="detail-label">Assumed Office</span>
+          <span class="detail-value">2026</span>
+        </li>
+        <li>
+          <span class="detail-label">Category</span>
+          <span class="detail-value">Director (DAP)</span>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <div>
+      <h2 class={styles.heading2}>Director's Biography</h2>
+      <p class={`${styles.paragraph} ${styles.dropCap}`}>
+        <strong>Dr. Aliyu Muhammad</strong> was born in Zuru, Kebbi State, Nigeria. He obtained his Bachelor of Science and Master of Science degrees at Usmanu Danfodio University, Sokoto in 1997 and 2011 respectively. He served with the Kebbi State Ministry of Education from 2000 to 2007, before transferring his service to Kebbi State University of Science and Technology, Aliero in 2007.
+      </p>
+
+      <p class={styles.paragraph}>
+        Dr. Aliyu Muhammad obtained his <strong>PhD in Analytical/Environmental Chemistry</strong> from Universiti Putra Malaysia (UPM) in 2017. He is currently a Lecturer in the Department of Chemistry at the Federal University of Agriculture Zuru, Kebbi State, and serves as the <strong>Director of Academic Planning (DAP)</strong> at FUAZ.
+      </p>
+
+      <blockquote class={styles.blockquote}>
+        "Spearheading academic quality assurance, program accreditation compliance with NUC, and strategic expansion of degree offerings to meet national agricultural and technological priorities."
+      </blockquote>
+
+      <h2 class={styles.heading2}>Areas of Specialisation</h2>
+      <ul class={styles.list}>
+        <li><strong>Applied Environmental Chemistry</strong></li>
+        <li><strong>Academic Programme Planning &amp; NUC Accreditation</strong></li>
+        <li><strong>University Strategic Resource Allocation &amp; Development</strong></li>
+        <li><strong>Academic Governance &amp; Curriculum Design</strong></li>
+      </ul>
+
+      <h2 class={styles.heading2}>Key Responsibilities</h2>
+      <ul class={styles.list}>
+        <li><strong>NUC Accreditation &amp; Resource Verification:</strong> Coordinating national accreditation exercises and resource verification visits by the National Universities Commission (NUC) across all university colleges.</li>
+        <li><strong>Curriculum &amp; Academic Programmes:</strong> Facilitating the design, approval, and periodic review of academic curricula for undergraduate, postgraduate, and diploma offerings.</li>
+        <li><strong>Senate Operations Liaison:</strong> Working closely with the University Senate to formulate academic policies, regulate calendars, and monitor academic performance standards.</li>
+        <li><strong>Institutional Statistics &amp; Data Intelligence:</strong> Collating and analyzing student enrollment, staff-to-student ratios, and academic growth metrics for decision support.</li>
+      </ul>
+
+      <h2 class={styles.heading2}>Key Officials &amp; Unit Leadership</h2>
+      <div class="officials-grid">
+
+        <!-- Mrs. Amina Fatima Mohammed -->
+        <div class="official-card">
+          <div class="official-badge">PAR</div>
+          <div class="official-info">
+            <h3>Mrs. Amina Fatima Mohammed</h3>
+            <p class="official-title">Principal Assistant Registrar (PAR)</p>
+            <p class="official-sub">Head of Academic Planning Unit · SP. No: FUAZ/SP/0184</p>
+            <div class="official-meta">
+              <span><strong>Qualification:</strong> M.Sc. Public Administration (2018)</span>
+              <span><strong>Present Rank:</strong> PAR (CONTISS 13/3)</span>
+            </div>
+            <p class="official-bio">
+              Mrs. Mohammed exhibits outstanding administrative leadership, high professional integrity, and meticulous mastery of university regulations. She efficiently coordinates Senate operations, NUC accreditation exercises, and official university publications with distinction.
+            </p>
+          </div>
+        </div>
+
+        <!-- Mr. Bashar Alhassan -->
+        <div class="official-card">
+          <div class="official-img-wrap">
+            <img src="/media/bashar_alhassan.webp" alt="Mr. Bashar Alhassan, DAP Staff" />
+          </div>
+          <div class="official-info">
+            <h3>Mr. Bashar Alhassan</h3>
+            <p class="official-title">Administrative Officer</p>
+            <p class="official-sub">Directorate of Academic Planning</p>
+            <div class="official-meta">
+              <span><strong>Qualification:</strong> B.Sc. Education (Mathematics)</span>
+              <span><strong>First Appt (FUAZ):</strong> March, 2022</span>
+            </div>
+            <p class="official-bio">
+              Mr. Bashar Alhassan was born on 1st June, 1988 in Shinkafi LGA, Zamfara State. He obtained his B.Sc. in Education (Mathematics) from Usmanu Danfodiyo University, Sokoto (2010), and served at Alex Ekwueme Federal University, Ndufu-Alike, Ebonyi State from 2014 to 2022 before joining FUAZ.
+            </p>
+          </div>
+        </div>
+
+        <!-- Mr. Suleiman Buba Bayo -->
+        <div class="official-card">
+          <div class="official-img-wrap">
+            <img src="/media/suleiman_bayo.webp" alt="Mr. Suleiman Buba Bayo, Planning Officer I" />
+          </div>
+          <div class="official-info">
+            <h3>Mr. Suleiman Buba Bayo</h3>
+            <p class="official-title">Planning Officer I</p>
+            <p class="official-sub">Directorate of Academic Planning</p>
+            <div class="official-meta">
+              <span><strong>Qualification:</strong> B.Sc. Statistics, PGD</span>
+              <span><strong>First Appt (FUAZ):</strong> March, 2022</span>
+            </div>
+            <p class="official-bio">
+              Born on 5th May 1989 in Biryel, Bayo LGA of Borno State. Attended Guburnde Primary School (1999) and GSSSS Biu (2005). Graduated with a Bachelor of Science in Statistics from the University of Maiduguri (2012) and holds a Postgraduate Diploma. Serving as Planning Officer I at FUAZ since March 2022.
+            </p>
+          </div>
+        </div>
+
+        <!-- Mr. Anas Maiwada Abubakar -->
+        <div class="official-card">
+          <div class="official-img-wrap">
+            <img src="/media/anas_maiwada.webp" alt="Mr. Anas Maiwada Abubakar, Key Official" />
+          </div>
+          <div class="official-info">
+            <h3>Mr. Anas Maiwada Abubakar</h3>
+            <p class="official-title">Planning &amp; Quality Assurance Officer</p>
+            <p class="official-sub">Key Official · Directorate of Academic Planning</p>
+            <div class="official-meta">
+              <span><strong>Qualification:</strong> M.Sc.</span>
+              <span><strong>Unit:</strong> Academic Standards &amp; Planning</span>
+            </div>
+            <p class="official-bio">
+              Mr. Anas Maiwada Abubakar serves as a Key Official within the Directorate of Academic Planning, managing academic standards, data intelligence, and institutional performance monitoring across departments.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class={styles.importantBox}>
+        <strong>Directorate Contact &amp; Inquiries:</strong> For inquiries regarding NUC accreditation, new program proposals, or academic planning guidelines, visit the Directorate of Academic Planning office located at the Main Administrative Building, FUAZ Campus, Zuru, during official working hours (8:00 AM – 4:00 PM).
+      </div>
+    </div>
+
+  </div>
+</GenericPageLayout>
+
+<style>
+  /* ── Sidebar detail list ────────────────────────── */
+  .sidebar-details {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    border-top: 1px solid rgba(0,0,0,0.07);
+    padding-top: 1.25rem;
+  }
+
+  .sidebar-details li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .detail-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #999;
+  }
+
+  .detail-value {
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  /* ── Officials Grid ───────────────────────────────── */
+  .officials-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 1.5rem 0 2.5rem 0;
+  }
+
+  .official-card {
+    display: flex;
+    gap: 1.25rem;
+    background: #f8faf9;
+    border: 1px solid rgba(0, 102, 51, 0.12);
+    border-left: 4px solid var(--gl-green-deep, #006633);
+    border-radius: 10px;
+    padding: 1.25rem;
+    position: relative;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .official-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  }
+
+  .official-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--gl-gold, #c59b27);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  .official-img-wrap {
+    width: 100px;
+    height: 120px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .official-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .official-info {
+    flex: 1;
+  }
+
+  .official-info h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.15rem;
+    color: var(--gl-green-deep, #006633);
+    font-weight: 700;
+  }
+
+  .official-title {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #222;
+  }
+
+  .official-sub {
+    margin: 0.1rem 0 0.75rem 0;
+    font-size: 0.78rem;
+    color: #666;
+  }
+
+  .official-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.4rem;
+    background: #ffffff;
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    font-size: 0.82rem;
+    color: #444;
+    margin-bottom: 0.75rem;
+  }
+
+  .official-bio {
+    font-size: 0.88rem;
+    color: #444;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .official-card {
+      flex-direction: column;
+    }
+    .official-img-wrap {
+      width: 90px;
+      height: 110px;
+    }
+  }
+</style>

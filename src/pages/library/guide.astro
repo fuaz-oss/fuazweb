@@ -1,0 +1,21 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Library User Guide" 
+  subtitle="Basic instructions for navigating the FUAZ library."
+  heroImage="/media/DSC_4895.webp"
+  breadcrumbs={[
+    { label: 'Library', href: '/library' },
+    { label: 'User Guide', href: '/library/guide' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Orientation for Freshmen</h2>
+    <p class={styles.paragraph}>
+      All newly admitted students must attend the mandatory library orientation tour during the first week of resumption. This tour teaches the Dewey Decimal Classification system used to locate hard-copy books on the shelves.
+    </p>
+  </div>
+</GenericPageLayout>

@@ -1,0 +1,32 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Ask a Librarian" 
+  subtitle="Dedicated research assistance for complex academic queries."
+  heroImage="/media/DSC_4895.webp"
+  breadcrumbs={[
+    { label: 'Library', href: '/library' },
+    { label: 'Ask a Librarian', href: '/library/contact' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Research Assistance</h2>
+    <p class={styles.paragraph}>
+      Navigating agricultural databases and advanced scientific journals can be overwhelming. The "Ask a Librarian" service connects students and faculty directly with subject-matter library specialists who can assist with literature reviews, citation formatting, and resource discovery.
+    </p>
+
+    <h2 class={styles.heading2}>How to Reach Us</h2>
+    <ul class={styles.list}>
+      <li><strong>Walk-In:</strong> Visit the Reference Desk on the ground floor of the Main Library during normal operating hours. No appointment is necessary.</li>
+      <li><strong>Email:</strong> Send specific research or OPAC integration queries to <code>reference@library.fuaz.edu.ng</code>. We aim to respond within 24 hours.</li>
+      <li><strong>Live Chat:</strong> Use the chat widget on the e-Library portal for immediate assistance between 9:00 AM and 4:00 PM (Monday - Friday).</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      Plagiarism Checks: If you need to run your dissertation manuscript through the Turnitin platform, please schedule an appointment directly with the Systems Librarian.
+    </div>
+  </div>
+</GenericPageLayout>

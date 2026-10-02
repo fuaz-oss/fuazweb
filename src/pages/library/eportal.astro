@@ -1,0 +1,33 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="e-Library Portal" 
+  subtitle="Access global scientific databases from anywhere on campus."
+  heroImage="/media/DSC_4897.webp"
+  breadcrumbs={[
+    { label: 'Library', href: '/library' },
+    { label: 'e-Library', href: '/library/eportal' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Seamless Digital Access</h2>
+    <p class={styles.paragraph}>
+      The e-Library portal provides authenticated access to premium, subscription-based agricultural, scientific, and engineering databases. These resources are strictly IP-restricted; you must be connected to the campus <strong>Eduroam Wi-Fi</strong> network or logged in via the institutional VPN to access full-text downloads.
+    </p>
+
+    <h2 class={styles.heading2}>Subscribed Databases</h2>
+    <ul class={styles.list}>
+      <li><strong>JSTOR:</strong> Access to archived academic journals, primary sources, and books.</li>
+      <li><strong>AGORA (Research4Life):</strong> Access to global research in agriculture, environmental science, and related biological sciences.</li>
+      <li><strong>African Journals OnLine (AJOL):</strong> The world's largest online collection of African-published, peer-reviewed journals.</li>
+      <li><strong>ProQuest Agricultural Science Collection:</strong> Comprehensive coverage of agricultural research and veterinary science literature.</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Remote VPN Access:</strong> If you are a student currently off-campus conducting fieldwork, you can request remote OpenVPN access from the Directorate of ICT to utilize the e-Library databases.
+    </div>
+  </div>
+</GenericPageLayout>

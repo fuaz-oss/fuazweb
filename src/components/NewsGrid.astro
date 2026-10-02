@@ -1,0 +1,168 @@
+---
+import styles from './NewsGrid.module.css';
+const newsItems: { id: string; tag: string; date: string; title: string; excerpt: string | null; image: string | null; size: string }[] = [];
+
+const tagColors: Record<string, string> = {
+  Notice: 'tagNotice',
+  HR:     'tagHR',
+  Event:  'tagEvent',
+  News:   'tagNews',
+};
+
+const tags = ['All', ...new Set(newsItems.map(item => item.tag))];
+
+const labelMap: Record<string, string> = {
+  All: 'All Updates',
+  Notice: 'Notices',
+  HR: 'HR & Staff',
+  Event: 'Events',
+  News: 'News'
+};
+---
+
+<section class={styles.section} id="news-section" aria-label="Latest News and Notices">
+
+  <!-- ── Section header ── -->
+  <div class="container">
+    <div class={styles.header}>
+      <div class={styles.headerLeft}>
+        <div class={styles.eyebrow}>
+          <span class={styles.eyebrowLine}></span>
+          <span>University Updates</span>
+        </div>
+        <h2 class={styles.heading}>Latest News<br/>&amp; Notices</h2>
+      </div>
+      <div class={styles.headerRight}>
+        <p class={styles.subtext}>
+          Stay updated with the most recent developments and
+          academic announcements from the university.
+        </p>
+
+        <div class={styles.filterContainer}>
+          {tags.map(tag => (
+            <button class={styles.filterBtn} data-filter={tag} data-active={tag === 'All' ? 'true' : 'false'}>
+              {labelMap[tag] ?? tag}
+            </button>
+          ))}
+        </div>
+
+        <a href="/news" class={styles.allLink} aria-label="View all news and notices">
+          View all updates
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── Bento grid ── -->
+    <div class={styles.bentoGrid} role="list">
+      {newsItems.length ? newsItems.map((item) => (
+        <article
+          class={`${styles.card} ${styles[item.size]}`}
+          role="listitem"
+          data-category={item.tag}
+          data-reveal
+        >
+          <!-- Background image -->
+          <div class={styles.imgWrap} aria-hidden="true">
+            <img
+              src={item.image || '/images/placeholders/news-default.jpg'}
+              alt=""
+              class={styles.img}
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Gradient scrim -->
+          <div class={styles.scrim} aria-hidden="true"></div>
+
+          <!-- Top row: tag + date -->
+          <div class={styles.topRow}>
+            <span class={`${styles.tag} ${styles[tagColors[item.tag] ?? 'tagNews']}`}>
+              {item.tag}
+            </span>
+            <time class={styles.date} datetime={item.date}>{item.date}</time>
+          </div>
+
+          <!-- Bottom content -->
+          <div class={styles.cardContent}>
+            {item.excerpt && item.size === 'large' && (
+              <p class={styles.excerpt}>{item.excerpt}</p>
+            )}
+            <h3 class={styles.cardTitle}>{item.title}</h3>
+            <a href={`/news/${item.id}`} class={styles.readMore} aria-label={`Read more: ${item.title}`}>
+              <span>Read more</span>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M1.5 6h9M7 2.5l3.5 3.5L7 9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Hover border flash -->
+          <div class={styles.hoverBorder} aria-hidden="true"></div>
+        </article>
+        )) : (
+          <p class={styles.subtext}>University news and notices will be published here.</p>
+        )}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const revealCards = document.querySelectorAll('[data-reveal]');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+        setTimeout(() => {
+          (entry.target as HTMLElement).classList.add('ng-revealed');
+        }, i * 80);
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealCards.forEach(c => revealObs.observe(c));
+
+  // Filter Logic - Scoped to this section
+  (function() {
+    const section = document.getElementById('news-section');
+    if (!(section instanceof HTMLElement)) return;
+
+    const filterBtns = section.querySelectorAll('[data-filter]');
+    const articles = section.querySelectorAll('[data-category]');
+
+    filterBtns.forEach(btn => {
+      if (!(btn instanceof HTMLButtonElement)) return;
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Update active styling
+        filterBtns.forEach(b => {
+          if (b instanceof HTMLElement) b.setAttribute('data-active', 'false');
+        });
+        btn.setAttribute('data-active', 'true');
+        
+        const filter = btn.getAttribute('data-filter');
+        if (filter === null) return;
+        
+        articles.forEach(article => {
+          if (!(article instanceof HTMLElement)) return;
+          const category = article.getAttribute('data-category');
+          if (filter === 'All' || category === filter) {
+            // Show item
+            article.style.display = '';
+            // Micro-delay to re-trigger reveal animation
+            article.classList.remove('ng-revealed');
+            requestAnimationFrame(() => {
+              setTimeout(() => article.classList.add('ng-revealed'), 10);
+            });
+          } else {
+            // Hide item
+            article.style.display = 'none';
+          }
+        });
+      });
+    });
+  })();
+</script>

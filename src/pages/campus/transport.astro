@@ -1,0 +1,31 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Campus Shuttle & Transport" 
+  subtitle="Seamless mobility across the expansive university grounds."
+  heroImage="/media/DSC_4840.webp"
+  breadcrumbs={[
+    { label: 'Campus', href: '/campus' },
+    { label: 'Transport', href: '/campus/transport' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>FUAZ Mass Transit</h2>
+    <p class={styles.paragraph}>
+      Due to the vast expanse of the university footprint—comprising farmlands, academic cores, and satellite clinics—the university operates a subsidized shuttle system heavily utilized by students residing both on and off-campus.
+    </p>
+
+    <h2 class={styles.heading2}>Transit Routes (SUG Supervised)</h2>
+    <ul class={styles.list}>
+      <li><strong>Zuru Town Route:</strong> Commercial buses registered with the university convey students from the Zuru metropolis directly to the main campus gate.</li>
+      <li><strong>Intra-Campus Shuttle:</strong> University-owned coaster buses cycle internally, transporting students from the hostel blocks to the distant College of Agriculture and the University Farm.</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Motorcycle Ban:</strong> Commercial motorcycles (Okada) are strictly prohibited from passing the main university gate. Students must dismount and board the campus tricycles (Keke) or designated shuttle buses.
+    </div>
+  </div>
+</GenericPageLayout>

@@ -1,0 +1,25 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Course Registration System" 
+  subtitle="Select your academic pathways for the semester."
+  heroImage="/media/DSC_4788.webp"
+  breadcrumbs={[
+    { label: 'Portal', href: '/portal' },
+    { label: 'Courses', href: '/portal/courses' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Registration Protocols</h2>
+    <p class={styles.paragraph}>
+      Course registration is completely digital. Students must map out their core courses and university electives (like GST and Entrepreneurship) during the first two weeks of resumption.
+    </p>
+
+    <div class={styles.importantBox}>
+      <strong>Late Registration:</strong> Courses added after the first two weeks will attract a late registration penalty fee of ₦5,000, payable via Remita. Registration completely closes four weeks into the semester.
+    </div>
+  </div>
+</GenericPageLayout>

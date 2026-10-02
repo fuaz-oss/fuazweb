@@ -1,0 +1,45 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Bursar's Office" 
+  subtitle="Ensuring financial transparency, integrity, and sustainability."
+  heroImage="/media/bursar_hero.webp"
+  breadcrumbs={[
+    { label: 'Administration', href: '/administration' },
+    { label: 'Bursar', href: '/administration/bursar' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <div class={styles.splitLayout}>
+      <div class={styles.sidebar}>
+        <div class={styles.profileCard}>
+          <img src="/media/bursar.webp" alt="Dr. Abdulrasheed A. Ahmed, University Bursar" class={styles.profileImg} />
+        </div>
+      </div>
+      
+      <div class={styles.mainContent}>
+        <h2 class={styles.heading2}>Responsibilities</h2>
+        <p class={styles.paragraph}>
+          The Bursar is the Chief Financial Officer of the University and is accountable to the Vice-Chancellor for the day-to-day administration and control of the financial affairs of the University. The Bursary oversees budgeting, procurement validation, staff payroll, and student fee collection.
+        </p>
+
+        <div style="border-radius: 12px; overflow: hidden; margin: 1.5rem 0; box-shadow: 0 4px 14px rgba(0,0,0,0.08);">
+          <img src="/media/bursar_hero.webp" alt="Dr. Abdulrasheed A. Ahmed, University Bursary Operations" style="width: 100%; height: 260px; object-fit: cover;" />
+          <p style="padding: 0.75rem 1rem; font-size: 0.88rem; color: #555; background: #f9f9f9; margin: 0;">Bursary Financial Administration & Treasury Management</p>
+        </div>
+
+        <h2 class={styles.heading2}>Payment Protocols</h2>
+        <p class={styles.paragraph}>
+          FUAZ operates a strict cashless policy via the Federal Treasury Single Account (TSA) network. No cash payments should be made to any staff member or ad-hoc agent for any university service.
+        </p>
+        <ul class={styles.list}>
+          <li>All school fees must be paid through the Remita platform via the student portal.</li>
+          <li>Vendors must be fully registered with the Bureau of Public Procurement (BPP) before submitting invoices to the Bursary.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</GenericPageLayout>

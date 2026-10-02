@@ -1,0 +1,668 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import AppraisalPdfButton from '../../components/appraisal/AppraisalPdfButton';
+---
+
+<Layout title="Junior Staff APER & Summary (CONTISS 1–5) — FUAZ Appraisal Portal">
+  <Navbar />
+
+  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <style is:inline>
+    :root {
+      --primary-green: #0F592F;
+      --secondary-green: #1a7a42;
+      --light-green: #e9f2eb;
+      --gold: #D4AF37;
+      --light-gold: #fcf6e3;
+      --text-dark: #333;
+      --border-color: #ccc;
+    }
+    body { font-family: 'Calibri', 'Segoe UI', Arial, sans-serif; background: #e2e8e4; color: var(--text-dark); font-size: 11pt; }
+    .form-page-wrapper { padding: 110px 15px 90px; max-width: 1400px; margin: 0 auto; }
+    .form-container {
+      background: #fff; max-width: 950px; margin: 0 auto 40px; padding: 36px 46px;
+      border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,.08);
+      border: 1px solid var(--border-color); border-top: 8px solid var(--primary-green);
+      page-break-after: always;
+    }
+    .form-container.wide { max-width: 1100px; padding: 36px 28px; }
+    .university-header { text-align: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 3px solid var(--gold); }
+    .university-logo-img { width: 85px; height: 85px; object-fit: contain; margin: 0 auto 8px; display: block; }
+    .university-title { color: var(--primary-green); font-size: 22px; font-weight: bold; margin: 0 0 4px; text-transform: uppercase; }
+    .office-title { color: var(--secondary-green); font-size: 15px; font-weight: bold; margin: 0 0 8px; }
+    .form-title { background: var(--primary-green); color: #fff; padding: 9px; font-size: 14px; text-transform: uppercase; border-radius: 4px; margin: 12px 0; line-height: 1.4; }
+    .confidential-tag { color: #c62828; font-weight: bold; text-decoration: underline; letter-spacing: 1.5px; text-align: center; margin-bottom: 12px; }
+    .section-header { background: var(--light-green); color: var(--primary-green); padding: 7px 11px; border-left: 4px solid var(--gold); font-weight: bold; font-size: 13px; margin: 22px 0 12px; text-transform: uppercase; }
+    .flex-row { display: flex; align-items: center; margin-bottom: 10px; gap: 8px; flex-wrap: wrap; }
+    .label { font-weight: bold; white-space: nowrap; }
+    .form-input { flex-grow: 1; border: none; border-bottom: 1px solid #555; background: transparent; font-family: inherit; font-size: 11pt; padding: 3px 4px; outline: none; min-width: 90px; }
+    .form-input:focus { border-bottom: 2px solid var(--primary-green); background: #f8faf9; }
+    .form-textarea { width: 100%; border: 1px solid var(--border-color); border-radius: 4px; padding: 8px; font-family: inherit; font-size: 11pt; resize: vertical; box-sizing: border-box; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0 8px; font-size: 10pt; }
+    th, td { border: 1px solid var(--border-color); padding: 0; }
+    th { background: var(--primary-green); color: #fff; font-weight: bold; text-align: center; padding: 7px; }
+    .sub-th { background: var(--secondary-green); color: #fff; font-size: 9pt; text-align: center; }
+    td input[type="text"], td input[type="number"], td input[type="date"], td textarea {
+      width: 100%; box-sizing: border-box; border: none; background: transparent; font-family: inherit; font-size: inherit; padding: 7px; outline: none;
+    }
+    td:first-child { text-align: center; padding: 7px; width: 38px; }
+    .signature-area { display: flex; justify-content: space-between; margin-top: 32px; margin-bottom: 16px; }
+    .sign-block { width: 45%; text-align: center; }
+    .note { background: var(--light-gold); border-left: 4px solid var(--gold); padding: 9px 12px; margin-bottom: 16px; font-size: 10pt; }
+    .row-btn-group { display: flex; gap: 8px; margin: 6px 0 18px; }
+    .add-row-btn, .remove-row-btn {
+      border-radius: 6px; font-size: 9pt; font-weight: bold; cursor: pointer; padding: 6px 13px;
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .add-row-btn { background: var(--light-green); color: var(--primary-green); border: 1px solid var(--secondary-green); }
+    .add-row-btn:hover { background: var(--primary-green); color: #fff; }
+    .remove-row-btn { background: #fdf2f2; color: #c62828; border: 1px solid #ef9a9a; }
+    .remove-row-btn:hover { background: #c62828; color: #fff; }
+    .action-bar {
+      position: fixed; bottom: 22px; right: 22px; background: #fff; padding: 11px 18px;
+      border-radius: 50px; box-shadow: 0 10px 28px rgba(0,0,0,.22); display: flex; gap: 10px; z-index: 1000;
+    }
+    .btn {
+      background: var(--primary-green); color: #fff; border: none; padding: 9px 18px; border-radius: 30px;
+      font-family: inherit; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 7px; text-decoration: none;
+    }
+    .btn:hover { background: var(--secondary-green); }
+    #loading-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(255,255,255,.93); z-index: 2000;
+      justify-content: center; align-items: center; flex-direction: column; font-weight: bold; color: var(--primary-green); font-size: 17px;
+    }
+    .table-responsive { width: 100%; overflow-x: auto; margin: 12px 0 8px; }
+    .table-responsive table { min-width: 640px; margin: 0; }
+    .score-cell { text-align: center !important; padding: 6px !important; }
+    .score-cell input[type="radio"] { width: 15px; height: 15px; accent-color: var(--primary-green); cursor: pointer; }
+    .rec-row { margin: 8px 0; display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
+    .rec-row label { display: flex; align-items: flex-start; gap: 7px; cursor: pointer; font-weight: 500; }
+    .rec-row input[type="checkbox"] { width: 15px; height: 15px; margin-top: 2px; accent-color: var(--primary-green); }
+
+    @media print {
+      .action-bar, .row-btn-group, .add-row-btn, .remove-row-btn, header, footer, #loading-overlay { display: none !important; }
+      body { background: #fff !important; }
+      .form-page-wrapper { padding: 0 !important; }
+      .form-container, .form-container.wide {
+        width: 100% !important; max-width: 100% !important; box-shadow: none !important;
+        border: 1px solid #999 !important; border-top: 6px solid #0F592F !important;
+        margin: 0 0 18pt 0 !important; padding: 18pt 22pt !important; page-break-after: always !important;
+      }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    }
+    body.pdf-exporting .form-container { box-shadow: none !important; border: 1px solid #999 !important; border-top: 6px solid #0F592F !important; page-break-after: always !important; }
+    body.pdf-exporting .row-btn-group { display: none !important; }
+
+    @media (max-width: 768px) {
+      .form-page-wrapper { padding: 75px 8px 100px; }
+      .form-container, .form-container.wide { padding: 16px 12px; }
+      .university-title { font-size: 15px; }
+      .form-title { font-size: 12px; }
+      .flex-row { flex-direction: column; align-items: stretch; }
+      .form-input { border: 1px solid #ccc; border-radius: 6px; padding: 8px 10px; background: #fcfdfe; }
+      .action-bar { left: 50%; right: auto; transform: translateX(-50%); width: 94%; max-width: 420px; bottom: 14px; }
+    }
+  </style>
+
+  <div id="loading-overlay">
+    <div style="font-size:38px;margin-bottom:12px;">⏳</div>
+    <div id="loading-text">Generating PDF…</div>
+  </div>
+
+  <div class="action-bar">
+    <a href="/appraisal" class="btn" style="background:#555;">← Back</a>
+    <button class="btn" style="background:#D4AF37;color:#111;" onclick="fillSampleData()">✨ Sample Data</button>
+    <AppraisalPdfButton client:only="react" formType="junior" />
+  </div>
+
+  <div class="form-page-wrapper">
+    <div id="form-to-print">
+
+      <!-- ========== JUNIOR APER (PORTRAIT) ========== -->
+      <div class="form-container" id="form-aper-portrait">
+        <div class="university-header">
+          <img src="/logo.webp" alt="FUAZ Logo" class="university-logo-img" />
+          <h1 class="university-title">Federal University of Agriculture Zuru</h1>
+          <h2 class="office-title">OFFICE OF THE REGISTRAR</h2>
+          <div class="form-title">ANNUAL PERFORMANCE EVALUATION REPORT FOR JUNIOR STAFF ON CONTISS 1–5</div>
+          <div class="confidential-tag">CONFIDENTIAL</div>
+        </div>
+
+        <div class="flex-row">
+          <span class="label">PERIOD OF REPORT:</span>
+          <input type="text" class="form-input" id="period">
+          <span class="label" style="margin-left:16px;">JP No:</span>
+          <input type="text" class="form-input" style="flex:0.4" id="jpNo">
+        </div>
+
+        <div class="note">
+          <strong>NOTE:</strong> This form should be completed by all Junior Staff and submitted by Head of Department to the Junior Staff Establishment.
+        </div>
+
+        <div class="section-header">PART A: TO BE COMPLETED BY STAFF</div>
+
+        <div class="flex-row">
+          <span class="label">1. Name:</span>
+          <input type="text" class="form-input" id="surname" placeholder="Surname">
+          <input type="text" class="form-input" id="otherNames" placeholder="Other Names">
+        </div>
+        <div class="flex-row">
+          <span class="label">2. Date of Birth:</span>
+          <input type="date" class="form-input" style="flex:0.4" id="dob">
+          <span class="label">Married/Single:</span>
+          <input type="text" class="form-input" style="flex:0.3" id="marital">
+        </div>
+        <div class="flex-row"><span class="label">3. Registered Domicile:</span><input type="text" class="form-input" id="domicile"></div>
+        <div class="flex-row">
+          <span class="label">4. Department:</span>
+          <input type="text" class="form-input" id="dept">
+          <span class="label">Phone No.:</span>
+          <input type="text" class="form-input" style="flex:0.45" id="phone">
+        </div>
+        <div class="flex-row"><span class="label">5. Date, Rank, CONTISS & Step on First Appointment:</span><input type="text" class="form-input" id="firstAppt"></div>
+        <div class="flex-row"><span class="label">6. Date of Confirmation of Appointment:</span><input type="date" class="form-input" style="flex:0.45" id="confirmDate"></div>
+        <div class="flex-row"><span class="label">7. Date of Last Promotion:</span><input type="date" class="form-input" style="flex:0.45" id="lastPromo"></div>
+        <div class="flex-row">
+          <span class="label">8. Present Rank:</span>
+          <input type="text" class="form-input" id="presentRank">
+          <span class="label">CONTISS:</span>
+          <input type="text" class="form-input" style="flex:0.2" id="contiss">
+          <span class="label">Step:</span>
+          <input type="text" class="form-input" style="flex:0.15" id="step">
+        </div>
+        <div class="flex-row"><span class="label">Rank Applied For:</span><input type="text" class="form-input" id="rankApplied"></div>
+
+        <h4 style="margin:14px 0 6px;">9. Appointment and Promotion</h4>
+        <div class="table-responsive">
+          <table id="tbl-jr-appointments">
+            <thead>
+              <tr><th width="8%">S/N</th><th>Appointment / Promotion</th><th width="28%">Date</th><th width="30%">Position / Salary Scale/Step</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td style="padding-left:8px;">1st Appointment</td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td>2</td><td style="padding-left:8px;">1st Promotion</td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td>3</td><td style="padding-left:8px;">2nd Promotion</td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td>4</td><td style="padding-left:8px;">3rd Promotion</td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td>5</td><td style="padding-left:8px;">4th Promotion</td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 style="margin:14px 0 6px;">10. Period of Leave of Absence from University</h4>
+        <div class="table-responsive">
+          <table id="tbl-jr-leave">
+            <thead>
+              <tr><th width="8%">S/N</th><th>Date</th><th>Position</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td>2</td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td>3</td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row-btn-group">
+          <button type="button" class="add-row-btn" onclick="addTableRow('tbl-jr-leave',['sn','text','text'])">➕ Add Row</button>
+          <button type="button" class="remove-row-btn" onclick="removeTableRow('tbl-jr-leave')">🗑️ Remove</button>
+        </div>
+
+        <h4 style="margin:14px 0 6px;">11. Criteria for Performance Evaluation</h4>
+        <p style="font-size:10pt;margin-bottom:6px;">Educational/Professional Qualification(s) with dates since first appointment:</p>
+        <div class="table-responsive">
+          <table id="tbl-jr-qual">
+            <thead>
+              <tr>
+                <th>Name of School Attended</th>
+                <th colspan="2">Period</th>
+                <th>Certificate/Diploma/Trade Test obtained</th>
+              </tr>
+              <tr>
+                <th></th>
+                <th class="sub-th">From</th>
+                <th class="sub-th">To</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row-btn-group">
+          <button type="button" class="add-row-btn" onclick="addTableRow('tbl-jr-qual',['text','text','text','text'])">➕ Add Row</button>
+          <button type="button" class="remove-row-btn" onclick="removeTableRow('tbl-jr-qual')">🗑️ Remove</button>
+        </div>
+
+        <div class="flex-row"><span class="label">Time on Rank:</span><input type="text" class="form-input" id="timeOnRank"></div>
+        <div class="flex-row"><span class="label">Work Experience:</span><input type="text" class="form-input" id="workExp"></div>
+
+        <div class="section-header">12. Certification by Staff</div>
+        <p>I certify that the information contained in part A is correct to the best of my knowledge.</p>
+        <div class="signature-area">
+          <div class="sign-block">
+            <input type="text" class="form-input" style="width:100%;">
+            <div>Signature of Member Staff</div>
+          </div>
+          <div class="sign-block">
+            <input type="date" class="form-input" style="width:100%;">
+            <div>Date</div>
+          </div>
+        </div>
+
+        <!-- PART B -->
+        <div class="section-header" style="background:#333;color:#fff;border:none;text-align:center;">FOR OFFICIAL USE ONLY</div>
+        <div class="section-header">PART B: TO BE COMPLETED BY THE SUPERVISING OFFICER</div>
+
+        <div class="flex-row"><span class="label">1. For how long has the candidate worked under you:</span><input type="text" class="form-input" id="workedUnder"></div>
+        <p style="margin:10px 0 4px;">2. Rate the performance of the candidate for the period of assessment:</p>
+        <div class="note">
+          <strong>NB:</strong> Outstanding (10 points), Very Good (8 points), Satisfactory (6 points), Poor (4 points), Very Poor (2 points).
+        </div>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th width="6%">S/N</th><th>Criteria</th>
+                <th width="8%">10</th><th width="8%">8</th><th width="8%">6</th><th width="8%">4</th><th width="8%">2</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Quality of Work</td>
+                <td class="score-cell"><input type="radio" name="jr-s1" value="10"></td>
+                <td class="score-cell"><input type="radio" name="jr-s1" value="8"></td>
+                <td class="score-cell"><input type="radio" name="jr-s1" value="6"></td>
+                <td class="score-cell"><input type="radio" name="jr-s1" value="4"></td>
+                <td class="score-cell"><input type="radio" name="jr-s1" value="2"></td>
+              </tr>
+              <tr><td>2</td><td>Ability to Learn</td>
+                <td class="score-cell"><input type="radio" name="jr-s2" value="10"></td>
+                <td class="score-cell"><input type="radio" name="jr-s2" value="8"></td>
+                <td class="score-cell"><input type="radio" name="jr-s2" value="6"></td>
+                <td class="score-cell"><input type="radio" name="jr-s2" value="4"></td>
+                <td class="score-cell"><input type="radio" name="jr-s2" value="2"></td>
+              </tr>
+              <tr><td>3</td><td>Knowledge of work</td>
+                <td class="score-cell"><input type="radio" name="jr-s3" value="10"></td>
+                <td class="score-cell"><input type="radio" name="jr-s3" value="8"></td>
+                <td class="score-cell"><input type="radio" name="jr-s3" value="6"></td>
+                <td class="score-cell"><input type="radio" name="jr-s3" value="4"></td>
+                <td class="score-cell"><input type="radio" name="jr-s3" value="2"></td>
+              </tr>
+              <tr><td>4</td><td>Initiative and Constructive Thinking</td>
+                <td class="score-cell"><input type="radio" name="jr-s4" value="10"></td>
+                <td class="score-cell"><input type="radio" name="jr-s4" value="8"></td>
+                <td class="score-cell"><input type="radio" name="jr-s4" value="6"></td>
+                <td class="score-cell"><input type="radio" name="jr-s4" value="4"></td>
+                <td class="score-cell"><input type="radio" name="jr-s4" value="2"></td>
+              </tr>
+              <tr><td>5</td><td>Leadership Qualities</td>
+                <td class="score-cell"><input type="radio" name="jr-s5" value="10"></td>
+                <td class="score-cell"><input type="radio" name="jr-s5" value="8"></td>
+                <td class="score-cell"><input type="radio" name="jr-s5" value="6"></td>
+                <td class="score-cell"><input type="radio" name="jr-s5" value="4"></td>
+                <td class="score-cell"><input type="radio" name="jr-s5" value="2"></td>
+              </tr>
+              <tr><td>6</td><td>Dependability</td>
+                <td class="score-cell"><input type="radio" name="jr-s6" value="10"></td>
+                <td class="score-cell"><input type="radio" name="jr-s6" value="8"></td>
+                <td class="score-cell"><input type="radio" name="jr-s6" value="6"></td>
+                <td class="score-cell"><input type="radio" name="jr-s6" value="4"></td>
+                <td class="score-cell"><input type="radio" name="jr-s6" value="2"></td>
+              </tr>
+              <tr><td>7</td><td>Attitude to Work</td>
+                <td class="score-cell"><input type="radio" name="jr-s7" value="10"></td>
+                <td class="score-cell"><input type="radio" name="jr-s7" value="8"></td>
+                <td class="score-cell"><input type="radio" name="jr-s7" value="6"></td>
+                <td class="score-cell"><input type="radio" name="jr-s7" value="4"></td>
+                <td class="score-cell"><input type="radio" name="jr-s7" value="2"></td>
+              </tr>
+              <tr><td>8</td><td>Relationship with Staff/Public</td>
+                <td class="score-cell"><input type="radio" name="jr-s8" value="10"></td>
+                <td class="score-cell"><input type="radio" name="jr-s8" value="8"></td>
+                <td class="score-cell"><input type="radio" name="jr-s8" value="6"></td>
+                <td class="score-cell"><input type="radio" name="jr-s8" value="4"></td>
+                <td class="score-cell"><input type="radio" name="jr-s8" value="2"></td>
+              </tr>
+              <tr><td>9</td><td>Punctuality</td>
+                <td class="score-cell"><input type="radio" name="jr-s9" value="10"></td>
+                <td class="score-cell"><input type="radio" name="jr-s9" value="8"></td>
+                <td class="score-cell"><input type="radio" name="jr-s9" value="6"></td>
+                <td class="score-cell"><input type="radio" name="jr-s9" value="4"></td>
+                <td class="score-cell"><input type="radio" name="jr-s9" value="2"></td>
+              </tr>
+              <tr><td>10</td><td>Integrity</td>
+                <td class="score-cell"><input type="radio" name="jr-s10" value="10"></td>
+                <td class="score-cell"><input type="radio" name="jr-s10" value="8"></td>
+                <td class="score-cell"><input type="radio" name="jr-s10" value="6"></td>
+                <td class="score-cell"><input type="radio" name="jr-s10" value="4"></td>
+                <td class="score-cell"><input type="radio" name="jr-s10" value="2"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 style="margin:14px 0 6px;">The eligibility score for Promotion of the Candidate</h4>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th width="8%">S/N</th><th>Criteria</th><th width="30%">Score</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Qualification</td><td><input type="text"></td></tr>
+              <tr><td>2</td><td>Time on Rank</td><td><input type="text"></td></tr>
+              <tr><td>3</td><td>Work Experience</td><td><input type="text"></td></tr>
+              <tr><td>4</td><td>Professional Practice</td><td><input type="text"></td></tr>
+              <tr><td>5</td><td>Community Service</td><td><input type="text"></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section-header">General Comments</div>
+        <textarea class="form-textarea" rows="4" id="generalComments" placeholder="General comments on the candidate's performance…"></textarea>
+
+        <div class="section-header">Recommendation</div>
+        <div class="rec-row"><label><input type="checkbox"> Promotion to rank of:</label> <input type="text" class="form-input"></div>
+        <div class="rec-row"><label><input type="checkbox"> Conversion to the post of:</label> <input type="text" class="form-input"></div>
+        <div class="rec-row"><label><input type="checkbox"> No change of status but confirmation of appointment to retirement age.</label></div>
+        <div class="rec-row" style="flex-direction:column;"><label><input type="checkbox"> No change of status but confirmation for the following reason(s):</label><textarea class="form-textarea" rows="2" style="margin-top:6px;"></textarea></div>
+        <div class="rec-row"><label><input type="checkbox"> Renewal of contract.</label></div>
+        <div class="rec-row"><label><input type="checkbox"> No change of status.</label></div>
+        <div class="rec-row" style="flex-direction:column;"><label><input type="checkbox"> Termination of contract for the following reason(s):</label><textarea class="form-textarea" rows="2" style="margin-top:6px;"></textarea></div>
+        <div class="rec-row" style="flex-direction:column;"><label><input type="checkbox"> Reprimand for the following reason(s):</label><textarea class="form-textarea" rows="2" style="margin-top:6px;"></textarea></div>
+
+        <div style="margin-top:18px;">
+          <div class="flex-row"><span class="label">Name of Supervising Officer:</span><input type="text" class="form-input" id="supName"></div>
+          <div class="flex-row"><span class="label">Designation:</span><input type="text" class="form-input" id="supDesig"></div>
+          <div class="flex-row"><span class="label">Grade Level:</span><input type="text" class="form-input" style="flex:0.3" id="supGrade"></div>
+        </div>
+        <div class="signature-area">
+          <div class="sign-block"><input type="text" class="form-input" style="width:100%;"><div>Signature</div></div>
+          <div class="sign-block"><input type="date" class="form-input" style="width:100%;"><div>Date</div></div>
+        </div>
+
+        <!-- PART C -->
+        <div class="section-header">PART C: TO BE COMPLETED BY THE HEAD OF UNIT</div>
+        <div class="flex-row"><span class="label">1. For how long has the candidate worked under you:</span><input type="text" class="form-input" id="hodWorked"></div>
+        <p style="font-weight:bold;margin:10px 0 4px;">2. Endorsement of comments and recommendation of the supervising officer.</p>
+        <div class="note"><strong>NB:</strong> The assessment of candidate should be discussed with the supervising officer before endorsement or otherwise.</div>
+        <div class="rec-row"><label><input type="checkbox"> I endorse the comments and recommendation(s) of the supervising officer.</label></div>
+        <div class="rec-row" style="flex-direction:column;"><label><input type="checkbox"> I do not endorse the comments and recommendation(s) of the supervising officer for the following reason(s):</label><textarea class="form-textarea" rows="3" style="margin-top:6px;"></textarea></div>
+
+        <div style="margin-top:16px;">
+          <div class="flex-row"><span class="label">Name of Head of Department:</span><input type="text" class="form-input" id="hodName"></div>
+          <div class="flex-row"><span class="label">Designation:</span><input type="text" class="form-input" id="hodDesig"></div>
+          <div class="flex-row"><span class="label">Grade Level:</span><input type="text" class="form-input" style="flex:0.3" id="hodGrade"></div>
+        </div>
+        <div class="signature-area">
+          <div class="sign-block"><input type="text" class="form-input" style="width:100%;"><div>Signature</div></div>
+          <div class="sign-block"><input type="date" class="form-input" style="width:100%;"><div>Date</div></div>
+        </div>
+      </div>
+
+      <!-- ========== JUNIOR SUMMARY (LANDSCAPE) ========== -->
+      <div class="form-container wide" id="form-summary-landscape">
+        <div class="university-header">
+          <img src="/logo.webp" alt="FUAZ Logo" class="university-logo-img" />
+          <h1 class="university-title">Federal University of Agriculture Zuru</h1>
+          <h2 class="office-title">OFFICE OF THE REGISTRAR</h2>
+          <div class="form-title">SUMMARY FOR JUNIOR ADMINISTRATIVE, TECHNICAL AND PROFESSIONAL STAFF (CONTISS 1–5)</div>
+        </div>
+
+        <div class="table-responsive">
+          <table id="tbl-jr-summary">
+            <thead>
+              <tr>
+                <th rowspan="2" width="4%">S/N</th>
+                <th rowspan="2" width="15%">Name / JP No.</th>
+                <th rowspan="2" width="14%">Date of Assumption of Duty with Rank</th>
+                <th rowspan="2" width="15%">Present Rank / Date / Salary Scale / Step</th>
+                <th rowspan="2" width="13%">Highest Qualification / Date</th>
+                <th rowspan="2" width="7%">Exam Score</th>
+                <th rowspan="2" width="7%">Time on Rank</th>
+                <th rowspan="2" width="7%">Eligibility Score</th>
+                <th colspan="4">Recommendations</th>
+              </tr>
+              <tr>
+                <th class="sub-th">HOD</th>
+                <th class="sub-th">Cadre Panel</th>
+                <th class="sub-th">Admin Panel</th>
+                <th class="sub-th">A&PC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.</td>
+                <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                <td><input type="text"></td><td><input type="text"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row-btn-group">
+          <button type="button" class="add-row-btn" onclick="addTableRow('tbl-jr-summary',['sn','text','text','text','text','text','text','text','text','text','text','text'])">➕ Add Row</button>
+          <button type="button" class="remove-row-btn" onclick="removeTableRow('tbl-jr-summary')">🗑️ Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+
+  <script is:inline>
+    function addTableRow(tableId, cols) {
+      const tbody = document.getElementById(tableId)?.querySelector('tbody');
+      if (!tbody) return;
+      const rowCount = tbody.querySelectorAll('tr').length + 1;
+      const tr = document.createElement('tr');
+      let html = `<td>${rowCount}.</td>`;
+      for (let i = 1; i < cols.length; i++) {
+        const c = cols[i];
+        if (c === 'date') html += `<td><input type="date"></td>`;
+        else if (c === 'number') html += `<td><input type="number"></td>`;
+        else html += `<td><input type="text"></td>`;
+      }
+      tr.innerHTML = html;
+      tbody.appendChild(tr);
+    }
+
+    function removeTableRow(tableId) {
+      const tbody = document.getElementById(tableId)?.querySelector('tbody');
+      if (!tbody) return;
+      const rows = tbody.querySelectorAll('tr');
+      if (rows.length > 1) rows[rows.length - 1].remove();
+    }
+
+    function prepareElement(el) {
+      el.querySelectorAll('input[type="text"], input[type="number"], input[type="date"]').forEach(inp => {
+        inp.setAttribute('value', inp.value);
+      });
+      el.querySelectorAll('textarea').forEach(ta => {
+        ta.textContent = ta.value;
+        ta.style.height = 'auto';
+        ta.style.height = Math.max(50, ta.scrollHeight + 8) + 'px';
+      });
+      document.querySelectorAll('.row-btn-group').forEach(b => b.style.display = 'none');
+      document.body.classList.add('pdf-exporting');
+    }
+
+    function cleanup() {
+      document.body.classList.remove('pdf-exporting');
+      document.querySelectorAll('.row-btn-group').forEach(b => b.style.display = 'flex');
+      document.getElementById('loading-overlay').style.display = 'none';
+    }
+
+    function downloadPortraitPDF() {
+      const overlay = document.getElementById('loading-overlay');
+      overlay.style.display = 'flex';
+      document.getElementById('loading-text').textContent = 'Generating Junior Staff APER (Portrait)…';
+
+      const el = document.getElementById('form-aper-portrait');
+      if (!el) { cleanup(); return; }
+      prepareElement(el);
+
+      const opt = {
+        margin: [0.35, 0.35, 0.35, 0.35],
+        filename: 'FUAZ_Junior_Staff_APER_CONTISS_1-5.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, scrollX: 0, scrollY: 0 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: ['css', 'legacy'] }
+      };
+
+      window.html2pdf().set(opt).from(el).save().then(cleanup).catch(() => {
+        cleanup();
+        alert('Could not generate PDF. Please use the Print option.');
+      });
+    }
+
+    function downloadLandscapePDF() {
+      const overlay = document.getElementById('loading-overlay');
+      overlay.style.display = 'flex';
+      document.getElementById('loading-text').textContent = 'Generating Summary (Landscape)…';
+
+      const el = document.getElementById('form-summary-landscape');
+      if (!el) { cleanup(); return; }
+      prepareElement(el);
+
+      const opt = {
+        margin: [0.3, 0.3, 0.3, 0.3],
+        filename: 'FUAZ_Junior_Staff_Summary.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, scrollX: 0, scrollY: 0 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' },
+        pagebreak: { mode: ['css', 'legacy'] }
+      };
+
+      window.html2pdf().set(opt).from(el).save().then(cleanup).catch(() => {
+        cleanup();
+        alert('Could not generate PDF. Please use the Print option.');
+      });
+    }
+
+    function downloadFullPackagePDF() {
+      downloadPortraitPDF();
+      setTimeout(downloadLandscapePDF, 1800);
+    }
+
+    window.downloadPortraitPDF = downloadPortraitPDF;
+    window.downloadLandscapePDF = downloadLandscapePDF;
+    window.downloadFullPackagePDF = downloadFullPackagePDF;
+
+   function fillSampleData() {
+  document.getElementById('period').value = '2025/2026 Evaluation Period';
+  document.getElementById('jpNo').value = 'FUAZ/JP/0189';
+
+  document.getElementById('surname').value = 'Dahiru';
+  document.getElementById('otherNames').value = 'Bello Usman';
+  document.getElementById('dob').value = '1990-05-12';
+  document.getElementById('marital').value = 'Married';
+  document.getElementById('domicile').value = 'Zuru, Kebbi State';
+  document.getElementById('dept').value = 'Works & Physical Planning Directorate';
+  document.getElementById('phone').value = '+234 814 987 6543';
+  document.getElementById('firstAppt').value = '01/06/2017 – Assistant Craftsman, CONTISS 03 Step 1';
+  document.getElementById('confirmDate').value = '2019-06-01';
+  document.getElementById('lastPromo').value = '2022-10-01';
+  document.getElementById('presentRank').value = 'Senior Craftsman';
+  document.getElementById('contiss').value = '04';
+  document.getElementById('step').value = '5';
+  document.getElementById('rankApplied').value = 'Principal Craftsman (CONTISS 05)';
+  document.getElementById('timeOnRank').value = '3 years 10 months';
+  document.getElementById('workExp').value = '9 years (including industrial attachment)';
+
+  // Appointments table
+  const apptRows = document.querySelectorAll('#tbl-jr-appointments tbody tr');
+  const apptData = [
+    ['01/06/2017', 'Assistant Craftsman – CONTISS 03/1'],
+    ['01/10/2019', 'Craftsman – CONTISS 03/4'],
+    ['01/10/2022', 'Senior Craftsman – CONTISS 04/5'],
+  ];
+  apptData.forEach((d, idx) => {
+    if (apptRows[idx]) {
+      const inputs = apptRows[idx].querySelectorAll('input');
+      if (inputs[0]) inputs[0].value = d[0];
+      if (inputs[1]) inputs[1].value = d[1];
+    }
+  });
+
+  // Leave
+  const leaveRows = document.querySelectorAll('#tbl-jr-leave tbody tr');
+  if (leaveRows[0]) {
+    const i = leaveRows[0].querySelectorAll('input');
+    i[0].value = '15/07/2021 – 14/08/2021';
+    i[1].value = 'Annual Leave';
+  }
+
+  // Qualifications
+  const qualRows = document.querySelectorAll('#tbl-jr-qual tbody tr');
+  if (qualRows[0]) {
+    const i = qualRows[0].querySelectorAll('input');
+    i[0].value = 'Government Technical College, Zuru';
+    i[1].value = '2013';
+    i[2].value = '2016';
+    i[3].value = 'National Technical Certificate (NTC) + Trade Test Class I (Electrical)';
+  }
+  if (qualRows[1]) {
+    const i = qualRows[1].querySelectorAll('input');
+    i[0].value = 'National Board for Technical Education (NBTE)';
+    i[1].value = '2018';
+    i[2].value = '2018';
+    i[3].value = 'Trade Test Class I (Building)';
+  }
+
+  // Scores – mark “Very Good / Outstanding”
+  for (let s = 1; s <= 10; s++) {
+    const radio = document.querySelector(`input[name="jr-s${s}"][value="8"]`) ||
+                  document.querySelector(`input[name="jr-s${s}"][value="10"]`);
+    if (radio) radio.checked = true;
+  }
+  // Make a couple Outstanding
+  document.querySelector('input[name="jr-s1"][value="10"]')?.setAttribute('checked', 'true');
+  document.querySelector('input[name="jr-s6"][value="10"]')?.setAttribute('checked', 'true');
+  document.querySelector('input[name="jr-s10"][value="10"]')?.setAttribute('checked', 'true');
+
+  // Eligibility scores
+  const eligInputs = document.querySelectorAll('table + table tbody input, .table-responsive + .table-responsive tbody input');
+  // safer: target the eligibility table directly if it has an id, otherwise leave
+
+  document.getElementById('workedUnder').value = '4 years 8 months';
+  document.getElementById('generalComments').value =
+    'Mr. Dahiru is a highly dependable, skilled and punctual staff member. He has shown excellent technical competence in electrical and building maintenance, good interpersonal relations and strong integrity. He is strongly recommended for promotion to Principal Craftsman.';
+
+  document.getElementById('supName').value = 'Engr. Yusuf Abdullahi';
+  document.getElementById('supDesig').value = 'Chief Technical Officer';
+  document.getElementById('supGrade').value = 'CONTISS 12';
+
+  document.getElementById('hodWorked').value = '4 years 8 months';
+  document.getElementById('hodName').value = 'Arc. Fatima Sani';
+  document.getElementById('hodDesig').value = 'Director, Works & Physical Planning';
+  document.getElementById('hodGrade').value = 'CONTISS 14';
+
+  // Summary
+  const sumRows = document.querySelectorAll('#tbl-jr-summary tbody tr');
+  if (sumRows[0]) {
+    const i = sumRows[0].querySelectorAll('input');
+    i[0].value = 'Dahiru, Bello Usman / FUAZ/JP/0189';
+    i[1].value = '01/06/2017 (Asst. Craftsman)';
+    i[2].value = 'Senior Craftsman (01/10/2022) CONTISS 04/5';
+    i[3].value = 'NTC + Trade Test Class I (2016)';
+    i[4].value = '82%';
+    i[5].value = '3 yrs 10 mos';
+    i[6].value = '88%';
+    i[7].value = 'Promote';
+    i[8].value = 'Recommended';
+    i[9].value = 'Recommended';
+    i[10].value = 'Approved';
+  }
+
+  alert('✨ All fields pre-filled with rich Junior Staff sample data');
+}
+  </script>
+</Layout>

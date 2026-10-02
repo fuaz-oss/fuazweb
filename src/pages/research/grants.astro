@@ -1,0 +1,25 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Grant Opportunities" 
+  subtitle="Funding the future of agricultural innovation."
+  heroImage="/media/DSC_3805.webp"
+  breadcrumbs={[
+    { label: 'Research', href: '/research' },
+    { label: 'Grants', href: '/research/grants' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Research Funding</h2>
+    <p class={styles.paragraph}>
+      Securing external funding is crucial for high-impact laboratory research. FUAZ researchers are continuously supported by the Directorate of Academic Planning to develop competitive proposals for TETFund's National Research Fund (NRF) and international fellowships.
+    </p>
+    <ul class={styles.list}>
+      <li><strong>TETFund NRF:</strong> Major multi-disciplinary agricultural engineering grants.</li>
+      <li><strong>Institutional Seed Grant:</strong> Internal funding awarded by the Vice-Chancellor's office to kickstart early-career research.</li>
+    </ul>
+  </div>
+</GenericPageLayout>

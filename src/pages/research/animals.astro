@@ -1,0 +1,55 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Animal Science Research Unit" 
+  subtitle="Optimizing livestock genetics, ruminant nutrition, and sustainable dairy output."
+  heroImage="/media/cow.webp"
+  breadcrumbs={[
+    { label: 'Research', href: '/research' },
+    { label: 'Animal Science', href: '/research/animals' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Advancing Livestock Productivity</h2>
+    <p class={styles.paragraph}>
+      The Animal Science Research Unit at FUAZ is dedicated to solving the challenges of livestock production in the Sahelian region. Our research integrates traditional animal husbandry with modern molecular genetics and nutritional science.
+    </p>
+
+    <div style="border-radius: 12px; overflow: hidden; margin: 1.5rem 0; box-shadow: 0 4px 14px rgba(0,0,0,0.08);">
+      <img src="/media/cow.webp" alt="FUAZ Cattle Herd & Ruminant Research" style="width: 100%; height: 280px; object-fit: cover;" />
+      <p style="padding: 0.75rem 1rem; font-size: 0.88rem; color: #555; background: #f9f9f9; margin: 0;">Indigenous Bovine Breeds, Dairy Herd & Pasture Grazing Research</p>
+    </div>
+
+    <div class={styles.navGrid}>
+      <div class={styles.navCard}>
+        <h3>Livestock Genomics</h3>
+        <p>Utilizing artificial insemination and cross-breeding to develop heat-tolerant, high-milk-yielding bovine breeds.</p>
+      </div>
+      <div class={styles.navCard}>
+        <h3>Ruminant Nutrition</h3>
+        <p>Developing low-cost, nutrient-dense feed formulations using local agricultural by-products and drought-resistant fodder.</p>
+      </div>
+      <div class={styles.navCard}>
+        <h3>Poultry Health</h3>
+        <p>Researching vaccine delivery systems and bio-security protocols to combat Newcastle disease and Avian Influenza.</p>
+      </div>
+    </div>
+
+    <div class={styles.importantBox}>
+      <strong>Ongoing Project:</strong> The unit is currently leading the "National Dairy Transformation Program," a 3-year study aimed at increasing the daily milk yield of indigenous 'Bunaji' cattle by 40% through specific nutritional interventions.
+    </div>
+
+    <h2 class={styles.heading2}>Facilities & Labs</h2>
+    <p class={styles.paragraph}>
+      The unit maintains a central <strong>Molecular Genetics Laboratory</strong>, an experimental dairy parlor, and a poultry research station. These facilities allow for controlled trials and data collection on animal growth, health, and metabolic processes.
+    </p>
+
+    <h3 class={styles.heading2}>Sustainable Pastoralism</h3>
+    <p class={styles.paragraph}>
+      A significant portion of our research focuses on the "Sedentarization of Pastoralists," identifying technical and social pathways to help traditional herders transition to settled, more efficient ranching systems that reduce resource conflicts.
+    </p>
+  </div>
+</GenericPageLayout>

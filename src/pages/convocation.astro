@@ -1,0 +1,22 @@
+---
+import GenericPageLayout from '../layouts/GenericPageLayout.astro';
+import styles from '../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Convocation Ceremonies" 
+  subtitle="Celebrating the culmination of academic rigor."
+  heroImage="/media/DSC_4796.webp"
+  breadcrumbs={[{ label: 'Convocation', href: '/convocation' }]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Graduation Framework</h2>
+    <p class={styles.paragraph}>
+      The FUAZ Convocation Ceremony is the grandest academic event of the year, where degrees, diplomas, and honorary fellowships are officially conferred upon deserving scholars by the University Chancellor.
+    </p>
+
+    <div class={styles.importantBox}>
+      <strong>Clearance Required:</strong> Prospective graduands must complete their multi-stage physical and digital clearance (including library, bursary, and departmental clearance) before they can be issued their academic gowns.
+    </div>
+  </div>
+</GenericPageLayout>

@@ -1,0 +1,38 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="University Senate" 
+  subtitle="The supreme academic authority of the University."
+  heroImage="/media/DSC_4826.webp"
+  breadcrumbs={[
+    { label: 'About', href: '/about' },
+    { label: 'Senate', href: '/about/senate' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <p class={`${styles.paragraph} ${styles.dropCap}`}>
+      The University Senate is the highest academic body of FUAZ. It holds the statutory mandate to organize, control, and direct the academic work of the university, both in teaching and research, and ensures the academic integrity of the institution is upheld at all levels.
+    </p>
+
+    <h2 class={styles.heading2}>Composition & Structure</h2>
+    <p class={styles.paragraph}>
+      Chaired by the Vice-Chancellor, the Senate comprises all Deputy Vice-Chancellors, Deans of Colleges, Directors of Academic Centres, University Librarian, all Professors, and elected representatives of the academic staff. The Registrar serves as the Secretary to the Senate.
+    </p>
+
+    <h2 class={styles.heading2}>Core Functions</h2>
+    <ul class={styles.list}>
+      <li><strong>Curriculum Approval:</strong> Structuring and approving syllabi, courses of study, and academic programs across all colleges.</li>
+      <li><strong>Admissions & Examinations:</strong> Regulating the admission of students, the conduct of university examinations, and the award of degrees, diplomas, and certificates.</li>
+      <li><strong>Academic Discipline:</strong> Overseeing student discipline and enforcing university academic regulations.</li>
+      <li><strong>Research Strategy:</strong> Formulating policies to promote robust academic research and agricultural innovations.</li>
+      <li><strong>Appointments:</strong> Recommending the creation of new academic posts, colleges, institutes, and academic centers.</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Senate Meetings:</strong> The FUAZ Senate meets regularly on the last Thursday of every month to deliberate on critical academic matters. Special sessions may be convened by the Vice-Chancellor when urgent university matters arise.
+    </div>
+  </div>
+</GenericPageLayout>

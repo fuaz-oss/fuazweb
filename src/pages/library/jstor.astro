@@ -1,0 +1,38 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="JSTOR Database Integration" 
+  subtitle="Archived academic journals, primary sources, and digital books."
+  heroImage="/media/DSC_4902.webp"
+  breadcrumbs={[
+    { label: 'Library', href: '/library' },
+    { label: 'JSTOR', href: '/library/jstor' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Deep-Archived Academic Research</h2>
+    <p class={styles.paragraph}>
+      JSTOR is a highly respected digital library for scholars, researchers, and students. Through our institutional partnership, FUAZ provides access to more than 12 million journal articles, books, and primary sources in 75 disciplines.
+    </p>
+
+    <div class={styles.importantBox}>
+      <strong>Auto-Authentication:</strong> Access is provided via IP-recognition. As long as you are connected to the FUAZ campus network (Wired or Wi-Fi), you will automatically see "Access provided by Federal University of Agriculture Zuru" at the top of the JSTOR portal.
+    </div>
+
+    <h2 class={styles.heading2}>Available Collections</h2>
+    <p class={styles.paragraph}>Our current subscription includes full text access to the following Archive Collections:</p>
+    <ul class={styles.list}>
+      <li><strong>Arts & Sciences I – XV:</strong> Spanning fundamental core journals across the humanities, social sciences, and natural sciences.</li>
+      <li><strong>Life Sciences:</strong> A massive collection of 160 journals in biological sciences, botany, and ecology.</li>
+      <li><strong>Business IV:</strong> Covering management, economics, and agricultural business strategies.</li>
+    </ul>
+
+    <h3 class={styles.heading2}>Off-Campus Access</h3>
+    <p class={styles.paragraph}>
+      Staff and students who require access from home can utilize their institutional email to log in via the <em>Institutional Single Sign-On (SSO)</em> on the JSTOR website.
+    </p>
+  </div>
+</GenericPageLayout>

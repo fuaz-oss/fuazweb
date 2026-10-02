@@ -1,0 +1,47 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="African Journals OnLine (AJOL)" 
+  subtitle="The world's largest online collection of African scholar-published research."
+  heroImage="/media/DSC_4881.webp"
+  breadcrumbs={[
+    { label: 'Library', href: '/library' },
+    { label: 'AJOL Portal', href: '/library/ajol' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Promoting African Research</h2>
+    <p class={styles.paragraph}>
+      African Journals OnLine (AJOL) is a non-profit organization that provides access to peer-reviewed, African-published scholarly journals. By hosting these journals online, AJOL increases the global visibility of research conducted within the continent, particularly in fields vital to Africa's development.
+    </p>
+
+    <div class={styles.importantBox}>
+      <strong>FUAZ Institutional Subscription:</strong> While many abstracts are free, FUAZ provides our academic community with full-text access to premium journals through our institutional account.
+    </div>
+
+    <h2 class={styles.heading2}>Key Subject Areas</h2>
+    <p class={styles.paragraph}>Researchers at FUAZ can leverage AJOL's vast database in the following core areas:</p>
+    <div class={styles.navGrid}>
+      <div class={styles.navCard}>
+        <h3>Agricultural Sciences</h3>
+        <p>Agronomy, animal science, crop protection, and agricultural economics from an African perspective.</p>
+      </div>
+      <div class={styles.navCard}>
+        <h3>Science</h3>
+        <p>Biological and environmental studies focused on the African ecosystem and biodiversity.</p>
+      </div>
+      <div class={styles.navCard}>
+        <h3>Engineering</h3>
+        <p>Technical research into sustainable energy, water resources, and rural infrastructure.</p>
+      </div>
+    </div>
+
+    <h3 class={styles.heading2}>Using the Database</h3>
+    <p class={styles.paragraph}>
+      To access full documents, ensure you are browsing from within the FUAZ campus network. If you find a restricted article, use the "Ask a Librarian" service to request a digital copy handled under our inter-library loan agreement.
+    </p>
+  </div>
+</GenericPageLayout>

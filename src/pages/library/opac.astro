@@ -1,0 +1,35 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="OPAC — Online Public Access Catalogue" 
+  subtitle="Search the physical and digital holdings of the University Library."
+  heroImage="/media/DSC_4908.webp"
+  breadcrumbs={[
+    { label: 'Library', href: '/library' },
+    { label: 'OPAC', href: '/library/opac' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Find Your Book</h2>
+    <p class={styles.paragraph}>
+      The OPAC system allows you to remotely search our extensive catalog before visiting the library in person. You can search by Title, Author, Keyword, or ISBN. Once you locate the material, note the <strong>Call Number</strong> and the physical floor location shown on the dashboard.
+    </p>
+
+    <div style="background: #fdfcfb; border: 1px solid #ddd; padding: 3rem; border-radius: 8px; text-align: center; margin: 3rem 0;">
+      <h3 style="font-family: 'Segoe UI', sans-serif; color: #1e5128; margin-bottom: 1rem;">OPAC Search Engine</h3>
+      <div style="display: flex; gap: 1rem; max-width: 600px; margin: 0 auto;">
+        <input type="text" placeholder="Enter keyword, author, or title..." style="flex: 1; padding: 0.8rem 1rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem;" />
+        <button style="background: #1e5128; color: #fff; padding: 0.8rem 2rem; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">Search Holdings</button>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.85rem; color: #666;">Powered by Koha Integrated Library System</p>
+    </div>
+
+    <h2 class={styles.heading2}>Having Trouble Finding a Book?</h2>
+    <p class={styles.paragraph}>
+      If a book is listed as "Available" on OPAC but cannot be found on the shelf, it may be in use inside the reading room or awaiting re-shelving. Please consult the circulation desk on the ground floor.
+    </p>
+  </div>
+</GenericPageLayout>

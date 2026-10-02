@@ -1,0 +1,418 @@
+/* src/pages/news.module.css */
+
+:root {
+  --np-green: #1e5128;
+  --np-green-deep: #0d2b12;
+  --np-gold: #ffd700;
+  --np-cream: #f5f0e8;
+  --np-font-serif: "Georgia", "Times New Roman", serif;
+  --np-font-sans: "Segoe UI", system-ui, sans-serif;
+  --np-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── Page Hero ─────────────────────────────────────────────── */
+.pageHero {
+  padding: 12rem 0 6rem;
+  background: var(--np-green-deep);
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  min-height: 45vh;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroBg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.05); /* Slight scale to prevent edge bleed */
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    135deg, 
+    rgba(13, 43, 18, 0.95) 0%, 
+    rgba(13, 43, 18, 0.8) 50%, 
+    rgba(30, 81, 40, 0.6) 100%
+  );
+}
+
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.headerContent {
+  position: relative;
+  z-index: 2;
+  animation: slideUpFade 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0; /* Starts hidden, animation pulls it in */
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--np-font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--np-gold);
+  margin-bottom: 1.5rem;
+}
+
+.eyebrowLine {
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--np-gold);
+}
+
+.pageTitle {
+  font-family: var(--np-font-serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem 0;
+}
+
+.pageDesc {
+  font-family: var(--np-font-sans);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+}
+
+/* ─── Content Section ───────────────────────────────────────── */
+.mainContent {
+  padding: 4rem 0 8rem;
+  background: var(--np-cream);
+}
+
+/* ─── Filters ───────────────────────────────────────────────── */
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  background: transparent;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  padding: 0.65rem 1.4rem;
+  border-radius: 30px;
+  font-family: var(--np-font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.65);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.filterBtn:hover {
+  border-color: rgba(0, 0, 0, 0.3);
+  color: #1a1a1a;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.filterBtn.active,
+.filterBtn[data-active="true"] {
+  background: var(--np-green-deep);
+  border-color: var(--np-green-deep);
+  color: #fff;
+}
+
+/* ─── Grid ──────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ─── Card structure ────────────────────────────────────────── */
+.card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--np-green-deep);
+  cursor: pointer;
+  isolation: isolate;
+  height: 400px; /* Fixed height for uniform feed */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+
+/* Image wrapper */
+.imgWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s var(--np-ease);
+  filter: saturate(0.85) contrast(1.05);
+}
+
+.card:hover .img {
+  transform: scale(1.06);
+  filter: saturate(1) contrast(1.05);
+}
+
+/* Gradient scrim */
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(13, 43, 18, 0.15) 0%,
+    rgba(13, 43, 18, 0.35) 45%,
+    rgba(13, 43, 18, 0.95) 100%
+  );
+  transition: opacity 0.4s ease;
+}
+
+.card:hover .scrim {
+  opacity: 0.85;
+}
+
+/* Top row badge/date */
+.topRow {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Tag */
+.tag {
+  display: inline-block;
+  font-family: var(--np-font-sans);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.8rem;
+  border-radius: 3px;
+}
+
+/* Date */
+.date {
+  font-family: var(--np-font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+}
+
+/* Bottom content */
+.cardContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.cardTitle {
+  font-family: var(--np-font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #fff;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.excerpt {
+  font-family: var(--np-font-sans);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Read more link */
+.readMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--np-font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--np-gold);
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all 0.35s ease;
+}
+
+.card:hover .readMore {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.readMore:hover {
+  gap: 0.7rem;
+}
+
+/* Hover border flash */
+.hoverBorder {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border: 1.5px solid rgba(255, 215, 0, 0);
+  border-radius: 8px;
+  pointer-events: none;
+  transition: border-color 0.35s ease;
+}
+
+.card:hover .hoverBorder {
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+/* ─── Tag Variants ──────────────────────────────────────────── */
+.tagNotice {
+  background: var(--np-gold);
+  color: var(--np-green-deep);
+}
+
+.tagEvent {
+  background: rgba(30, 81, 40, 0.9);
+  color: #a8e6b4;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.tagHR {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.tagNews {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+}
+
+/* ─── Pagination ───────────────────────────────────────────── */
+.pagination {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.loadMoreBtn {
+  background: var(--np-green-deep);
+  color: var(--np-gold);
+  border: none;
+  padding: 1rem 2.8rem;
+  border-radius: 4px;
+  font-family: var(--np-font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.loadMoreBtn:hover {
+  background: #15451d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(13, 43, 18, 0.2);
+}
+
+/* ─── Animations ────────────────────────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.6s var(--np-ease);
+}
+
+:global(.np-revealed) {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .pageHero {
+    padding: 8rem 0 4rem;
+  }
+  
+  .pageTitle {
+    font-size: 2.2rem;
+  }
+  
+  .filters {
+    gap: 0.65rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .filterBtn {
+    padding: 0.5rem 1.1rem;
+    font-size: 0.8rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .card {
+    height: 340px;
+  }
+  
+  .cardTitle {
+    font-size: 1.2rem;
+  }
+
+  /* Keep read more visible on mobile since hover isn't present */
+  .readMore {
+    opacity: 1;
+    transform: none;
+  }
+}

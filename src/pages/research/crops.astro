@@ -1,0 +1,63 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Crop Research Station" 
+  subtitle="Innovating in seed multiplication, soil health, and sustainable agronomy."
+  heroImage="/media/mango.webp"
+  breadcrumbs={[
+    { label: 'Research', href: '/research' },
+    { label: 'Crop Research', href: '/research/crops' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Advancing Sahelian Agronomy & Cash Crops</h2>
+    <p class={styles.paragraph}>
+      The FUAZ Crop Research Station serves as the university's primary engine for agricultural innovation. Located on the eastern edge of the main campus, the station manages over 50 hectares of experimental fields, cash crop orchards (Mango & Cashew plantations), and dedicated biotechnology laboratories.
+    </p>
+
+    <div class={styles.importantBox}>
+      <strong>Research Breakthrough:</strong> In partnership with the IITA, our station recently successfully trialed the <em>FUAZ-S1</em> Sorghum variety and high-yield dwarf Mango and Cashew varieties suited for the Sahelian climate.
+    </div>
+
+    <h2 class={styles.heading2}>Horticulture & Cash Crop Research (Mango & Cashew)</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+      <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.08);">
+        <img src="/media/mango.webp" alt="FUAZ High-Yield Mango Orchard" style="width: 100%; height: 220px; object-fit: cover;" />
+        <p style="padding: 0.75rem 1rem; font-size: 0.88rem; color: #555; background: #f9f9f9; margin: 0;">Mango Orchard Cultivation & Post-Harvest Preservation</p>
+      </div>
+      <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.08);">
+        <img src="/media/cashew.webp" alt="FUAZ Cashew Plantation & Processing" style="width: 100%; height: 220px; object-fit: cover;" />
+        <p style="padding: 0.75rem 1rem; font-size: 0.88rem; color: #555; background: #f9f9f9; margin: 0;">Cashew Agro-Forestry & Kernel Value Addition</p>
+      </div>
+    </div>
+
+    <h2 class={styles.heading2}>Core Research Areas</h2>
+    <div class={styles.navGrid}>
+      <div class={styles.navCard}>
+        <h3>Seed Multiplication</h3>
+        <p>Developing high-yield, drought-tolerant seeds for local farmers, focused on Sorghum, Millet, and Maize.</p>
+      </div>
+      <div class={styles.navCard}>
+        <h3>Soil Science</h3>
+        <p>Researching organic soil amendments and carbon sequestration techniques for degraded Sahelian lands.</p>
+      </div>
+      <div class={styles.navCard}>
+        <h3>Phytopathology</h3>
+        <p>Identifying and controlling pest and disease outbreaks in major staple crops across Northwest Nigeria.</p>
+      </div>
+    </div>
+
+    <h2 class={styles.heading2}>Facilities & Equipment</h2>
+    <p class={styles.paragraph}>
+      The station is equipped with modern seed processing units, automated irrigation test-beds, and a specialized "Climate Chamber" for simulation of extreme weather conditions on crop growth.
+    </p>
+
+    <h3 class={styles.heading2}>Extension Services</h3>
+    <p class={styles.paragraph}>
+      Beyond laboratory research, the station hosts monthly "Farmer Field Days," where local agriculturists are invited to observe successful trials and receive training on implementing these new techniques in their own fields.
+    </p>
+  </div>
+</GenericPageLayout>

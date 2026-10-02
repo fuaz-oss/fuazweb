@@ -1,0 +1,31 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Hostels & Accommodation" 
+  subtitle="Safe and comfortable living spaces for FUAZ scholars."
+  heroImage="/media/DSC_4796.webp"
+  breadcrumbs={[
+    { label: 'Campus', href: '/campus' },
+    { label: 'Hostels', href: '/campus/hostels' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>On-Campus Living</h2>
+    <p class={styles.paragraph}>
+      The University provides secure, heavily subsidized on-campus accommodation designed to foster a conducive academic community. The hostels are highly competitive and are assigned strictly on a first-come, first-served basis through the central student portal.
+    </p>
+
+    <h2 class={styles.heading2}>Hostel Blocks</h2>
+    <ul class={styles.list}>
+      <li><strong>Block A & B (Female Hostels):</strong> Premium 4-person en-suite rooms with dedicated common rooms and 24/7 solar backups.</li>
+      <li><strong>Block C & D (Male Hostels):</strong> Standard 6-person rooms with communal laundry spaces and sports viewing centers.</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Squatting Policy:</strong> Squatting (harboring an unregistered student) or selling a bed space is completely illegal and is punishable by immediate expulsion from the hostel.
+    </div>
+  </div>
+</GenericPageLayout>

@@ -1,0 +1,102 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+
+const adminOffices = [
+  {
+    title: 'Office of the Registrar',
+    role: 'University Secretariat & Student Records',
+    desc: 'Chief Administrative Officer overseeing university governance, student admissions, matriculation, and academic records.',
+    href: '/administration/registrar',
+  },
+  {
+    title: "Bursar's Office",
+    role: 'Financial Administration & Treasury',
+    desc: 'Chief Financial Officer overseeing financial management, staff payroll, procurement validation, and student fees.',
+    href: '/administration/bursar',
+  },
+  {
+    title: 'University Library Network',
+    role: 'Knowledge Repository & e-Learning',
+    desc: 'Automated OPAC cataloguing, digital repositories, JSTOR, and agricultural databases supporting research excellence.',
+    href: '/administration/librarian',
+  },
+  {
+    title: 'Directorate of ICT',
+    role: 'Digital Infrastructure & IT Services',
+    desc: 'Centralized data center, campus fiber network, Eduroam Wi-Fi, institutional web mail, and academic portal systems.',
+    href: '/administration/ict',
+  },
+  {
+    title: 'Directorate of Human Resources',
+    role: 'Capacity Building & Personnel Administration',
+    desc: 'Senior and junior staff recruitment, University Nominal Roll management, promotions, APER appraisals, and staff welfare.',
+    href: '/administration/human-resource',
+  },
+  {
+    title: 'Directorate of Academic Planning',
+    role: 'Academic Quality Assurance & NUC Accreditation',
+    desc: 'NUC accreditation compliance, curriculum review, Senate academic operations, and strategic institutional growth statistics.',
+    href: '/administration/academic-planning',
+  },
+  {
+    title: 'Internal Audit Unit',
+    role: 'Financial Governance & Internal Controls',
+    desc: 'Pre-audit and post-audit evaluations, expenditure compliance, risk management, and statutory financial reporting.',
+    href: '/administration/audit',
+  },
+];
+
+const principalOfficers = [
+  {
+    name: 'Prof. AD Isah',
+    role: 'Deputy Vice-Chancellor (Administration)',
+    image: '/media/dvc-admin.webp',
+    href: '/administration/dvc-admin',
+  },
+  {
+    name: 'Dr. Akeem Babatunde Sikiru',
+    role: 'Director of ICT',
+    image: '/media/director-ict.webp',
+    href: '/administration/ict',
+  },
+];
+---
+
+<GenericPageLayout 
+  title="University Administration" 
+  subtitle="Principal Officers, Directorates, and Administrative Units driving institutional excellence at FUAZ."
+  heroImage="/media/DSC_4902.webp"
+  breadcrumbs={[{ label: 'Administration', href: '/administration' }]}
+>
+  <div class={styles.contentWrapper}>
+    <p class={`${styles.paragraph} ${styles.dropCap}`}>
+      The administrative structure of the <strong>Federal University of Agriculture Zuru</strong> is organized into dedicated principal offices, directorates, and units designed to ensure efficient university governance, academic excellence, staff welfare, and transparent financial management.
+    </p>
+
+    <div class={styles.navGrid} style="margin-top: 2rem;">
+      {adminOffices.map(office => (
+        <a href={office.href} class={styles.navCard}>
+          <span style="font-size: 0.75rem; font-weight: 700; color: var(--gl-gold, #c59b27); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.2rem;">
+            {office.role}
+          </span>
+          <h3>{office.title}</h3>
+          <p>{office.desc}</p>
+        </a>
+      ))}
+    </div>
+
+    <h2 class={styles.heading2} style="margin-top: 3rem;">Principal Officers</h2>
+    <div class={styles.profileGrid}>
+      {principalOfficers.map((officer) => (
+        <a href={officer.href} class={styles.profileCard}>
+          <img src={officer.image} alt={officer.name} class={styles.profileImg} loading="lazy" />
+          <div class={styles.profileInfo}>
+            <h3 class={styles.profileName}>{officer.name}</h3>
+            <p class={styles.profileRole}>{officer.role}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</GenericPageLayout>

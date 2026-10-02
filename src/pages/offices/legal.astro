@@ -1,0 +1,26 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Legal Unit" 
+  subtitle="Protecting the institutional integrity and patents of FUAZ."
+  heroImage="/media/DSC_4934.webp"
+  breadcrumbs={[
+    { label: 'Offices', href: '/offices' },
+    { label: 'Legal Unit', href: '/offices/legal' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Institutional Jurisdiction</h2>
+    <p class={styles.paragraph}>
+      The Legal Unit provides comprehensive legal counsel to the Vice-Chancellor, the Governing Council, and the Senate. It drafts and reviews all university contracts, Memorandum of Understandings (MoUs) with international partners, and manages any litigation involving the institution.
+    </p>
+
+    <h2 class={styles.heading2}>Intellectual Property (IP)</h2>
+    <p class={styles.paragraph}>
+      A critical function of the Legal Unit is safeguarding the intellectual property of the university's researchers. Any new strain of seed, mechanical invention, or chemical patent developed within the university laboratories is legally protected and registered nationally and internationally by this unit.
+    </p>
+  </div>
+</GenericPageLayout>

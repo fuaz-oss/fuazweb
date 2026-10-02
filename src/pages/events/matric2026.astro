@@ -1,0 +1,48 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Matriculation Ceremony 2025/2026" 
+  subtitle="Official Oath Taking and Orientation for the New Academic Session."
+  heroImage="/media/matriculation.webp"
+  breadcrumbs={[
+    { label: 'Events', href: '/conferences' },
+    { label: 'Matriculation 2026', href: '/events/matric2026' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Event Overview</h2>
+    <p class={styles.paragraph}>
+      The Federal University of Agriculture Zuru (FUAZ) is pleased to announce the upcoming Matriculation Ceremony for the 2025/2026 academic session. This significant milestone marks the formal admission of our newest scholars into the university community.
+    </p>
+
+    <div class={styles.importantBox}>
+      <strong>Date:</strong> Wednesday, January 22, 2026<br/>
+      <strong>Time:</strong> 10:00 AM Prompt<br/>
+      <strong>Venue:</strong> University Convocation Square
+    </div>
+
+    <div style="border-radius: 12px; overflow: hidden; margin: 1.5rem 0; box-shadow: 0 4px 14px rgba(0,0,0,0.08);">
+      <img src="/media/matriculation.webp" alt="FUAZ Matriculation Ceremony Gathering" style="width: 100%; height: 280px; object-fit: cover;" />
+      <p style="padding: 0.75rem 1rem; font-size: 0.88rem; color: #555; background: #f9f9f9; margin: 0;">Official Matriculation Assembly, Oath Taking & Student Admission Ceremony</p>
+    </div>
+
+    <h2 class={styles.heading2}>Orientation Programme</h2>
+    <p class={styles.paragraph}>
+      Prior to the main ceremony, all newly admitted students are required to participate in the mandatory orientation programme. This session covers academic regulations, campus security, student welfare, and an introduction to the various agricultural research facilities available at FUAZ.
+    </p>
+
+    <h3 class={styles.heading3}>Requirements for Matriculants</h3>
+    <ul class={styles.list}>
+      <li>Matriculants must be seated by 9:30 AM.</li>
+      <li>Academic gowns should be collected from the respective Faculty Offices starting from Monday, January 19.</li>
+      <li>Only authorized photographers are allowed within the inner circle of the ceremony.</li>
+    </ul>
+
+    <div class={styles.blockquote}>
+      "At FUAZ, we don't just produce graduates; we produce job providers and agricultural innovators who will lead the transformation of our nation's food security."
+    </div>
+  </div>
+</GenericPageLayout>

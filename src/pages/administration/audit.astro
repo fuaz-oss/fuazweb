@@ -1,0 +1,33 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Internal Audit Unit" 
+  subtitle="Ensuring compliance, accountability, and ethical resource usage."
+  heroImage="/media/DSC_4855.webp"
+  breadcrumbs={[
+    { label: 'Administration', href: '/administration' },
+    { label: 'Internal Audit', href: '/administration/audit' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Unit Mandate</h2>
+    <p class={styles.paragraph}>
+      The Internal Audit Unit operates independently under the Vice-Chancellor's office to evaluate and improve the effectiveness of risk management, control, and governance processes within the University. The unit guarantees that public funds and university assets are utilized strictly for their intended purposes.
+    </p>
+
+    <h2 class={styles.heading2}>Core Functions</h2>
+    <ul class={styles.list}>
+      <li>Pre-payment auditing of all university expenditures.</li>
+      <li>Verifying the actual delivery of procured goods and services.</li>
+      <li>Ensuring strict adherence to the Federal Public Procurement Act.</li>
+      <li>Conducting periodic physical verification of university fixed assets.</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Whistleblowing Policy:</strong> FUAZ is committed to zero-tolerance for corruption. If you observe any financial misconduct, securely and anonymously report it via the SERVICOM office.
+    </div>
+  </div>
+</GenericPageLayout>

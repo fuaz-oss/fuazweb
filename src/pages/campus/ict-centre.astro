@@ -1,0 +1,32 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="ICT Resource Centre" 
+  subtitle="The digital hub for student printing, browsing, and support."
+  heroImage="/media/DSC_3788.webp"
+  breadcrumbs={[
+    { label: 'Campus', href: '/campus' },
+    { label: 'ICT Centre', href: '/campus/ict-centre' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Student Computing Services</h2>
+    <p class={styles.paragraph}>
+      Located adjacent to the university library, the ICT Resource Centre is an open-access computer lab dedicated to student use. It provides a quiet, air-conditioned environment equipped with modern desktops and high-speed internet.
+    </p>
+
+    <h2 class={styles.heading2}>Services Available to Students</h2>
+    <ul class={styles.list}>
+      <li><strong>Course Registration:</strong> Dedicated terminals for logging into the student portal and registering for electives.</li>
+      <li><strong>Printing & Scanning:</strong> Subsidized black-and-white and color printing for assignments and dissertations.</li>
+      <li><strong>Digital Training:</strong> Free weekend workshops on basic computer literacy, MS Excel for agricultural data, and coding logic.</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>ID Required:</strong> Access to the ICT Resource Centre requires a validated student ID. Food and beverages are strictly prohibited inside the computer labs.
+    </div>
+  </div>
+</GenericPageLayout>

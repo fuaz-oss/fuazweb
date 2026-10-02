@@ -1,0 +1,32 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Cafeteria & Dining" 
+  subtitle="Hygienic and affordable meals sourced directly from our farms."
+  heroImage="/media/DSC_4788.webp"
+  breadcrumbs={[
+    { label: 'Campus', href: '/campus' },
+    { label: 'Cafeteria', href: '/campus/cafeteria' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Farm to Table</h2>
+    <p class={styles.paragraph}>
+      At FUAZ, we practice what we preach. Over 60% of the poultry, rice, and vegetables served at the central cafeteria are sourced directly from our University Farm. This allows us to provide highly nutritious meals to students at heavily subsidized prices.
+    </p>
+
+    <h2 class={styles.heading2}>Dining Locations</h2>
+    <ul class={styles.list}>
+      <li><strong>The Central Cafeteria:</strong> Located directly behind the lecture theatres. Offers major local delicacies (Tuwo, Rice, Eba) and operates from 7:00 AM to 9:00 PM.</li>
+      <li><strong>Student Centre Kiosks:</strong> Fast-food stalls selling snacks, pastries, and soft drinks. perfect for quick bites between classes.</li>
+      <li><strong>Staff Club Restaurant:</strong> A premium dining area reserved for staff and university guests.</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>SUG Intervention:</strong> The Student Union Government continuously monitors the hygiene standards and pricing models of all authorized food vendors on campus ensuring students are not exploited.
+    </div>
+  </div>
+</GenericPageLayout>

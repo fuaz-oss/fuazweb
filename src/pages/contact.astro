@@ -1,0 +1,24 @@
+---
+import GenericPageLayout from '../layouts/GenericPageLayout.astro';
+import styles from '../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Contact Directory" 
+  subtitle="Reach out to specific university quadrants."
+  heroImage="/media/DSC_4874.webp"
+  breadcrumbs={[{ label: 'Contact', href: '/contact' }]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Main Contacts</h2>
+    <ul class={styles.list}>
+      <li><strong>General Inquiries:</strong> <a href="mailto:info@fuaz.edu.ng">info@fuaz.edu.ng</a></li>
+      <li><strong>Admissions Support:</strong> <a href="mailto:admissions.help@fuaz.edu.ng">admissions.help@fuaz.edu.ng</a></li>
+      <li><strong>Transcript Requests:</strong> <a href="mailto:transcripts@registry.fuaz.edu.ng">transcripts@registry.fuaz.edu.ng</a></li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Physical Address:</strong> Federal University of Agriculture Zuru, P.M.B 28, Zuru, Kebbi State, Nigeria.
+    </div>
+  </div>
+</GenericPageLayout>

@@ -1,0 +1,130 @@
+---
+import styles from './FeaturedSections.module.css';
+
+const cards = [
+  {
+    id: 'colleges',
+    eyebrow: 'Academic Excellence',
+    heading: 'Explore Our\nColleges',
+    body: 'FUAZ operates specialised colleges spanning agriculture, natural sciences, animal health, and technology — each rooted in hands-on learning and real-world impact.',
+    cta: { label: 'Browse Colleges', href: '/colleges' },
+    image: '/media/DSC_4796.webp',
+    chips: ['College of Agriculture', 'College of Science', 'Veterinary Medicine'],
+    accent: 'green',
+  },
+  {
+    id: 'campus',
+    eyebrow: 'Student Experience',
+    heading: 'Life on\nCampus',
+    body: 'From our digital library and working veterinary clinic to hostels, sports facilities, and the Centre for Agribusiness & Entrepreneurship — FUAZ life extends far beyond the classroom.',
+    cta: { label: 'Discover Campus', href: '/campus' },
+    image: '/media/DSC_3856.webp',
+    chips: ['Digital Library', 'Veterinary Clinic', 'Agribusiness Centre', 'Sports & Recreation'],
+    accent: 'gold',
+  },
+  {
+    id: 'mango',
+    eyebrow: 'Horticulture & Cash Crops',
+    heading: 'Mango\nOrchards',
+    body: 'Commercial fruit orchards and research stations developing drought-tolerant, high-yielding mango varieties suited for the Sahelian climate.',
+    cta: { label: 'Explore Crop Research', href: '/research/crops' },
+    image: '/media/mango.webp',
+    chips: ['Orchard Cultivation', 'Dwarf Varieties', 'Fruit Harvest'],
+    accent: 'green',
+  },
+  {
+    id: 'cattle',
+    eyebrow: 'Livestock & Genetics',
+    heading: 'Cattle & Dairy\nRanches',
+    body: 'State-of-the-art ruminant research, selective bovine breeding, and pasture grazing trials optimizing milk and meat production.',
+    cta: { label: 'Explore Animal Research', href: '/research/animals' },
+    image: '/media/cow.webp',
+    chips: ['Bovine Genomics', 'Dairy Husbandry', 'Pasture Grazing'],
+    accent: 'gold',
+  },
+  {
+    id: 'cashew',
+    eyebrow: 'Agro-Forestry & Processing',
+    heading: 'Cashew\nPlantations',
+    body: 'High-density cashew plantations integrating sustainable soil conservation, raw nut processing, and kernel commercialization.',
+    cta: { label: 'Visit University Farm', href: '/campus/farm' },
+    image: '/media/cashew.webp',
+    chips: ['Agro-Forestry', 'Kernel Commercialization', 'Soil Health'],
+    accent: 'green',
+  },
+];
+---
+
+<section class={styles.section} id="featured" aria-label="Featured sections">
+  <div class="container">
+
+    <div class={styles.grid}>
+      {cards.map((card, idx) => (
+        <article
+          class={`${styles.card} ${styles[`card_${card.accent}`]}`}
+          data-reveal
+          style={`--delay:${idx * 0.12}s`}
+          aria-label={card.heading.replace('\n', ' ')}
+        >
+          <!-- Background image with overlay -->
+          <div class={styles.imgWrap} aria-hidden="true">
+            <img src={card.image} alt="" class={styles.img} loading="lazy" />
+            <div class={styles.imgOverlay}></div>
+          </div>
+
+          <!-- Eyebrow -->
+          <div class={styles.eyebrow}>
+            <span class={styles.eyebrowDot}></span>
+            {card.eyebrow}
+          </div>
+
+          <!-- Heading -->
+          <h2 class={styles.heading}>
+            {card.heading.split('\n').map((line, i) => (
+              <span class={styles.headingLine}>{line}{i === 0 && <br/>}</span>
+            ))}
+          </h2>
+
+          <!-- Chips -->
+          <ul class={styles.chips} aria-label="Topics">
+            {card.chips.map(chip => (
+              <li class={styles.chip}>{chip}</li>
+            ))}
+          </ul>
+
+          <!-- Body -->
+          <p class={styles.body}>{card.body}</p>
+
+          <!-- CTA -->
+          <a href={card.cta.href} class={styles.cta} aria-label={card.cta.label}>
+            <span>{card.cta.label}</span>
+            <span class={styles.ctaArrow} aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+
+          <!-- Corner index -->
+          <div class={styles.index} aria-hidden="true">0{idx + 1}</div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const els = document.querySelectorAll('[data-reveal]');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+        const el = entry.target;
+        el.style.transitionDelay = el.style.getPropertyValue('--delay') || '0s';
+        el.classList.add('fs-revealed');
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.14 });
+  els.forEach(el => obs.observe(el));
+</script>

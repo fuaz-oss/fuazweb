@@ -1,0 +1,24 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Call for Papers" 
+  subtitle="Submit your manuscript to our active symposia."
+  heroImage="/media/cashew.webp"
+  breadcrumbs={[
+    { label: 'Research', href: '/research' },
+    { label: 'Call for Papers', href: '/research/cfp' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Active Submissions</h2>
+    <p class={styles.paragraph}>
+      We regularly invite high-quality, abstract-driven manuscripts across intersecting fields of agricultural biology, climatic engineering, and rural sociology for our upcoming conferences and special journal issues. 
+    </p>
+    <div class={styles.importantBox}>
+      <strong>No Active Calls:</strong> There are currently no active Call for Papers. The next window for the FUAZ Journal of Agriculture (Vol 5) will open in January.
+    </div>
+  </div>
+</GenericPageLayout>

@@ -1,0 +1,32 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Campus Security & Safety" 
+  subtitle="Ensuring a peaceful and secure academic environment."
+  heroImage="/media/DSC_4804.webp"
+  breadcrumbs={[
+    { label: 'Campus', href: '/campus' },
+    { label: 'Security', href: '/campus/security' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>University Security Division</h2>
+    <p class={styles.paragraph}>
+      The safety of our students, staff, and infrastructural assets is the absolute highest priority. The FUAZ Security Division works in tandem with state law enforcement agencies to maintain a completely secure campus perimeter 24/7.
+    </p>
+
+    <h2 class={styles.heading2}>Security Measures</h2>
+    <ul class={styles.list}>
+      <li><strong>Access Control:</strong> All students MUST visibly wear their university ID cards to gain access to the campus through the main gate. Vehicles must display valid FUAZ permit stickers.</li>
+      <li><strong>CCTV Surveillance:</strong> Administrative zones, library floors, and examination halls are continuously monitored by high-definition CCTV systems.</li>
+      <li><strong>Emergency Rapid Response:</strong> A motorized patrol unit is stationed at the hostel blocks to respond rapidly to any localized incidents.</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Curfew Notice:</strong> The university gate strictly closes by 10:00 PM. Students living off-campus must ensure they exit the premises before this time.
+    </div>
+  </div>
+</GenericPageLayout>

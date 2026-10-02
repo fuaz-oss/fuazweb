@@ -1,0 +1,63 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/academics.module.css';
+
+const depts = [
+  "Department of Agricultural Economics & Extension",
+  "Department of Animal Science",
+  "Department of Crop Science",
+  "Department of Crop Protection",
+  "Department of Soil Science",
+  "Department of Forestry & Wildlife",
+  "Department of Fisheries"
+];
+
+const programmes = [
+  "B.Agric. — Agricultural Economics & Extension",
+  "B.Agric. — Animal Science",
+  "B.Agric. — Crop Science",
+  "B.Agric. — Crop Protection",
+  "B.Agric. — Soil Science",
+  "Forestry & Wildlife Management",
+  "Fisheries"
+];
+---
+
+<GenericPageLayout 
+  title="College of Agriculture" 
+  subtitle="Advancing sustainable framing systems and policies."
+  heroImage="/media/DSC_4787.webp"
+  breadcrumbs={[
+    { label: 'Colleges', href: '/colleges' },
+    { label: 'Agriculture', href: '/colleges/agriculture' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>About the College</h2>
+    <p class={styles.paragraph}>
+      The College of Agriculture is the flagship faculty of FUAZ. We are dedicated to providing comprehensive education in modern farming techniques, agricultural business management, and socio-economic systems related to rural development. Our college maintains extensive demonstration farms used by all researchers.
+    </p>
+
+    <h2 class={styles.heading2}>Programmes Offered</h2>
+    <div class={styles.programGrid}>
+      <div class={styles.programCard} style="grid-column: 1 / -1;">
+        <ul class={styles.programReqs}>
+          {programmes.map(p => <li>{p}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <h2 class={styles.heading2}>Academic Departments</h2>
+    <div class={styles.programGrid}>
+      <div class={styles.programCard} style="grid-column: 1 / -1;">
+        <ul class={styles.programReqs}>
+          {depts.map(dept => <li>{dept}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <div class={styles.importantBox}>
+      <strong>Dean's Message:</strong> "We train our students in the fields—not just in the classrooms. Understanding the soil, the climate, and the market is the triad of successful modern agriculture."
+    </div>
+  </div>
+</GenericPageLayout>

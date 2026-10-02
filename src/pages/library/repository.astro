@@ -1,0 +1,33 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Digital Institutional Repository" 
+  subtitle="Archiving FUAZ's academic output and intellectual heritage."
+  heroImage="/media/DSC_4908.webp"
+  breadcrumbs={[
+    { label: 'Library', href: '/library' },
+    { label: 'Repository', href: '/library/repository' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <h2 class={styles.heading2}>Preserving Knowledge</h2>
+    <p class={styles.paragraph}>
+      The FUAZ Institutional Digital Repository (IDR) is an open-access digital archive designed to capture, preserve, and distribute the intellectual output of the university's researchers, faculties, and students. It serves as a permanent, searchable database for indigenous agricultural science.
+    </p>
+
+    <h2 class={styles.heading2}>Available Collections</h2>
+    <ul class={styles.list}>
+      <li><strong>Theses & Dissertations:</strong> Full-text PDFs of all approved M.Sc. and Ph.D. dissertations from 2020 to present.</li>
+      <li><strong>Past Examination Papers:</strong> A secured archive of undergraduate examination papers for revision purposes (login required).</li>
+      <li><strong>Inaugural Lectures:</strong> Transcripts and presentations from professorial inaugurations.</li>
+      <li><strong>Journal of Agriculture:</strong> Pre-prints and published open-access articles from the university journal.</li>
+    </ul>
+
+    <div class={styles.importantBox}>
+      <strong>Thesis Submission:</strong> All graduating students are required to submit a watermarked soft-copy of their approved final-year project to the Library IT Desk before clearance can be generated.
+    </div>
+  </div>
+</GenericPageLayout>

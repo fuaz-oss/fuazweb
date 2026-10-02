@@ -1,0 +1,233 @@
+/* src/styles/about.module.css */
+:root {
+  --ab-green: #1e5128;
+  --ab-green-deep: #0d2b12;
+  --ab-gold: #ffd700;
+  --ab-cream: #f5f0e8;
+  --ab-font-serif: "Georgia", "Times New Roman", serif;
+  --ab-font-sans: "Segoe UI", system-ui, sans-serif;
+  --ab-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contentWrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Typography styles */
+.heading2 {
+  font-family: var(--ab-font-serif);
+  font-size: 2.2rem;
+  color: var(--ab-green-deep);
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+.heading3 {
+  font-family: var(--ab-font-sans);
+  font-size: 1.4rem;
+  color: #1a1a1a;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.paragraph {
+  font-family: var(--ab-font-sans);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #4a4a4a;
+  margin-bottom: 1.5rem;
+}
+
+.dropCap::first-letter {
+  font-family: var(--ab-font-serif);
+  font-size: 4.5rem;
+  float: left;
+  line-height: 0.85;
+  padding-right: 0.8rem;
+  padding-top: 0.4rem;
+  color: var(--ab-green);
+  font-weight: 700;
+}
+
+.importantBox {
+  background: rgba(255, 215, 0, 0.1);
+  border-left: 4px solid var(--ab-gold);
+  padding: 1.5rem 2rem;
+  margin: 2.5rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.blockquote {
+  font-family: var(--ab-font-serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--ab-green-deep);
+  border-left: 4px solid var(--ab-green);
+  padding-left: 2rem;
+  margin: 3rem 0;
+}
+
+.list {
+  font-family: var(--ab-font-sans);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #4a4a4a;
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.list li {
+  margin-bottom: 0.8rem;
+}
+
+/* Grid Layouts for profiles */
+.profileGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.profileCard {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  transition: transform 0.3s var(--ab-ease), box-shadow 0.3s ease;
+}
+
+.profileCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.profileImg {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: #eaeaea;
+  display: block;
+}
+
+.profileInfo {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.profileName {
+  font-family: var(--ab-font-serif);
+  font-size: 1.25rem;
+  color: var(--ab-green-deep);
+  margin: 0 0 0.5rem 0;
+}
+
+.profileRole {
+  font-family: var(--ab-font-sans);
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* Nav Grid Layout (for main about page) */
+.navGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.navCard {
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 2rem;
+  background: #fdfcfb;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: #1a1a1a;
+}
+
+.navCard:hover {
+  background: var(--ab-green-deep);
+  color: #fff;
+  border-color: var(--ab-green-deep);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(13, 43, 18, 0.15);
+}
+
+.navCard h3 {
+  font-family: var(--ab-font-serif);
+  font-size: 1.4rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.navCard p {
+  font-family: var(--ab-font-sans);
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* VC Split Layout */
+.splitLayout {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.stickySidebar {
+  position: sticky;
+  top: 130px; /* Account for navbar */
+}
+
+.vcImgWrap {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin-bottom: 1.5rem;
+}
+
+.vcImgWrap img {
+  width: 100%;
+  display: block;
+}
+
+.vcTitle {
+  font-family: var(--ab-font-serif);
+  font-size: 1.8rem;
+  color: var(--ab-green-deep);
+  margin: 0 0 0.3rem 0;
+}
+
+.vcRole {
+  font-family: var(--ab-font-sans);
+  font-size: 1rem;
+  color: var(--ab-gold);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .splitLayout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .stickySidebar {
+    position: relative;
+    top: 0;
+    max-width: 400px;
+  }
+}

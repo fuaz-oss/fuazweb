@@ -1,0 +1,171 @@
+---
+import styles from './CollegesSection.module.css';
+
+const colleges = [
+  {
+    code: '01',
+    name: 'College of Agriculture',
+    abbr: 'COA',
+    href: '/colleges/agriculture',
+    image: '/media/cashew.webp',
+    highlights: ['Mango Orchards', 'Cashew Plantations', 'Crop Research'],
+    departments: [
+      'Agricultural Economics & Extension',
+      'Animal Science',
+      'Crop Science',
+      'Crop Protection',
+      'Soil Science',
+      'Forestry & Wildlife',
+      'Fisheries',
+    ],
+    colour: 'green',
+  },
+  {
+    code: '02',
+    name: 'College of Science',
+    abbr: 'COS',
+    href: '/colleges/sciences',
+    image: '/media/DSC_3805.webp',
+    highlights: ['Biotechnology', 'Data Analytics', 'Physical Sciences'],
+    departments: [
+      'Biology',
+      'Chemistry',
+      'Computer Science',
+      'Mathematics',
+      'Physics',
+    ],
+    colour: 'blue',
+  },
+  {
+    code: '03',
+    name: 'College of Veterinary Medicine',
+    abbr: 'CVS',
+    href: '/colleges/veterinary',
+    image: '/media/cow.webp',
+    highlights: ['Cattle Ranches', 'Veterinary Clinic', 'Livestock Genetics'],
+    departments: [
+      'Animal Production',
+      'Animal Nutrition',
+      'Veterinary Physiology',
+      'Veterinary Surgery',
+    ],
+    colour: 'amber',
+  },
+];
+
+const agriculturalHighlights = [
+  {
+    title: 'Mango Orchards',
+    subtitle: 'High-Yield Sahelian Cultivation',
+    image: '/media/mango.webp',
+    href: '/research/crops'
+  },
+  {
+    title: 'Cattle & Dairy Ranches',
+    subtitle: 'Indigenous Bovine Genetics',
+    image: '/media/cow.webp',
+    href: '/research/animals'
+  },
+  {
+    title: 'Cashew Plantations',
+    subtitle: 'Agro-Forestry & Processing',
+    image: '/media/cashew.webp',
+    href: '/campus/farm'
+  }
+];
+---
+
+<section class={styles.section} id="colleges" aria-label="Academic Colleges">
+
+  <div class="container">
+
+    <!-- Header -->
+    <div class={styles.header} data-reveal>
+      <div class={styles.eyebrow}>
+        <span class={styles.eyebrowLine}></span>
+        Academic Colleges & Field Research
+        <span class={styles.eyebrowLine}></span>
+      </div>
+      <h2 class={styles.heading}>Three Colleges.<br/>One Vision.</h2>
+      <p class={styles.subtext}>
+        Each college is purpose-built to advance agricultural science, technology,
+        and sustainable development across Nigeria and beyond.
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class={styles.grid} role="list">
+      {colleges.map((col, i) => (
+        <a
+          href={col.href}
+          class={`${styles.card} ${styles[`col_${col.colour}`]}`}
+          role="listitem"
+          data-reveal
+          style={`--ci:${i}`}
+          aria-label={col.name}
+        >
+          <!-- Background image -->
+          <div class={styles.imgWrap} aria-hidden="true">
+            <img src={col.image} alt="" class={styles.img} loading="lazy" />
+            <div class={styles.imgOverlay}></div>
+          </div>
+
+          <!-- Code badge -->
+          <div class={styles.codeBadge} aria-hidden="true">{col.code}</div>
+
+          <!-- Content -->
+          <div class={styles.cardContent}>
+            <div class={styles.abbr}>{col.abbr}</div>
+            <h3 class={styles.cardName}>{col.name}</h3>
+
+            <!-- Department list -->
+            <ul class={styles.depts} aria-label="Departments">
+              {col.departments.map(d => (
+                <li class={styles.dept}>{d}</li>
+              ))}
+            </ul>
+
+            <!-- CTA row -->
+            <div class={styles.cardCta}>
+              <span>Explore College</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Hover border flash -->
+          <div class={styles.borderFlash} aria-hidden="true"></div>
+        </a>
+      ))}
+    </div>
+
+
+    <!-- Bottom CTA -->
+    <div class={styles.footer} data-reveal>
+      <a href="/colleges" class={styles.footerCta}>
+        View All Colleges & Departments
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2 7h10M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<script>
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+        const el = entry.target;
+        const delay = el.style.getPropertyValue('--ci');
+        if (delay) el.style.transitionDelay = `${parseInt(delay) * 0.08}s`;
+        el.classList.add('cs-revealed');
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => obs.observe(el));
+</script>

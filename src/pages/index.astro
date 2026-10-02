@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar          from '../components/Navbar.astro';
+import Hero            from '../components/Hero.astro';
+import PortalLinks     from '../components/PortalLinks.astro';
+import MissionVision   from '../components/MissionVision.astro';
+import VCSection       from '../components/VCSection.astro';
+import VideoTourSection from '../components/VideoTourSection.astro';
+import CollegesSection from '../components/CollegesSection.astro';
+import FeaturedSections from '../components/FeaturedSections.astro';
+import NewsGrid        from '../components/NewsGrid.astro';
+import Conferences     from '../components/Conferences.astro';
+import Footer          from '../components/Footer.astro';
+
+---
+
+
+
+<Layout>
+
+  <!-- 1. Navigation -->
+  <Navbar />
+
+  <main>
+    <!-- 2. Hero carousel -->
+    <Hero />
+
+    <!-- 3. Portal quick-access strip (overlaps hero) -->
+    <PortalLinks />
+
+    <!-- 4. Mission & Vision + Core Values -->
+    <MissionVision />
+
+    <!-- 5. Vice Chancellor's Message -->
+    <VCSection />
+
+    <!-- 6. Official Welcome & Campus Video Tour -->
+    <VideoTourSection />
+
+    <!-- 7. Academic Colleges showcase -->
+    <CollegesSection />
+
+    <!-- 8. Featured — Explore Colleges & Campus Life -->
+    <FeaturedSections />
+
+    <!-- 9. Latest News & Notices -->
+   <div class="reveal">
+			<NewsGrid />
+		</div>
+
+
+    <!-- 10. Conferences & Academic Events -->
+    <Conferences />
+  </main>
+
+  <!-- 11. Footer -->
+  <Footer />
+
+</Layout>
+
+<style>
+	main {
+		overflow: hidden;
+		padding-top: 110px; /* Base navbar height */
+	}
+</style>

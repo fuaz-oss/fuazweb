@@ -1,0 +1,144 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="Directorate of Human Resources" 
+  subtitle="Building institutional capacity through people — recruitment, welfare, and staff development."
+  heroImage="/media/DSC_4881.webp"
+  breadcrumbs={[
+    { label: 'Administration', href: '/administration' },
+    { label: 'Human Resources', href: '/administration/human-resource' }
+  ]}
+>
+  <div class={`${styles.contentWrapper} ${styles.splitLayout}`}>
+
+    <!-- Sticky Sidebar / Profile -->
+    <aside class={styles.stickySidebar}>
+      <div class={styles.vcImgWrap}>
+        <img
+          src="/media/director_human_resource.webp"
+          alt="Mallam Umar Ali, Senior Deputy Registrar / Head, Human Resource Department, FUAZ"
+        />
+      </div>
+      <h2 class={styles.vcTitle}>Mallam Umar Ali</h2>
+      <p class={styles.vcRole}>Senior Deputy Registrar</p>
+      <p class={styles.vcRole} style="margin-top:0.3rem; color:#555; font-size:0.85rem; text-transform:none; letter-spacing:0; font-weight:600;">Head, Human Resource Department</p>
+
+      <!-- Profile Details -->
+      <ul class="sidebar-details">
+        <li>
+          <span class="detail-label">Qualification</span>
+          <span class="detail-value">M.Sc. Labour &amp; Industrial Relations</span>
+        </li>
+        <li>
+          <span class="detail-label">Assumed Office</span>
+          <span class="detail-value">27th May, 2025</span>
+        </li>
+        <li>
+          <span class="detail-label">Category</span>
+          <span class="detail-value">Head of Department (HOD)</span>
+        </li>
+        <li>
+          <span class="detail-label">Dept. Established</span>
+          <span class="detail-value">2021</span>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <div>
+      <h2 class={styles.heading2}>Biography</h2>
+      <p class={`${styles.paragraph} ${styles.dropCap}`}>
+        Mallam Umar Ali is a distinguished university administrator and human resource strategist,
+        currently serving as the <strong>Senior Deputy Registrar and Head of the Human Resource Department</strong>
+        at the Federal University of Agriculture, Zuru (FUAZ). Since the establishment of the
+        department in 2021, it has functioned as the backbone of institutional governance, ensuring staff
+        welfare, professional development, and effective administrative oversight.
+      </p>
+
+      <p class={styles.paragraph}>
+        Under his visionary leadership, the department recorded landmark achievements in 2025 through
+        the successful execution of a comprehensive <strong>University Staff Audit</strong>. This exercise verified and
+        streamlined the University Nominal Roll, thereby strengthening personnel management and
+        reinforcing institutional accountability.
+      </p>
+
+      <blockquote class={styles.blockquote}>
+        "Currently spearheading the department's transition toward full digitalisation of the Nominal Roll — designed to modernise HR workflows, enhance data integrity, and enable data-driven decision-making across the university."
+      </blockquote>
+
+      <p class={styles.paragraph}>
+        He holds a Master of Science degree in Labour and Industrial Relations and continues to champion
+        excellence in strategic HR management, industrial relations, and institutional governance.
+      </p>
+
+      <h2 class={styles.heading2}>Areas of Specialisation</h2>
+      <ul class={styles.list}>
+        <li><strong>Strategic Human Resource Management &amp; Institutional Governance</strong></li>
+        <li><strong>University Nominal Roll Management &amp; Personnel Auditing</strong></li>
+        <li><strong>Industrial Relations, Staff Discipline, and Dispute Resolution</strong></li>
+        <li><strong>HR Digitalisation &amp; Administrative Process Automation</strong></li>
+      </ul>
+
+      <h2 class={styles.heading2}>Key Responsibilities</h2>
+      <ul class={styles.list}>
+        <li><strong>Staff Recruitment &amp; Appointments:</strong> Managing open competitive recruitment for academic, senior administrative, technical, and junior staff positions in conformity with established Federal Government guidelines.</li>
+        <li><strong>Establishment &amp; Confirmation:</strong> Processing probationary appointments, staff confirmations, and maintaining the university's approved establishment records.</li>
+        <li><strong>Promotions &amp; Advancement:</strong> Coordinating Annual Performance Evaluation Reports (APER) and facilitating staff promotion exercises across all cadres.</li>
+        <li><strong>Nominal Roll Management:</strong> Overseeing the integrity, accuracy, and ongoing digitalisation of the University Nominal Roll and staff records database.</li>
+        <li><strong>Staff Welfare &amp; Discipline:</strong> Overseeing welfare matters, processing disciplinary cases in line with the Public Service Rules, and managing exit protocols including retirement and disengagement.</li>
+        <li><strong>Leave Administration:</strong> Processing and monitoring all categories of staff leave — annual, study, maternity, casual, and sabbatical.</li>
+        <li><strong>Training &amp; Development:</strong> Identifying training needs and facilitating capacity-building programmes, workshops, and professional development opportunities for all staff cadres.</li>
+      </ul>
+
+      <h2 class={styles.heading2}>Registry Sub-Units</h2>
+      <ul class={styles.list}>
+        <li><strong>Senior Staff Unit:</strong> Handles matters relating to CONTISS 07 and above (CONUASS 01 and above for academic staff), including deployment, transfer, and inter-cadre progression.</li>
+        <li><strong>Junior Staff Unit:</strong> Manages the establishment, recruitment, and welfare of junior non-academic staff (CONTISS 01–06) across all university departments.</li>
+        <li><strong>Staff Development Unit:</strong> Processes study fellowships, conference attendance, and formal further-education leaves for eligible staff.</li>
+      </ul>
+
+      <div class={styles.importantBox}>
+        <strong>Staff Matters Enquiries:</strong> All staff seeking information on appointments, promotions, leave, or welfare should visit the Human Resource Department at the Registry Building, FUAZ Main Campus, Zuru, during official working hours — <em>8:00 am to 4:00 pm, Monday to Friday</em>.
+      </div>
+    </div>
+
+  </div>
+</GenericPageLayout>
+
+<style>
+  /* ── Sidebar detail list ────────────────────────── */
+  .sidebar-details {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    border-top: 1px solid rgba(0,0,0,0.07);
+    padding-top: 1.25rem;
+  }
+
+  .sidebar-details li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .detail-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #999;
+  }
+
+  .detail-value {
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+</style>

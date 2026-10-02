@@ -1,0 +1,34 @@
+---
+import GenericPageLayout from '../../layouts/GenericPageLayout.astro';
+import styles from '../../styles/about.module.css';
+---
+
+<GenericPageLayout 
+  title="History & Background" 
+  subtitle="The foundation and growth journey of FUAZ."
+  heroImage="/media/DSC_4805.webp"
+  breadcrumbs={[
+    { label: 'About', href: '/about' },
+    { label: 'History', href: '/about/history' }
+  ]}
+>
+  <div class={styles.contentWrapper}>
+    <p class={`${styles.paragraph} ${styles.dropCap}`}>
+      The Federal University of Agriculture Zuru (FUAZ), located in Kebbi State, Nigeria, was established in 2020 by the Federal Government to boost agricultural research, education, and food security strategies in the nation. It represents a landmark investment in the Zuru emirate, an area renowned for its profound agricultural heritage.
+    </p>
+
+    <h2 class={styles.heading2}>Our Foundation</h2>
+    <p class={styles.paragraph}>
+      Before its establishment as a full-fledged University, the institution operated as the College of Agriculture, Zuru. Recognizing the necessity for high-level manpower in food production and advanced agricultural engineering, the Federal Government officially upgraded the college to a specialized University of Agriculture. This transition brought modern infrastructure, expanded faculties, and a global academic mandate.
+    </p>
+
+    <div class={styles.importantBox}>
+      <strong>Key Milestone:</strong> In September 2020, FUAZ officially commenced operations following the appointment of its pioneer Vice-Chancellor and management team, setting a new benchmark for specialized education in North-Western Nigeria.
+    </div>
+
+    <h2 class={styles.heading2}>Academic Growth</h2>
+    <p class={styles.paragraph}>
+      Today, FUAZ hosts three specialized colleges: Agriculture, Veterinary Medicine, and Science. Our student population has steadily grown, drawing students from all across Nigeria and neighboring regions. The university's rapid expansion is driven by its core mandate: integrating academic excellence with practical, mechanized farming.
+    </p>
+  </div>
+</GenericPageLayout>
