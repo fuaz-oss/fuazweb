@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/GenericPageLayout.astro
+layout: ../../layouts/AdmissionsListLayout.astro
 title: 2026/2027 First Batch Admission List
 subtitle: Official first batch of UTME admitted candidates at the Federal University of Agriculture Zuru.
 heroImage: /media/DSC_4787.webp
@@ -9,8 +9,6 @@ breadcrumbs:
   - label: First Batch Admission List
     href: /admissions/first-batch-2026
 ---
-
-# First Batch of Admitted Candidates
 
 **Academic session:** 2026/2027  
 **Admission route:** UTME  

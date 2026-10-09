@@ -1,0 +1,12 @@
+---
+import GenericPageLayout from './GenericPageLayout.astro';
+import styles from './AdmissionsListLayout.module.css';
+
+const { title, subtitle, breadcrumbs, heroImage } = Astro.props;
+---
+
+<GenericPageLayout title={title} subtitle={subtitle} breadcrumbs={breadcrumbs} heroImage={heroImage}>
+  <article class={styles.admissionsArticle}>
+    <slot />
+  </article>
+</GenericPageLayout>
