@@ -10,17 +10,18 @@ breadcrumbs:
     href: /admissions/first-batch-2026
 ---
 
-**Academic session:** 2026/2027  
-**Admission route:** UTME  
-**Published by:** Office of the Registrar  
-**Reference:** FUAZ/R/ADM/60/VOL.1  
-**Date on official notice:** 8 October 2026
+**2026/2027 Academic Session** · **UTME First Batch** · Office of the Registrar · Notice dated 8 October 2026
 
-The following 248 candidates were offered provisional admission through UTME. Candidate names, JAMB registration numbers, and programmes are transcribed from the official notice. The notice contains a likely typographical error in its introductory paragraph (`20266/2027`); the session is shown here as 2026/2027, consistent with the notice title.
+FUAZ has offered provisional admission through UTME to **248 candidates** for the 2026/2027 academic session. Find your JAMB registration number in the list below to confirm your name and programme.
 
-Candidates should check their JAMB profiles, accept the admission offer through JAMB CAPS, and print their JAMB admission letter and result slip. Visit the University portal for registration updates.
+### What admitted candidates should do
 
-[Download the official admission notice (PDF)](/FUAZ%202026%20FIRST%20BATCH%20OF%20ADMISSION.pdf)
+1. Sign in to your JAMB profile and open the CAPS portal.
+2. Accept the admission offer on JAMB CAPS.
+3. Print your JAMB admission letter and result slip for your records.
+4. Check the University portal regularly for registration dates and further instructions.
+
+[View or download the signed official admission notice (PDF)](/FUAZ%202026%20FIRST%20BATCH%20OF%20ADMISSION.pdf)
 
 ## Admitted candidates
 

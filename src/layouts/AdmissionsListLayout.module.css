@@ -15,17 +15,13 @@
 }
 
 .admissionsArticle :global(p:first-of-type) {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 185px), 1fr));
-  gap: 0.75rem;
-  margin: 0 0 1.5rem;
-  padding: 1.25rem;
-  border: 1px solid rgba(13, 43, 18, 0.1);
-  border-left: 4px solid var(--list-gold);
-  border-radius: 10px;
+  display: block;
+  margin: 0 0 1.25rem;
+  padding: 0.7rem 0.9rem;
+  border-left: 3px solid var(--list-gold);
   background: var(--list-cream);
   color: var(--list-green);
-  font-size: 0.92rem;
+  font-size: 0.84rem;
 }
 
 .admissionsArticle :global(p:first-of-type strong) {
@@ -43,6 +39,22 @@
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(1.5rem, 3vw, 2rem);
   line-height: 1.25;
+}
+
+.admissionsArticle :global(h3) {
+  margin: 1.5rem 0 0.6rem;
+  color: var(--list-green);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.2rem;
+}
+
+.admissionsArticle :global(ol) {
+  margin: 0 0 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.admissionsArticle :global(li) {
+  padding: 0.2rem 0 0.2rem 0.25rem;
 }
 
 .admissionsArticle :global(a[href$=".pdf"]) {
@@ -77,23 +89,21 @@
 }
 
 .admissionsArticle :global(table) {
-  display: block;
+  display: table;
   width: 100%;
-  max-height: 75vh;
-  overflow: auto;
+  table-layout: fixed;
+  border-collapse: separate;
   border: 1px solid #dfe6df;
   border-spacing: 0;
   border-radius: 10px;
   background: #fff;
   box-shadow: 0 8px 24px rgba(13, 43, 18, 0.06);
-  font-size: 0.9rem;
-  line-height: 1.45;
+  font-size: 0.96rem;
+  line-height: 1.55;
 }
 
 .admissionsArticle :global(thead) {
-  position: sticky;
-  top: 5rem;
-  z-index: 1;
+  position: static;
 }
 
 .admissionsArticle :global(th) {
@@ -109,10 +119,25 @@
 }
 
 .admissionsArticle :global(td) {
-  padding: 0.68rem 1rem;
+  padding: 0.88rem 1rem;
   border-bottom: 1px solid #edf0ed;
   color: #36443a;
   vertical-align: top;
+}
+
+.admissionsArticle :global(th:first-child),
+.admissionsArticle :global(td:first-child) {
+  width: 4.5rem;
+}
+
+.admissionsArticle :global(th:nth-child(2)),
+.admissionsArticle :global(td:nth-child(2)) {
+  width: 14rem;
+}
+
+.admissionsArticle :global(th:last-child),
+.admissionsArticle :global(td:last-child) {
+  width: 17rem;
 }
 
 .admissionsArticle :global(tbody tr:nth-child(even)) {
@@ -144,7 +169,7 @@
 }
 
 .admissionsArticle :global(td:last-child) {
-  min-width: 12rem;
+  min-width: 0;
 }
 
 .admissionsArticle :global(hr) {
@@ -164,16 +189,20 @@
   }
 
   .admissionsArticle :global(p:first-of-type) {
-    padding: 1rem;
+    padding: 0.65rem 0.8rem;
   }
 
   .admissionsArticle :global(table) {
-    max-height: 70vh;
-    font-size: 0.82rem;
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-height: none;
+    overflow-x: auto;
+    font-size: 0.88rem;
   }
 
   .admissionsArticle :global(th),
   .admissionsArticle :global(td) {
-    padding: 0.65rem 0.75rem;
+    padding: 0.8rem 0.75rem;
   }
 }
